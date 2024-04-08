@@ -1,0 +1,27 @@
+// Executable: NestedExceptionVS32_EHsc_GS-_GR-.exe
+// Function:   Nested6
+
+/* TryBlockMapEntry [5]	1-5,12,1 */
+Try (state=1) {
+  /* TryBlockMapEntry [1]	2-4,5,1 */
+  Try (state=2) {
+    /* TryBlockMapEntry [0]	3-3,4,1 */
+    Try (state=3) {}
+    Catch (std::logic_error) (state=?)	@0x0040196b {}
+  }
+  Catch (CustomException1) (state=?)	@0x0040198c {}
+}
+Catch (...) (state=?)	@0x004019b0 {
+  /* TryBlockMapEntry [4]	7-7,12,2 */
+  Try (state=7) {}
+  Catch (std::out_of_range) (state=?)	@0x004019c2 {}
+  Catch (...) (state=?)	@0x004019f5 {}
+  ToBeNestedInCatches {
+    /* TryBlockMapEntry [3]	11-11,12,1 */
+    Try (state=11) {}
+    Catch (...) (state=?)	@0x00401a05 {}
+    /* TryBlockMapEntry [2]	9-9,10,1 */
+    Try (state=9) {}
+    Catch (...) (state=?)	@0x004019d2 {}  
+  }
+}

@@ -1,0 +1,6 @@
+// Executable: ExceptionVS32_Yes_EHsc_GS-_GR-.exe
+// Function:   B, but with only one catch block in each TryBlockMapEntry, no state gaps, and only one TryBlockMapEntry.
+
+/* TryBlockMapEntry [0]	0-0,1,1 */
+Try (state=0) {}
+Catch (...) (state=1)	@0x004013cc {}

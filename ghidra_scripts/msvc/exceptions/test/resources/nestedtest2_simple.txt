@@ -1,0 +1,12 @@
+// Executable: ExceptionVS32_Yes_EHsc_GS-_GR-.exe
+// Function:   B, but with only one catch block in each TryBlockMapEntry and no state gaps.
+
+/* TryBlockMapEntry [0]	0-0,1,1 */
+Try (state=0) {}
+Catch (...) (state=?)	@0x004013cc {}
+/* TryBlockMapEntry [1]	2-2,3,1 */
+Try (state=2) {}
+Catch (...) (state=?)	@0x004013fd {}
+/* TryBlockMapEntry [2]	4-4,5,2 */
+Try (state=4) {}
+Catch (std::out_of_range) (state=?)	@0x0040148f {}
