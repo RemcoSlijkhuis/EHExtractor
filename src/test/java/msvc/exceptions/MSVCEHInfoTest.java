@@ -1,8 +1,8 @@
-package msvc.exceptions.test;
-import msvc.exceptions.src.*;
-
+package msvc.exceptions;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,12 +13,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import ghidra.app.cmd.data.exceptionhandling.EHUnwindModel;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.data.InvalidDataTypeException;
+
+import msvc.exceptions.*;
 
 public class MSVCEHInfoTest {
 

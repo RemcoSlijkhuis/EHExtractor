@@ -1,4 +1,4 @@
-package msvc.exceptions.src;
+package msvc.exceptions;
 
 public class Range<T extends Comparable<T>> {
     private T min;

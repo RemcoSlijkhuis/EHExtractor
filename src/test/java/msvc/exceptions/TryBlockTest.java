@@ -1,10 +1,10 @@
-package msvc.exceptions.test;
-import msvc.exceptions.src.*;
+package msvc.exceptions;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import msvc.exceptions.*;
 
 public class TryBlockTest {
 

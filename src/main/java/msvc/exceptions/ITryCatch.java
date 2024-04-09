@@ -1,4 +1,4 @@
-package msvc.exceptions.src;
+package msvc.exceptions;
 
 public interface ITryCatch {
 	public BlockType getBlockType();

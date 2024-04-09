@@ -1,4 +1,4 @@
-package msvc.exceptions.src;
+package msvc.exceptions;
 
 import ghidra.app.cmd.data.TypeDescriptorModel;
 import ghidra.app.cmd.data.exceptionhandling.EHCatchHandlerModel;

@@ -1,8 +1,6 @@
-package msvc.exceptions.test;
-import msvc.exceptions.src.*;
+package msvc.exceptions;
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +8,8 @@ import ghidra.app.cmd.data.TypeDescriptorModel;
 import ghidra.app.cmd.data.exceptionhandling.EHCatchHandlerTypeModifier;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.scalar.Scalar;
+
+import msvc.exceptions.*;
 
 public class CatchHandlerTest {
 

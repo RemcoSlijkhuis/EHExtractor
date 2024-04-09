@@ -1,9 +1,9 @@
-package msvc.exceptions.test;
+package msvc.exceptions;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import msvc.exceptions.src.*;
+import msvc.exceptions.*;
 
 public class RangeTest {
 

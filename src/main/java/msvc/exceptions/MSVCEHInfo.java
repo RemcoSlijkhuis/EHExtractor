@@ -1,4 +1,4 @@
-package msvc.exceptions.src;
+package msvc.exceptions;
 
 import ghidra.program.model.data.*;
 import ghidra.program.model.address.*;

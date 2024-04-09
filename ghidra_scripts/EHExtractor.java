@@ -37,8 +37,7 @@ import java.util.Date;
 
 import instructionpatterns.*;
 import loggingbridge.GhidraScriptHandler;
-
-import msvc.exceptions.src.*;
+import msvc.exceptions.*;
 
 public class EHExtractor extends GhidraScript {  
 	final Level LOG_LEVEL = Level.ALL;

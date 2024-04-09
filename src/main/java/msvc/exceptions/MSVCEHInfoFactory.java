@@ -1,4 +1,4 @@
-package msvc.exceptions.src;
+package msvc.exceptions;
 
 import java.util.HashMap;
 import java.util.List;

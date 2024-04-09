@@ -1,15 +1,13 @@
-package msvc.exceptions.test;
-import msvc.exceptions.src.*;
+package msvc.exceptions;
 
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
-
-import org.junit.Before;
-import org.junit.Test;
 
 public class NestedStructureParserTest {
 
