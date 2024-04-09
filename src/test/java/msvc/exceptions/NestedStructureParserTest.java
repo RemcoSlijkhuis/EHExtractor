@@ -21,11 +21,12 @@ public class NestedStructureParserTest {
 	@Before
 	public void setUp() throws Exception {
 		nsp = new NestedStructureParser();
-		this.workingDir = Path.of("", "ghidra_scripts/msvc/exceptions/test").toAbsolutePath();
-		testFile1Old = this.workingDir.resolve("resources/nestedtest1Old.txt").toFile();
-		testFile1 = this.workingDir.resolve("resources/nestedtest1.txt").toFile();
-		testFile2 = this.workingDir.resolve("resources/nestedtest2.txt").toFile();
-		testFile2Simple = this.workingDir.resolve("resources/nestedtest2_simple.txt").toFile();
+
+		ClassLoader classLoader = getClass().getClassLoader();
+		testFile1Old = new File(classLoader.getResource("nestedtest1Old.txt").getFile());				
+		testFile1 = new File(classLoader.getResource("nestedtest1.txt").getFile());				
+		testFile2 = new File(classLoader.getResource("nestedtest2.txt").getFile());				
+		testFile2Simple = new File(classLoader.getResource("nestedtest2_simple.txt").getFile());				
 	}
 
 	//@Test

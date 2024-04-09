@@ -72,20 +72,21 @@ public class MSVCEHInfoTest {
 		
 		
 		nsp = new NestedStructureParser();
-		this.workingDir = Path.of("", "ghidra_scripts/msvc/exceptions/test").toAbsolutePath();
-		testFile1 = this.workingDir.resolve("resources/nestedtest1.txt").toFile();
-		testFile1AfterRecurse = this.workingDir.resolve("resources/nestedtest1_afterRecurse.txt").toFile();
+		
+		ClassLoader classLoader = getClass().getClassLoader();
+		testFile1 = new File(classLoader.getResource("nestedtest1.txt").getFile());
+		testFile1AfterRecurse = new File(classLoader.getResource("nestedtest1_afterRecurse.txt").getFile());
 
-		testFile2 = this.workingDir.resolve("resources/nestedtest2.txt").toFile();
-		testFile2AfterRecurse = this.workingDir.resolve("resources/nestedtest2_afterRecurse.txt").toFile();
+		testFile2 = new File(classLoader.getResource("nestedtest2.txt").getFile());
+		testFile2AfterRecurse = new File(classLoader.getResource("nestedtest2_afterRecurse.txt").getFile());
 		//
-		testFile2SingleCatch = this.workingDir.resolve("resources/nestedtest2_singleCatch.txt").toFile();
-		testFile2SingleCatchAfterRecurse = this.workingDir.resolve("resources/nestedtest2_singleCatch_afterRecurse.txt").toFile();
+		testFile2SingleCatch = new File(classLoader.getResource("nestedtest2_singleCatch.txt").getFile());
+		testFile2SingleCatchAfterRecurse = new File(classLoader.getResource("nestedtest2_singleCatch_afterRecurse.txt").getFile());
 		//
-		testFile2Simple = this.workingDir.resolve("resources/nestedtest2_simple.txt").toFile();
-		testFile2SimpleAfterRecurse = this.workingDir.resolve("resources/nestedtest2_simple_afterRecurse.txt").toFile();
-		testFile2SuperSimple = this.workingDir.resolve("resources/nestedtest2_superSimple.txt").toFile();
-		testFile2SuperSimpleAfterRecurse = this.workingDir.resolve("resources/nestedtest2_superSimple_afterRecurse.txt").toFile();
+		testFile2Simple = new File(classLoader.getResource("nestedtest2_simple.txt").getFile());
+		testFile2SimpleAfterRecurse = new File(classLoader.getResource("nestedtest2_simple_afterRecurse.txt").getFile());
+		testFile2SuperSimple = new File(classLoader.getResource("nestedtest2_superSimple.txt").getFile());
+		testFile2SuperSimpleAfterRecurse = new File(classLoader.getResource("nestedtest2_superSimple_afterRecurse.txt").getFile());
 	}
 
 	//@Test
