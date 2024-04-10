@@ -519,41 +519,4 @@ public class EHExtractor extends GhidraScript {
 		return bytes;
 	}
 
-	private String getCurrentTimeStamp() {
-		// Default Java logging timestamp format (right?).
-        SimpleDateFormat sdfDate = new SimpleDateFormat("MMM dd, yyyy HH:mm:ss a");
-        Date now = new Date();
-        return sdfDate.format(now);
-    }
-	
-	private class MyLogFormatterInitial extends Formatter {
-	    @Override
-	    public String format(LogRecord record) {
-	        // Custom format: Timestamp Message
-	        return getCurrentTimeStamp() + " " + record.getMessage() + System.lineSeparator();
-	    }
-	}
-
-	private class MyLogFormatter extends Formatter {
-		private boolean showLevel = true;
-		
-		public MyLogFormatter(boolean showLevel) {
-			this.showLevel = showLevel;
-		}
-
-		@Override
-	    public String format(LogRecord record) {
-			String msg = "";
-			if (this.showLevel) {
-				// Custom format: Log Level: Message
-				msg = record.getLevel() + ": " + record.getMessage() + System.lineSeparator();
-			}
-			else {
-				// Custom format: Message
-				msg = record.getMessage() + System.lineSeparator();
-			}
-			return msg;
-	    }
-	}
-
 }
