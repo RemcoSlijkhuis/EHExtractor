@@ -29,6 +29,9 @@ import java.util.logging.LogManager;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+
+import ehextractor.ProgramValidator;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,16 +63,11 @@ public class EHExtractor extends GhidraScript {
     	logger.log(Level.INFO, "Program file: "+currentProgram.getExecutablePath());
     	logger.log(Level.INFO, "Program spans addresses "+minAddr+"-"+maxAddr);
     	
-    	// Can we actually handle this executable? The compiler has to be MSVC and the processor/bitness x86/32-bit.
-    	if (!checkCompiler(currentProgram)) {
-    		logger.log(Level.INFO, "This executable was not compiled using MSVC.");
+    	// Can we actually handle this executable?
+    	// The compiler has to be MSVC and the processor/bitness x86/32-bit.
+    	if (!ProgramValidator.canAnalyze(currentProgram, logger)) {
     		return;
     	}
-    	if (!checkProcessorBitness(currentProgram)) {
-    		logger.log(Level.INFO, "Executable should be for 32-bit x86, but is not.");    		
-    		return;
-    	}
-    	logger.log(Level.INFO, "Executable is for 32-bit x86 and is compiled using MSVC.");
 
     	// If there are exceptions, we expect an exception handler. The main one for x86
     	// is CxxFrameHandler3. Look for this.
@@ -228,50 +226,6 @@ public class EHExtractor extends GhidraScript {
     	}
     }
 
-	private boolean checkCompiler(Program program) {
-    	String usedCompiler = program.getCompiler();
-
-    	CompilerSpec compilerSpec = program.getCompilerSpec();
-    	CompilerSpecDescription compilerSpecDescription =  compilerSpec.getCompilerSpecDescription();
-    	String compilerSpecName = compilerSpecDescription.getCompilerSpecName();
-    	CompilerSpecID compilerSpecID = compilerSpecDescription.getCompilerSpecID();
-
-    	logger.log(Level.FINE, "Compiler check:");
-
-    	if (!usedCompiler.startsWith("visualstudio:")) {
-    		return false;
-    	}
-
-    	if (!(compilerSpecName.equals("Visual Studio") && compilerSpecID.toString().equals("windows"))) {
-    		return false;
-    	}
-
-    	return true;
-	}
-	
-	private boolean checkProcessorBitness(Program program) {
-    	CompilerSpec compilerSpec = program.getCompilerSpec();
-    	Language sourceLanguage = compilerSpec.getLanguage();
-
-    	// Some extra things.
-    	//println("Language used: " + sourceLanguage);
-    	//if (sourceLanguage.isBigEndian()) {
-        //	println("  Big Endian");
-    	//}
-    	//else {
-        //	println("  Little Endian");
-    	//}
-    	//println("Language produced: " + compilerSpec.getDecompilerOutputLanguage());
-    	
-    	Processor processor = sourceLanguage.getProcessor();
-    	int pointerSize = sourceLanguage.getDefaultDataSpace().getPointerSize();
-
-    	logger.log(Level.FINE, "Processor & bitness check:");
-    	logger.log(Level.FINE, "  Processor type: " + processor);
-    	logger.log(Level.FINE, "  Pointer size: " + 8*pointerSize + " bits");
-
-		return processor.toString().equals("x86") && pointerSize == 4;
-	}
 	
 	private List<Function> getInternalFunctions() {
     	List<Function> allFuncs = new ArrayList<Function>();
