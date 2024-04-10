@@ -25,14 +25,13 @@ import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Formatter;
 import java.util.logging.Level;
-import java.util.logging.LogManager;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import ehextractor.Logging;
 import ehextractor.ProgramValidator;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,167 +51,82 @@ public class EHExtractor extends GhidraScript {
 	
     public void run() throws Exception {
     	// Set up a proper logger first. Exit when there are problems doing so.
-    	boolean success = setupLogger("C:\\Temp\\mylogfile.log");
-    	if (!success) {
+    	// Note that the logger will by default log to a file but when we're running as a script,
+    	// output to the console is very convenient. So, let's add a Ghidra script/console-specific handler.
+    	var gsh = new GhidraScriptHandler(this);
+    	Logging logging = new Logging("C:\\Temp\\mylogfile.log", gsh, LOG_LEVEL);
+    	if (logging == null || !logging.isSetupSuccess()) {
+    		println("Logger setup not successful. Unable to continue.");
     		return;
     	}
 
-    	// Program name and address space information.
-    	Address minAddr = currentProgram.getMinAddress();
-    	Address maxAddr = currentProgram.getMaxAddress();
-    	logger.log(Level.INFO, "Program file: "+currentProgram.getExecutablePath());
-    	logger.log(Level.INFO, "Program spans addresses "+minAddr+"-"+maxAddr);
+    	try {
+    		logger = Logger.getLogger("EHExtractor");
+    		
+    		// Can we actually handle this executable?
+    		// The compiler has to be MSVC and the processor/bitness x86/32-bit.
+    		if (!ProgramValidator.canAnalyze(currentProgram, logger)) {
+    			return;
+    		}
+
+    		// Program name and address space information.
+    		Address minAddr = currentProgram.getMinAddress();
+    		Address maxAddr = currentProgram.getMaxAddress();
+    		logger.log(Level.INFO, "Program file: "+currentProgram.getExecutablePath());
+    		logger.log(Level.INFO, "Program spans addresses "+minAddr+"-"+maxAddr);
     	
-    	// Can we actually handle this executable?
-    	// The compiler has to be MSVC and the processor/bitness x86/32-bit.
-    	if (!ProgramValidator.canAnalyze(currentProgram, logger)) {
-    		return;
-    	}
 
-    	// If there are exceptions, we expect an exception handler. The main one for x86
-    	// is CxxFrameHandler3. Look for this.
-    	//
-		// Note: In the current version of the executable, the JMP after the MOV EAX goes to ___CxxFrameHandler3
-		//   (note the 3 underscores) at 00404004, where there is a JMP to __CxxFrameHandler3 (2 underscores)
-		//   at 0040408c in vcruntime140.dll. ___CxxFrameHandler3 (3 underscores) is a thunk.
-    	//
-		// Find the function vcruntime*__CxxFrameHandler3.
-    	logger.log(Level.FINE, "Determining the address of (thunk) function __CxxFrameHandler3.");
-        cxxFrameHandler3 = findFunction("CxxFrameHandler3", "vcruntime", true);
-        if (cxxFrameHandler3 == null) {
-        	logger.log(Level.INFO, "Main exception handler function not found!");
-			return;
-        }
+    		// If there are exceptions, we expect an exception handler. The main one for x86
+    		// is CxxFrameHandler3. Look for this.
+    		//
+    		// Note: In the current version of the executable, the JMP after the MOV EAX goes to ___CxxFrameHandler3
+    		//   (note the 3 underscores) at 00404004, where there is a JMP to __CxxFrameHandler3 (2 underscores)
+    		//   at 0040408c in vcruntime140.dll. ___CxxFrameHandler3 (3 underscores) is a thunk.
+    		//
+    		// Find the function vcruntime*__CxxFrameHandler3.
+    		logger.log(Level.FINE, "Determining the address of (thunk) function __CxxFrameHandler3.");
+    		cxxFrameHandler3 = findFunction("CxxFrameHandler3", "vcruntime", true);
+    		if (cxxFrameHandler3 == null) {
+    			logger.log(Level.INFO, "Main exception handler function not found!");
+    			return;
+    		}
 
 
-        logger.log(Level.FINE, "Now going to look at some functions.");
+    		logger.log(Level.FINE, "Now going to look at some functions.");
     	
-    	List<Function> allFuncs = getInternalFunctions();
-    	List<Function> myFuncs = allFuncs.stream()
+    		List<Function> allFuncs = getInternalFunctions();
+    		List<Function> myFuncs = allFuncs.stream()
     									 .filter(f -> f.getName().startsWith("THIS_IS_"))
     									 .collect(Collectors.toList());
 
-    	myFuncs = allFuncs;
+    		myFuncs = allFuncs;
     	
-		// Should check whether this function is used with 'call' or with 'jmp'.
-		// If it is 'call' it should end with an RTS and when there is a JMP at
-		// the end instead, this jump should be followed because the function
-		// being jumped to is actually part of the function we're investigating!
+    		// Should check whether this function is used with 'call' or with 'jmp'.
+    		// If it is 'call' it should end with an RTS and when there is a JMP at
+    		// the end instead, this jump should be followed because the function
+    		// being jumped to is actually part of the function we're investigating!
 	
-		// Note that the description in Ghidra concerning the StackFrame is really
-		// confusing! When the stack grows down, seen from the function's stack frame
-		// base the parameters are higher in memory and the local variables lower;
-		// hence, parameters should have a positive offset and local variables a
-		// negative offset. However, the Ghidra documentation writes the opposite
-		// but shows the correct polarity in the 'drawn' representation of the stack
-		// when it grows down... and/but the stack as a whole is upside down in the 
-		// 'drawn' representation.
+    		// Note that the description in Ghidra concerning the StackFrame is really
+    		// confusing! When the stack grows down, seen from the function's stack frame
+    		// base the parameters are higher in memory and the local variables lower;
+    		// hence, parameters should have a positive offset and local variables a
+    		// negative offset. However, the Ghidra documentation writes the opposite
+    		// but shows the correct polarity in the 'drawn' representation of the stack
+    		// when it grows down... and/but the stack as a whole is upside down in the 
+    		// 'drawn' representation.
 
-    	for (var myFunc : myFuncs) {
-    		logger.log(Level.INFO, "");
-	        showFunctionInfo(myFunc);
+    		for (var myFunc : myFuncs) {
+    			logger.log(Level.INFO, "");
+    			showFunctionInfo(myFunc);
+    		}
+    	}
+    	finally {
+    		// Close the file used for logging.
+    		logging.close();
     	}
     	
-    	// Close the file used for logging.
-    	if (fh != null)
-    		fh.close();    	
-    }
-
-    private boolean setupLogger(String logfilePath) {
-    	// First get rid of an annoying ConsoleHandler on a nameless logger
-    	// that Ghidra apparently uses to dump horribly-formatted text (in red) at
-    	// random places in the Eclipse Console when you use a logger.
-    	removeAnnoyingConsoleHandler();
-
-    	logger = Logger.getLogger("EHExtractor");
-
-    	try {
-    	    // Set a specific logging level.
-    	    logger.setLevel(LOG_LEVEL);
-
-    	    // When running the script in Ghidra again without having restarted Ghidra, the
-    	    // logger will still be around and have handlers attached (even when having made
-    	    // changes in Eclipse); we need to clean up these old handlers.
-        	removeHandlers(logger);
-    	    
-    	    /* Configure the logger with handlers and formatters. */
-        	// Output to a file.
-    	    fh = new FileHandler(logfilePath, true);
-    	    logger.addHandler(fh);
-    	    
-    	    // Output to the Ghidra console.
-    	    var gsh = new GhidraScriptHandler(this);
-    	    logger.addHandler(gsh);
-
-    	    // The initial line should be different (like SimpleFormatter would do it).
-    	    var initialLogFormatter = new MyLogFormatterInitial();
-    	    fh.setFormatter(initialLogFormatter);
-    	    gsh.setFormatter(initialLogFormatter);
-    	    
-    	    // Log the initial message. (Should end up like "Feb 11, 2024 11:27:23 AM EHExtractor".)
-    	    logger.log(Level.INFO, "EHExtractor");
-
-    	    // Switch to the normal formatter.
-    	    var normalLogFormatter = new MyLogFormatter(true);
-    	    fh.setFormatter(normalLogFormatter);
-    	    gsh.setFormatter(normalLogFormatter);
-    	}
-    	catch (SecurityException | IOException e) {
-    		println("An error occurred while setting up the logger: " + e.getMessage());
-    		logger = null;
-        	if (fh != null)
-        		fh.close();
-        	return false;
-    	}
-    	
-    	return true;
     }
     
-    private void removeAnnoyingConsoleHandler() {
-    	LogManager manager = LogManager.getLogManager();
-    	Logger loggr = manager.getLogger("");
-    	var handlers = loggr.getHandlers();
-	    for (int i = handlers.length-1; i>=0; i--) {
-	    	var handler = handlers[i];
-	    	if (handler instanceof java.util.logging.ConsoleHandler)
-	    		loggr.removeHandler(handler);
-	    }
-    }
-    
-    private void listLoggerAndHandlerNames() {
-    	LogManager manager = LogManager.getLogManager();
-    	var loggerNames = manager.getLoggerNames();
-    	while (loggerNames.hasMoreElements()) {
-    		String loggerName = loggerNames.nextElement();
-    		println("loggerName: " + loggerName);
-        	Logger loggr = manager.getLogger(loggerName);
-    		reportHandlers(loggr);
-    	}
-    }
-
-    private void reportHandlers(Logger loggr) {
-    	reportRemoveHandlers(loggr, true, false);
-    }
-
-    private void removeHandlers(Logger loggr) {
-    	reportRemoveHandlers(loggr, false, true);
-    }
-
-    private void reportRemoveHandlers(Logger loggr, boolean report, boolean remove) {
-	    if (loggr == null)
-	    	return;
-    	var handlers = loggr.getHandlers();
-	    if (report)
-	    	println("Nr handlers: " + handlers.length);
-	    for (int i = handlers.length-1; i>=0; i--) {
-	    	var handler = handlers[i];
-	    	if (report)
-	    		println("" + i + ": " + handler);
-	    	if (remove)
-	    		loggr.removeHandler(handler);
-	    }
-    }
-
     public void log(Level level, String msg) {
     	/*
     	// Write to the logger if set-up.

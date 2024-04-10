@@ -15,6 +15,9 @@
  */
 package ehextractor;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.python.jline.internal.Log;
 
 import ghidra.app.services.AbstractAnalyzer;
@@ -71,7 +74,22 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 		// TODO: Perform analysis when things get added to the 'program'.  Return true if the
 		// analysis succeeded.
 
-		Log.info("This is a test message.");
+		Logging logging = null;
+
+		try {
+			// Set up logging.
+			logging = new Logging("C:\\Temp\\mylogfile.log", Level.ALL);
+	    	if (logging == null || !logging.isSetupSuccess()) {
+	    		Log.error("Logger setup not successful. Unable to continue.");
+	    		return false;
+	    	}
+
+			var logger = Logger.getLogger("EHExtractor");
+			logger.log(Level.INFO, "This is a test message.");
+		}
+		finally {
+			logging.close();
+		}
 		
 		return false;
 	}
