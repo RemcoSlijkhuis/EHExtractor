@@ -29,6 +29,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import ehextractor.FunctionUtils;
 import ehextractor.Logging;
 import ehextractor.ProgramValidator;
 
@@ -48,6 +49,7 @@ public class EHExtractor extends GhidraScript {
 	FileHandler fh = null;
 	
 	Function cxxFrameHandler3 = null;
+	Function securityCheckCookie = null;
 	
     public void run() throws Exception {
     	// Set up a proper logger first. Exit when there are problems doing so.
@@ -77,18 +79,27 @@ public class EHExtractor extends GhidraScript {
     	
 
     		// If there are exceptions, we expect an exception handler. The main one for x86
-    		// is CxxFrameHandler3. Look for this.
+    		// is CxxFrameHandler3. we should look for this; note: could have thunks.
     		//
-    		// Note: In the current version of the executable, the JMP after the MOV EAX goes to ___CxxFrameHandler3
-    		//   (note the 3 underscores) at 00404004, where there is a JMP to __CxxFrameHandler3 (2 underscores)
-    		//   at 0040408c in vcruntime140.dll. ___CxxFrameHandler3 (3 underscores) is a thunk.
-    		//
-    		// Find the function vcruntime*__CxxFrameHandler3.
-    		logger.log(Level.FINE, "Determining the address of (thunk) function __CxxFrameHandler3.");
-    		cxxFrameHandler3 = findFunction("CxxFrameHandler3", "vcruntime", true);
+    		// Find the function vcruntime*CxxFrameHandler3.
+    		logger.log(Level.FINE, "Determining the address of (thunk) function *CxxFrameHandler3.");
+    		cxxFrameHandler3 = FunctionUtils.findFunction(currentProgram, "CxxFrameHandler3", "vcruntime", true);
     		if (cxxFrameHandler3 == null) {
     			logger.log(Level.INFO, "Main exception handler function not found!");
     			return;
+    		}
+
+    		// If security cookies have been used, there should be a function called "security_check_cookie".
+    		// We don't know if they have been used, so we don't know if we'll find this function.
+    		// Also, when this function is present, it is sometimes present more than once.
+    		// In any case, whether we find 'one' function with this name or not, we'll carry on.    		
+    		logger.log(Level.FINE, "Looking up a security_check_cookie function.");
+    		securityCheckCookie = FunctionUtils.findFunction(currentProgram, "security_check_cookie", null, true);
+    		if (securityCheckCookie != null) {
+    			logger.log(Level.FINE, "Found a security_check_cookie function: " + securityCheckCookie.getName() + " @" + securityCheckCookie.getEntryPoint());
+    		}
+    		else {
+    			logger.log(Level.FINE, "No clear security_check_cookie function found.");			
     		}
 
 
@@ -273,15 +284,6 @@ public class EHExtractor extends GhidraScript {
 	
 
 	private int lookForCookieCheckingCode(InstructionIterator instIt) {
-	
-		logger.log(Level.FINE, "Looking up a security_check_cookie function.");
-		Function securityCheckCookie = findFunction("security_check_cookie", null, true);
-		if (securityCheckCookie != null) {
-			logger.log(Level.FINE, "Found a security_check_cookie function: " + securityCheckCookie.getName() + " @" + securityCheckCookie.getEntryPoint());
-		}
-		else {
-			logger.log(Level.FINE, "No clear security_check_cookie function found.");			
-		}
 
 		// Generic/flexible cookie-checking code instructions.
 		List<InstructionPattern> cookieCheckInstructions = Arrays.asList(
@@ -318,121 +320,6 @@ public class EHExtractor extends GhidraScript {
 		
 		logger.log(Level.FINE, "Regular cookie checking instructions found!");
 		return 2;		
-	}
-
-	private Function findFunction(String partialName, String partialParentNamespace, boolean dereferenceThunks) {
-		partialName = partialName.toLowerCase();
-		boolean checkParentNamespace = partialParentNamespace != null && !partialParentNamespace.isBlank();
-	    if (checkParentNamespace) {
-	        partialParentNamespace = partialParentNamespace.toLowerCase();
-	    }
-	    
-        FunctionManager functionManager = currentProgram.getFunctionManager();
-		SymbolTable symbolTable = currentProgram.getSymbolTable();
-        SymbolIterator symbolIterator = symbolTable.getAllSymbols(true);
-
-        var functionsByName = new ArrayList<Function>();
-        var functionsByLabel = new ArrayList<Function>();
-        
-        while (symbolIterator.hasNext()) {
-            Symbol symbol = symbolIterator.next();
-
-            if (symbol.getSymbolType() == SymbolType.FUNCTION) {
-                // Get an actual Function object for this symbol.
-                Function function = functionManager.getFunctionAt(symbol.getAddress());
-                if (function == null)
-                	continue;
-
-                if (function.isThunk() && dereferenceThunks) {
-                	//println("  Thunk: " + function.getName() + " @ " + function.getEntryPoint());
-                	function = function.getThunkedFunction(true);
-                	//println("  Thunked function: " + function.getName() + " @ " + function.getEntryPoint());
-                }
-
-            	if (!function.getName().toLowerCase().contains(partialName))
-            		continue;
-
-            	if (checkParentNamespace && !function.getParentNamespace().getName().toLowerCase().contains(partialParentNamespace))
-            		continue;
-
-            	if (!functionsByName.contains(function) ) {
-                	functionsByName.add(function);
-            	}
-            }
-            else if (symbol.getSymbolType() == SymbolType.LABEL &&  symbol.getName().toLowerCase().contains(partialName)) {
-            	//println("  SYMBOL FOUND! " + symbol.getName());
-            	//println("  --SymbolType: " + symbol.getSymbolType());
-            	//println("  --Address: " + symbol.getAddress());
-            	
-            	Function function = functionManager.getFunctionAt(symbol.getAddress());
-                if (function == null)
-                	continue;
-
-                //println("  --Function: " + function.getName());
-            	//println("  --Function.isThunk(): " + function.isThunk());
-            	//println("  --Function.getParentNamespace(): " + function.getParentNamespace());            	
-
-                if (function.isThunk() && dereferenceThunks) {
-                	//println("    xThunk: " + function.getName() + " @ " + function.getEntryPoint());
-                	function = function.getThunkedFunction(true);
-                	//println("    xThunked function: " + function.getName() + " @ " + function.getEntryPoint());
-                }
-
-            	if (checkParentNamespace && !function.getParentNamespace().getName().toLowerCase().contains(partialParentNamespace))
-            		continue;
-
-            	if (!functionsByLabel.contains(function) ) {
-                	functionsByLabel.add(function);
-            	}
-            }            	
-        }
-
-        if (functionsByName.size() == 0) {
-        	logger.log(Level.FINER, "  No functions found that match by name.");
-        }
-        else {
-        	logger.log(Level.FINER, "  Functions found that match by name:");
-            for (Function function : functionsByName) {
-            	logger.log(Level.FINER, "    " + function + " @ " + function.getEntryPoint());
-            }
-        }
-
-        if (functionsByLabel.size() == 0) {
-        	logger.log(Level.FINER, "  No functions found that match by label.");
-        }
-        else {
-        	logger.log(Level.FINER, "  Functions found that match by label:");
-            for (Function function : functionsByLabel) {
-            	logger.log(Level.FINER, "    " + function + " @ " + function.getEntryPoint());
-            }
-        }
-
-       
-        if (functionsByName.size() == 1) {
-        	Function function = functionsByName.get(0);
-        	logger.log(Level.FINER, "  Returning the 1 function that matched by name: " + function.getName());
-        	return function;
-        }
-        else if (functionsByName.size() == 0 && functionsByLabel.size() == 1) {
-        	Function function = functionsByLabel.get(0);
-        	logger.log(Level.FINER, "  Returning the 1 function that matched by label (in the absence of a function matching by name): " + function.getName());
-        	return function;
-        }
-        else if (functionsByName.size() > 0) {
-        	Function function = functionsByName.get(0);
-        	logger.log(Level.FINER, "  Returning the first function that matched by name: " + function.getName());
-        	return function;
-        }
-        else if (functionsByLabel.size() > 0) {
-        	Function function = functionsByLabel.get(0);
-        	logger.log(Level.FINER, "  Returning the first function that matched by label (in the absence of functions matching by name): " + function.getName());
-        	return function;
-        }
-        else {
-        	logger.log(Level.FINER, "No matching function found.");
-        }
-        
-        return null;
 	}
 
 	private Boolean matchInstructionPatterns(List<InstructionPattern> instructionPatterns, InstructionIterator instIter, boolean ignoreNops) {
