@@ -104,21 +104,9 @@ public class EHExtractor extends GhidraScript {
     	}
     	
     }
-    
-    public void log(Level level, String msg) {
-    	/*
-    	// Write to the logger if set-up.
-    	if (logger != null) {
-    		logger.log(level, msg);
-    	}
-    	*/
-
-    	if (level.intValue() >= LOG_LEVEL.intValue()) {
-    		println(msg);
-    	}
-    }
 
     public void showFunctionInfo(Function func) {
+    	// Show the name and memory location range of the function.
     	logger.log(Level.INFO, "Looking at: "+func.getName());
         long addrStart = func.getBody().getMinAddress().getOffset();
         long addrEnd = func.getBody().getMaxAddress().getOffset();
@@ -126,84 +114,37 @@ public class EHExtractor extends GhidraScript {
 
         logger.log(Level.FINE, "Let's start with the instructions:");
 
+        // Look at the start of the function; does it have the expected format?
+        // If so, get the address of 'ehhandler' / the 'EH setup code'.
 		Address ehSetupAddress = prologue.extractEHSetupAddress(func);
 		if (ehSetupAddress == null)
 			return;
 		
 		logger.log(Level.FINE, "Going to look at the supposed EH setup code at location "+ehSetupAddress.toString(true));
-		// There should be a certain set of instructions at this location.
-		//- You'd think that would have been made into a function, but it's not.
-		//- I think Ghidra determines what a function is based on recognized prologues (and that's not here).
 
+		// We have a location! There should be a certain set of instructions there.
 		// Should evaluate the instructions: do they match with expectations?
 		// Do we at least see registering of an ehFuncInfo?  Is cookie-checking code included or not?
 		// Note: registering involves putting an address in EAX and JMPing to CxxFrameHandler3,
 		//   but this JMP may not follow the MOV EAX immediately; there may be an extra JMP in between,
 		//   so a JMP to the JMP CxxFrameHandler3 (thunking).
-		checkExceptionHandlerInstructions(ehSetupAddress);
-    }
 
-    
-    private void checkExceptionHandlerInstructions(Address ehSetupAddress) {
-
+    	// If our expectations are met, we can get FuncInfo's memory location.
     	Address ehFuncInfoAddress = ehHandler.extractFuncInfoAddress(ehSetupAddress);
 		if (ehFuncInfoAddress == null)
 			return;
 		
-		MSVCEHInfo msvcEHInfo = null;
+		// With the location of the FuncInfo data structure found, let's try
+		// to parse it and the connected data structures.
 		try {
 			logger.log(Level.FINE, "About to process the EH data structures.");
-			msvcEHInfo = MSVCEHInfoFactory.getMSVCEHInfo(currentProgram, ehFuncInfoAddress);
+			MSVCEHInfo msvcEHInfo = MSVCEHInfoFactory.getMSVCEHInfo(currentProgram, ehFuncInfoAddress);
 			msvcEHInfo.analyze();
 		}
 		catch (InvalidDataTypeException e) { 
 			logger.log(Level.SEVERE, "OH NOES! "+ e.getMessage());
 		}
 		
-	}
-
-	public Address makeAddress(Scalar scalar) {
-		// TODO return toAddr(scalar.getUnsignedValue());
-    	return makeAddress(scalar.getUnsignedValue());
-    }
-
-    public Address makeAddress(long address) {
-		AddressFactory addressFactory = currentProgram.getAddressFactory();
-		AddressSpace defaultAddressSpace = addressFactory.getDefaultAddressSpace();
-		Address newAddress = defaultAddressSpace.getAddress(address);
-		return newAddress;
-    }
-
-	private String getBytesString(MemBuffer memBuffer, int numBytes) {
-		List<Byte> bytes = getBytes(memBuffer, numBytes);
-		
-		StringBuilder sb = new StringBuilder();
-		for (Byte bite : bytes) {
-			if (bite != null)
-				sb.append(String.format("%02x", bite));
-			else
-				sb.append("??");
-		    sb.append(" ");
-		}
-		String bytesString = sb.toString().trim();
-
-		return bytesString;
-	}
-
-
-	private List<Byte> getBytes(MemBuffer memBuffer, int numBytes) {
-		List<Byte> bytes = new ArrayList<Byte>();
-
-		for (int i=0; i<numBytes; i++) {
-			Byte bite = null;
-			try {
-				bite = memBuffer.getByte(i);
-			} catch (MemoryAccessException e) {
-			}
-			bytes.add(bite);
-		}
-
-		return bytes;
 	}
 
 }
