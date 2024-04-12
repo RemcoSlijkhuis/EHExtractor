@@ -1,4 +1,4 @@
-package instructionpatterns;
+package instructionpattrns;
 
 import java.util.Arrays;
 import java.util.List;

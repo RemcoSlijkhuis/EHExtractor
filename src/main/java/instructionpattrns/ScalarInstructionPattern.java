@@ -1,4 +1,4 @@
-package instructionpatterns;
+package instructionpattrns;
 
 import ghidra.program.model.lang.InstructionContext;
 import ghidra.program.model.lang.InstructionPrototype;

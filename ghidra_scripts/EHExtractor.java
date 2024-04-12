@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import instructionpatterns.*;
+import instructionpattrns.*;
 import loggingbridge.GhidraScriptHandler;
 import msvc.exceptions.*;
 
@@ -156,14 +156,14 @@ public class EHExtractor extends GhidraScript {
         InstructionIterator instIter = listing.getInstructions(func.getBody(), true);
 
 		logger.log(Level.FINE, "Looking for standard function prologue.");
-		if (!matchInstructionPatterns(startInstructions, instIter, false)) {
+		if (!InstructionPatterns.match(startInstructions, instIter, false)) {
 			logger.log(Level.INFO, "Normal start instructions not found!");
 			return;
-		}
+		}  
 		logger.log(Level.INFO, "Normal start instructions found!");
 
 		logger.log(Level.FINE, "Looking for exception handling start instructions.");
-		if (!matchInstructionPatterns(ehStartInstructions, instIter, false)) {
+		if (!InstructionPatterns.match(ehStartInstructions, instIter, false)) {
 			logger.log(Level.INFO, "Exception handling start instructions not found!");
 			return;
 		}
@@ -234,7 +234,7 @@ public class EHExtractor extends GhidraScript {
 		);
 		
 		logger.log(Level.FINE, "Looking for matching EH handler registration instructions.");
-		if (!matchInstructionPatterns(regInstructions, instIt, true)) {
+		if (!InstructionPatterns.match(regInstructions, instIt, true)) {
 			logger.log(Level.INFO, "EH handler registration instructions not found!");
 			return null;
 		}
@@ -258,7 +258,7 @@ public class EHExtractor extends GhidraScript {
 				new AddressInstructionPattern("CALL", securityCheckCookie, true)
 		);
 		logger.log(Level.FINE, "Looking for security cookie-checking code.");
-		if (!matchInstructionPatterns(cookieCheckInstructions, instIt, true)) {
+		if (!InstructionPatterns.match(cookieCheckInstructions, instIt, true)) {
 			logger.log(Level.FINE, "Cookie checking instructions not found!");
 			return 0;
 		}
@@ -285,46 +285,6 @@ public class EHExtractor extends GhidraScript {
 		logger.log(Level.FINE, "Regular cookie checking instructions found!");
 		return 2;		
 	}
-
-	private Boolean matchInstructionPatterns(List<InstructionPattern> instructionPatterns, InstructionIterator instIter, boolean ignoreNops) {
-        boolean matched = false;
-        
-        var nop = new NopInstructionPattern();
-        
-        int instPatternInd = 0;
-        int actualInstInd = 0;
-        while (instIter.hasNext() && !monitor.isCancelled()) {
-        	Instruction inst = instIter.next();
-        	logger.log(Level.FINE, String.format("%02d  ", actualInstInd) + inst.toString());
-
-        	// TODO Handle the case where ignoreNops is true but one of the instruction patterns is actually a NOP.
-        	if (ignoreNops) {        		
-        		if (nop.matches(inst) ) {
-        			actualInstInd++;
-        			continue;
-        		}
-        	}
-        	
-        	if (!instructionPatterns.get(instPatternInd).matches(inst)) {
-        		matched = false;
-        		logger.log(Level.FINER, "Instructions not matched!");
-    			break;
-        	}
-
-        	instPatternInd++;
-        	actualInstInd++;
-
-    		if (instPatternInd == instructionPatterns.size()) {
-    			matched = true;
-    			logger.log(Level.FINER, "All instructions matched!");
-    			break;
-    		}
-
-        }
-	    	
-    	return matched;
-    }
-
 
 	public Address makeAddress(Scalar scalar) {
 		// TODO return toAddr(scalar.getUnsignedValue());
