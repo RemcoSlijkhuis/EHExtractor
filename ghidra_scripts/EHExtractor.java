@@ -156,14 +156,14 @@ public class EHExtractor extends GhidraScript {
         InstructionIterator instIter = listing.getInstructions(func.getBody(), true);
 
 		logger.log(Level.FINE, "Looking for standard function prologue.");
-		if (!InstructionPatterns.match(startInstructions, instIter, false)) {
+		if (!InstructionPatterns.match(startInstructions, instIter, false).isMatched()) {
 			logger.log(Level.INFO, "Normal start instructions not found!");
 			return;
 		}  
 		logger.log(Level.INFO, "Normal start instructions found!");
 
 		logger.log(Level.FINE, "Looking for exception handling start instructions.");
-		if (!InstructionPatterns.match(ehStartInstructions, instIter, false)) {
+		if (!InstructionPatterns.match(ehStartInstructions, instIter, false).isMatched()) {
 			logger.log(Level.INFO, "Exception handling start instructions not found!");
 			return;
 		}
@@ -234,7 +234,7 @@ public class EHExtractor extends GhidraScript {
 		);
 		
 		logger.log(Level.FINE, "Looking for matching EH handler registration instructions.");
-		if (!InstructionPatterns.match(regInstructions, instIt, true)) {
+		if (!InstructionPatterns.match(regInstructions, instIt, true).isMatched()) {
 			logger.log(Level.INFO, "EH handler registration instructions not found!");
 			return null;
 		}
@@ -258,7 +258,7 @@ public class EHExtractor extends GhidraScript {
 				new AddressInstructionPattern("CALL", securityCheckCookie, true)
 		);
 		logger.log(Level.FINE, "Looking for security cookie-checking code.");
-		if (!InstructionPatterns.match(cookieCheckInstructions, instIt, true)) {
+		if (!InstructionPatterns.match(cookieCheckInstructions, instIt, true).isMatched()) {
 			logger.log(Level.FINE, "Cookie checking instructions not found!");
 			return 0;
 		}
