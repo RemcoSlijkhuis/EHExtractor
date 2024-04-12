@@ -24,6 +24,7 @@ import instructionpattrns.ScalarInstructionPattern;
 public class EHHandler {
 
 	private Program program = null; // I don't like this at all, but it is needed for makeAddress.
+	Listing listing = null;
 	private Function cxxFrameHandler3 = null;
 	private Function securityCheckCookie = null;
 	private boolean allOk;
@@ -33,6 +34,7 @@ public class EHHandler {
 	public EHHandler(Program program) {
 		logger = Logger.getLogger("EHExtractor");
 		this.program = program;
+		this.listing = program.getListing();
 		
 		allOk = initialize();		
 	}
@@ -70,7 +72,7 @@ public class EHHandler {
 	}
 	
 	
-	public Address extractFuncInfoAddress(Listing listing, Address ehSetupAddress) {
+	public Address extractFuncInfoAddress(Address ehSetupAddress) {
 		Address startAddress = ehSetupAddress;
 
 		// Check for cookie-checking code.
@@ -146,7 +148,7 @@ public class EHHandler {
 		return new MatchResult(true, startAddress);		
 	}
 
-	// TODO: Get rif of this function here.
+	// TODO: Get rid of this function here.
     private Address makeAddress(long address) {
 		AddressFactory addressFactory = program.getAddressFactory();
 		AddressSpace defaultAddressSpace = addressFactory.getDefaultAddressSpace();

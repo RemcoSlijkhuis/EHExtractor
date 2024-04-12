@@ -42,6 +42,7 @@ import instructionpattrns.*;
 import loggingbridge.GhidraScriptHandler;
 import msvc.exceptions.*;
 import msvc.exceptions.code.EHHandler;
+import msvc.exceptions.code.Prologue;
 
 public class EHExtractor extends GhidraScript {  
 	final Level LOG_LEVEL = Level.ALL;
@@ -49,6 +50,7 @@ public class EHExtractor extends GhidraScript {
 	Logger logger = null;
 	FileHandler fh = null;
 	
+	Prologue prologue = null;
 	EHHandler ehHandler = null;
 	
     public void run() throws Exception {
@@ -76,7 +78,9 @@ public class EHExtractor extends GhidraScript {
     		Address maxAddr = currentProgram.getMaxAddress();
     		logger.log(Level.INFO, "Program file: "+currentProgram.getExecutablePath());
     		logger.log(Level.INFO, "Program spans addresses "+minAddr+"-"+maxAddr);
-    	
+
+    		// Create a Prologue instance.
+    		prologue = new Prologue(currentProgram);
 
     		// Create an EHHandler instance suitable for the current program.
     		ehHandler = new EHHandler(currentProgram);
@@ -122,40 +126,10 @@ public class EHExtractor extends GhidraScript {
 
         logger.log(Level.FINE, "Let's start with the instructions:");
 
-        // Function start.  
-		List<InstructionPattern> startInstructions = Arrays.asList(
-				new RegisterInstructionPattern("PUSH", Arrays.asList("EBP")),
-				new RegisterInstructionPattern("MOV", Arrays.asList("EBP", "ESP")));
-
-        // Exception handling start instructions. The rest of the EH-setup instructions are only
-        // relevant during runtime so they are ignored here.
-        List<InstructionPattern> ehStartInstructions = Arrays.asList(
-        		new ScalarInstructionPattern("PUSH", -1),
-        		new ScalarInstructionPattern("PUSH", null)); 
-        
-         
-    	Listing listing = currentProgram.getListing();
-        InstructionIterator instIter = listing.getInstructions(func.getBody(), true);
-
-		logger.log(Level.FINE, "Looking for standard function prologue.");
-		if (!InstructionPatterns.match(startInstructions, instIter, false).isMatched()) {
-			logger.log(Level.INFO, "Normal start instructions not found!");
+		Address ehSetupAddress = prologue.extractEHSetupAddress(func);
+		if (ehSetupAddress == null)
 			return;
-		}  
-		logger.log(Level.INFO, "Normal start instructions found!");
-
-		logger.log(Level.FINE, "Looking for exception handling start instructions.");
-		if (!InstructionPatterns.match(ehStartInstructions, instIter, false).isMatched()) {
-			logger.log(Level.INFO, "Exception handling start instructions not found!");
-			return;
-		}
-		logger.log(Level.INFO, "Exception handling start instructions found!");
-        
-        
-		// Determine the address that's pushed onto the stack.
-		//Scalar ehPointer = (Scalar)inst.getOpObjects(0)[0];
-		Scalar ehPointer = ((ScalarInstructionPattern)ehStartInstructions.get(1)).getActualScalar();
-		Address ehSetupAddress = makeAddress(ehPointer);
+		
 		logger.log(Level.FINE, "Going to look at the supposed EH setup code at location "+ehSetupAddress.toString(true));
 		// There should be a certain set of instructions at this location.
 		//- You'd think that would have been made into a function, but it's not.
@@ -166,13 +140,13 @@ public class EHExtractor extends GhidraScript {
 		// Note: registering involves putting an address in EAX and JMPing to CxxFrameHandler3,
 		//   but this JMP may not follow the MOV EAX immediately; there may be an extra JMP in between,
 		//   so a JMP to the JMP CxxFrameHandler3 (thunking).
-		checkExceptionHandlerInstructions(listing, ehSetupAddress);
+		checkExceptionHandlerInstructions(ehSetupAddress);
     }
 
     
-    private void checkExceptionHandlerInstructions(Listing listing, Address ehSetupAddress) {
+    private void checkExceptionHandlerInstructions(Address ehSetupAddress) {
 
-    	Address ehFuncInfoAddress = ehHandler.extractFuncInfoAddress(listing, ehSetupAddress);
+    	Address ehFuncInfoAddress = ehHandler.extractFuncInfoAddress(ehSetupAddress);
 		if (ehFuncInfoAddress == null)
 			return;
 		
