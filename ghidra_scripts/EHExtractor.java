@@ -208,25 +208,14 @@ public class EHExtractor extends GhidraScript {
 	}
 
 	private Address extractEHFunctionInfoAddress(Listing listing, Address startAddress) {
-		InstructionIterator instIt = listing.getInstructions(startAddress, true);
-
-		// Check for cookie-checking code. Meaning of the return values: 0 means there is no such code,
-		// 1 means there is but it is not standard/expected, 2 means there is and it is standard/expected.
-
-		int cookieCheckPresent = lookForCookieCheckingCode(instIt);
+		// Check for cookie-checking code.
+		var matchResult = lookForCookieCheckingCode(listing, startAddress);
 		
-		// If 0, we can go check for the EH registration code but should do this from the start iterator position (newAddress).
-		// If 2, we can go check for the EH registration code from the current iterator position.
-		// If 1, we could  go check for the EH registration code from the current iterator position, but we may run into
-		// problems later on when parsing the the FuncInfo etc. data  structures (to be investigated further (are we seeing
-		// part of the EH clean-up code?)).
-		
-		if (cookieCheckPresent == 0) {
-			// Reset the instruction iterator.
-			 instIt = listing.getInstructions(startAddress, true);
-		}
+		// Note: If no cookie-checking code, getNextAddress() will return the original start address.
+		// If there is cookie-checking code, getNextAddress() will return the first address after this code,
+		// however many times the cookie was checked.
+		InstructionIterator instIt = listing.getInstructions(matchResult.getNextAddress(), true);
 
-		        
 		// Exception handler function info registration.
 		List<InstructionPattern> regInstructions = Arrays.asList(
 				new ScalarInstructionPattern("MOV", "EAX", Scalar.class),
@@ -245,45 +234,52 @@ public class EHExtractor extends GhidraScript {
 		logger.log(Level.INFO, "Determined ehFuncInfoAddress: " + ehFuncInfoAddress);
 		return ehFuncInfoAddress;
 	}
-	
 
-	private int lookForCookieCheckingCode(InstructionIterator instIt) {
+	private MatchResult lookForCookieCheckingCode(Listing listing, Address startAddress) {
 
-		// Generic/flexible cookie-checking code instructions.
-		List<InstructionPattern> cookieCheckInstructions = Arrays.asList(
+		// Generic/flexible base cookie-checking code instructions.
+		// If there is cookie-checking, the following code will be there at the start.
+		List<InstructionPattern> baseCookieCheckInstructions = Arrays.asList(
 				new AddressInstructionPattern("MOV", "EDX", "ESP", Scalar.class),
 				new AddressInstructionPattern("LEA", "EAX", "EDX", (long)0xc),			
 				new AddressInstructionPattern("MOV", "ECX", "EDX", Scalar.class), 
 				new RegisterInstructionPattern("XOR", "ECX", "EAX"),
 				new AddressInstructionPattern("CALL", securityCheckCookie, true)
 		);
-		logger.log(Level.FINE, "Looking for security cookie-checking code.");
-		if (!InstructionPatterns.match(cookieCheckInstructions, instIt, true).isMatched()) {
-			logger.log(Level.FINE, "Cookie checking instructions not found!");
-			return 0;
-		}
-		// There IS cookie-checking code.
-		// Let's grab the scalar offsets so we can see if they are the expected/regular ones.
-		var scalarOffset1 = ((AddressInstructionPattern)cookieCheckInstructions.get(0)).getScalarOffset();
-		var scalarOffset2 = ((AddressInstructionPattern)cookieCheckInstructions.get(2)).getScalarOffset();
-		
-		// Regular cookie-checking code instructions?
-		long regularScalarOffset1 = (long)0x8;
-		long regularScalarOffset2 = (long)-0x18;
 
-		if (scalarOffset1 != regularScalarOffset1 || scalarOffset2 != regularScalarOffset2) {
-			logger.log(Level.FINE, "Regular cookie checking instructions not found, only irregular ones!");
-			if (scalarOffset1 != (long)0x8) {
-				logger.log(Level.FINE, "Scalar offset 1 irregular: " + scalarOffset1 + " instead of " + regularScalarOffset1);				
-			}
-			if (scalarOffset2 != (long)-0x18) {
-				logger.log(Level.FINE, "Scalar offset 2 irregular: " + scalarOffset2 + " instead of " + regularScalarOffset2);				
-			}
-			return 1;
+		// Generic/flexible additional cookie-checking code instructions.
+		// If there is mode cookie-checking going on, the following code will
+		// be there, possibly multiple times.
+		List<InstructionPattern> additionalCookieCheckInstructions = Arrays.asList(
+				new AddressInstructionPattern("MOV", "ECX", "EDX", Scalar.class), 
+				new RegisterInstructionPattern("XOR", "ECX", "EAX"),
+				new AddressInstructionPattern("CALL", securityCheckCookie, true)
+		);
+
+		// Look for base cookie-checking code.
+		logger.log(Level.FINE, "Looking for base security cookie-checking code.");
+		InstructionIterator instIt = listing.getInstructions(startAddress, true);
+		MatchResult matchResult = InstructionPatterns.match(baseCookieCheckInstructions, instIt, true);
+		if (!matchResult.isMatched()) {
+			logger.log(Level.FINE, "Base cookie checking instructions not found!");
+			return new MatchResult(false, startAddress);
 		}
-		
-		logger.log(Level.FINE, "Regular cookie checking instructions found!");
-		return 2;		
+		logger.log(Level.FINE, "Base cookie checking instructions found!");
+		startAddress = matchResult.getNextAddress();
+
+		// There IS base cookie-checking code. Is it followed by additional cookie-checking code?
+		// Note that we don't know how many instances of additional cookie-checking code there can be.
+		logger.log(Level.FINE, "Looking for additional security cookie-checking code.");
+		while (matchResult.isMatched()) {
+			instIt = listing.getInstructions(startAddress, true);
+			matchResult = InstructionPatterns.match(additionalCookieCheckInstructions, instIt, true);
+			if (matchResult.isMatched()) {
+				logger.log(Level.FINE, "Additional cookie checking instructions found.");
+				startAddress = matchResult.getNextAddress();
+			}
+		}
+		logger.log(Level.FINE, "Additional cookie checking instructions not found.");
+		return new MatchResult(true, startAddress);		
 	}
 
 	public Address makeAddress(Scalar scalar) {
