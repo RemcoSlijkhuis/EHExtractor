@@ -1,6 +1,7 @@
 package ehextractor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -137,6 +138,23 @@ public class FunctionUtils {
         }
         
         return null;
+	}
+
+	public static List<Function> getInternalFunctions(Program program) {
+        FunctionManager functionManager = program.getFunctionManager();
+
+    	List<Function> allFuncs = new ArrayList<Function>();
+    	SymbolTable symtab = program.getSymbolTable();
+    	SymbolIterator si = symtab.getSymbolIterator();
+    	while (si.hasNext()) {
+    		Symbol s = si.next();
+    		if (s.getSymbolType() != SymbolType.FUNCTION || s.isExternal()) {
+    			continue;
+    		}
+    		Function func = functionManager.getFunctionAt(s.getAddress());
+    		allFuncs.add(func);
+    	}
+   		return allFuncs;
 	}
 
 }

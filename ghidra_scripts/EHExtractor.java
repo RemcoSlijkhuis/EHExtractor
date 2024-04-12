@@ -105,30 +105,11 @@ public class EHExtractor extends GhidraScript {
 
     		logger.log(Level.FINE, "Now going to look at some functions.");
     	
-    		List<Function> allFuncs = getInternalFunctions();
-    		List<Function> myFuncs = allFuncs.stream()
-    									 .filter(f -> f.getName().startsWith("THIS_IS_"))
-    									 .collect(Collectors.toList());
+    		List<Function> allFuncs = FunctionUtils.getInternalFunctions(currentProgram);
 
-    		myFuncs = allFuncs;
-    	
-    		// Should check whether this function is used with 'call' or with 'jmp'.
-    		// If it is 'call' it should end with an RTS and when there is a JMP at
-    		// the end instead, this jump should be followed because the function
-    		// being jumped to is actually part of the function we're investigating!
-	
-    		// Note that the description in Ghidra concerning the StackFrame is really
-    		// confusing! When the stack grows down, seen from the function's stack frame
-    		// base the parameters are higher in memory and the local variables lower;
-    		// hence, parameters should have a positive offset and local variables a
-    		// negative offset. However, the Ghidra documentation writes the opposite
-    		// but shows the correct polarity in the 'drawn' representation of the stack
-    		// when it grows down... and/but the stack as a whole is upside down in the 
-    		// 'drawn' representation.
-
-    		for (var myFunc : myFuncs) {
+    		for (var func : allFuncs) {
     			logger.log(Level.INFO, "");
-    			showFunctionInfo(myFunc);
+    			showFunctionInfo(func);
     		}
     	}
     	finally {
@@ -150,23 +131,6 @@ public class EHExtractor extends GhidraScript {
     		println(msg);
     	}
     }
-
-	
-	private List<Function> getInternalFunctions() {
-    	List<Function> allFuncs = new ArrayList<Function>();
-    	SymbolTable symtab = currentProgram.getSymbolTable();
-    	SymbolIterator si = symtab.getSymbolIterator();
-    	while (si.hasNext()) {
-    		Symbol s = si.next();
-    		if (s.getSymbolType() != SymbolType.FUNCTION || s.isExternal()) {
-    			continue;
-    		}
-    		//println("Internal function: "+s.getName() + "  [0x" + s.getAddress() + "]");
-    		Function func = getFunctionAt(s.getAddress());
-    		allFuncs.add(func);
-    	}
-   		return allFuncs;
-	}
 
     public void showFunctionInfo(Function func) {
     	logger.log(Level.INFO, "Looking at: "+func.getName());
