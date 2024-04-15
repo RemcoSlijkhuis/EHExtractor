@@ -135,9 +135,11 @@ public class AddressInstructionPattern extends InstructionPattern {
 						return true;
 
 					var thunkAddresses = this.function.getFunctionThunkAddresses(true);
-					for (Address thunkAddress : thunkAddresses) {
-						if (thunkAddress.equals(genericAddress))
-							return true;
+					if (thunkAddresses != null) {
+						for (Address thunkAddress : thunkAddresses) {
+							if (thunkAddress.equals(genericAddress))
+								return true;
+						}
 					}
 					
 					return false;					
