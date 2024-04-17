@@ -33,4 +33,4 @@ If the binary has not been analyzed before, run the standard set of analyzers on
 
 If desired, the logging level of the script, as well as the location of the output file, can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.
 
-*** TODO: Add pictures! ***
+**TODO: Add pictures!**
