@@ -1,0 +1,2007 @@
+Running...
+Apr 12, 2024 08:25:06 AM EHExtractor
+FINE: Compiler check
+FINE: Processor & bitness check:
+FINE:   Processor type: x86
+FINE:   Pointer size: 32 bits
+INFO: Executable is for 32-bit x86 and is compiled using MSVC.
+INFO: Program file: /D:/UserData/rgs/Dropbox/OU/AF/Test files/ExceptionVS32_EHsc_GS.exe
+INFO: Program spans addresses 00400000-ffdfffff
+FINE: Determining the address of (thunk) function *CxxFrameHandler3.
+FINER:   Functions found that match by name:
+FINER:     VCRUNTIME140.DLL::__CxxFrameHandler3 @ EXTERNAL:00000016
+FINER:   No functions found that match by label.
+FINER:   Returning the 1 function that matched by name: __CxxFrameHandler3
+FINE: Looking up a security_check_cookie function.
+FINER:   No functions found that match by name.
+FINER:   No functions found that match by label.
+FINER: No matching function found.
+FINE: No clear security_check_cookie function found.
+FINE: Now going to look at some functions.
+INFO: 
+INFO: Looking at: FUN_00401000
+INFO: Memory range: 00401000-00401007
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,dword ptr [EBP + 0xc]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: exception
+INFO: Memory range: 00401010-0040103e
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401040
+INFO: Memory range: 00401040-0040107c
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401080
+INFO: Memory range: 00401080-004010a3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: what
+INFO: Memory range: 004010b0-004010da
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x8
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004010e0
+INFO: Memory range: 004010e0-0040110d
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: bad_alloc
+INFO: Memory range: 00401110-00401136
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FID_conflict:`scalar_deleting_destructor'
+INFO: Memory range: 00401140-0040116d
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401170
+INFO: Memory range: 00401170-00401182
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: bad_array_new_length
+INFO: Memory range: 00401190-004011b3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FID_conflict:`scalar_deleting_destructor'
+INFO: Memory range: 004011c0-004011ed
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004011f0
+INFO: Memory range: 004011f0-00401202
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401210
+INFO: Memory range: 00401210-0040122b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0xc
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FID_conflict:evaluation_error
+INFO: Memory range: 00401230-00401254
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401260
+INFO: Memory range: 00401260-00401284
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401290
+INFO: Memory range: 00401290-00401299
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,0x7fffffff
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: _Allocate
+INFO: Memory range: 004012a0-004012b0
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004012c0
+INFO: Memory range: 004012c0-00401325
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x10
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401330
+INFO: Memory range: 00401330-0040133a
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401340
+INFO: Memory range: 00401340-0040134f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401350
+INFO: Memory range: 00401350-0040136a
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401370
+INFO: Memory range: 00401370-004013d8
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x4031dd
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:004031dd
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x58]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -88 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
+FINER: Instructions not matched!
+INFO: EH handler registration instructions not found!
+INFO: 
+INFO: Looking at: Catch_All@004013d9
+INFO: Memory range: 004013d9-004013e7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,dword ptr [EBP + -0x24]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004013e8
+INFO: Memory range: 004013e8-00401409
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Catch_All@0040140a
+INFO: Memory range: 0040140a-00401418
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EDX,dword ptr [EBP + -0x24]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401419
+INFO: Memory range: 00401419-004014a5
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Catch@004014a6
+INFO: Memory range: 004014a6-004014b4
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EDX,dword ptr [EBP + -0x24]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Catch_All@004014b5
+INFO: Memory range: 004014b5-004014c3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,dword ptr [EBP + -0x24]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004014c4
+INFO: Memory range: 004014c4-00401512
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV dword ptr [EBP + -0x4],0x4
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401520
+INFO: Memory range: 00401520-0040153e
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401540
+INFO: Memory range: 00401540-00401585
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x403210
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:00403210
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x18]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions found!
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV EAX,0x404958
+FINE: 01  JMP 0x00403084
+FINER: All instructions matched!
+INFO: EH handler registration instructions found!
+INFO: Determined ehFuncInfoAddress: 00404958
+FINE: About to process the EH data structures.
+WARNING: IGNORING IPToStateMap information for now.
+WARNING: IGNORING ESTypeList information for now.
+FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
+INFO: Try/catch block overview, after determineLayout but without unwind information applied:
+INFO: /* TryBlockMapEntry [0]	0-0,1,1 */
+INFO: Try (state=0) {}
+INFO: Catch (...) (state=?)	@0x00401586 {}
+INFO: Applying unwind information.
+FINE: From 0 to -1
+FINE: From 1 to -1
+FINE: Current: TryBlockMapEntry [0]	0-0,1,1
+FINE: Nesting in try: false
+FINE: Nesting in catches: false
+FINE: Parent is null.
+FINE: Looking at current's try block. State is 0
+FINE: Handling current's try block.
+FINE: Current try state 0 unwinds to toState -1
+FINE: Parent is null so cannot do anything for it.
+FINE: Handling current's catch blocks.
+FINE: targetToState determined to be -1
+FINE: - Current try state: 0
+FINE: - Known (try?) states: 0,
+FINE: - Possible catch states: 1,
+FINE: Found one state for the catch block(s)!
+FINE: Setting this catch block's state to 1
+INFO: Try/catch block overview:
+INFO: /* TryBlockMapEntry [0]	0-0,1,1 */
+INFO: Try (state=0) {}
+INFO: Catch (...) (state=1)	@0x00401586 {}
+INFO: 
+INFO: Looking at: Catch_All@00401586
+INFO: Memory range: 00401586-0040159f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x4041e0
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004015a0
+INFO: Memory range: 004015a0-004015d3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004015e0
+INFO: Memory range: 004015e0-00401600
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401610
+INFO: Memory range: 00401610-00401647
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x8
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401650
+INFO: Memory range: 00401650-00401662
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401670
+INFO: Memory range: 00401670-004016ca
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x10
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004016d0
+INFO: Memory range: 004016d0-004016dd
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: size
+INFO: Memory range: 004016e0-004016f8
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401700
+INFO: Memory range: 00401700-00401710
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401720
+INFO: Memory range: 00401720-0040172f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401730
+INFO: Memory range: 00401730-0040173f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH 0x4041f8
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401740
+INFO: Memory range: 00401740-004017fe
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x403230
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:00403230
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x1c]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -28 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV EAX,0x4049b0
+FINE: 01  JMP 0x00403084
+FINER: All instructions matched!
+INFO: EH handler registration instructions found!
+INFO: Determined ehFuncInfoAddress: 004049b0
+FINE: About to process the EH data structures.
+SEVERE: OH NOES! FuncInfo data type isn't valid at 004049b0 in ExceptionVS32_EHsc_GS.exe - .ProgramDB.
+INFO: 
+INFO: Looking at: FUN_00401810
+INFO: Memory range: 00401810-00401817
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  OR EAX,0xffffffff
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401820
+INFO: Memory range: 00401820-00401847
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401850
+INFO: Memory range: 00401850-00401887
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x10
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401890
+INFO: Memory range: 00401890-004018a2
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004018b0
+INFO: Memory range: 004018b0-004018cf
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004018d0
+INFO: Memory range: 004018d0-00401b6e
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x40325d
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:0040325d
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x70]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -112 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
+FINER: Instructions not matched!
+INFO: EH handler registration instructions not found!
+INFO: 
+INFO: Looking at: Catch_All@00401b6f
+INFO: Memory range: 00401b6f-00401b8b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x1
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401b8c
+INFO: Memory range: 00401b8c-00401b94
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV dword ptr [EBP + -0x4],0x0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401b9c
+INFO: Memory range: 00401b9c-00401be6
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x0
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _Vector_alloc<>
+INFO: Memory range: 00401bf0-00401c07
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401c10
+INFO: Memory range: 00401c10-00401c17
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401c20
+INFO: Memory range: 00401c20-00401cee
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x40329d
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:0040329d
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x20]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -32 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV ECX,dword ptr [EDX + -0x4]
+FINER: Instructions not matched!
+INFO: EH handler registration instructions not found!
+INFO: 
+INFO: Looking at: _Min_value<>
+INFO: Memory range: 00401cf0-00401d1c
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x8
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401d20
+INFO: Memory range: 00401d20-00401d24
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  POP EBP
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: _Deallocate<>
+INFO: Memory range: 00401d30-00401d89
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x4032d0
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:004032d0
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x4]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -4 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV EAX,0x4049b0
+FINE: 01  JMP 0x00403084
+FINER: All instructions matched!
+INFO: EH handler registration instructions found!
+INFO: Determined ehFuncInfoAddress: 004049b0
+FINE: About to process the EH data structures.
+SEVERE: OH NOES! FuncInfo data type isn't valid at 004049b0 in ExceptionVS32_EHsc_GS.exe - .ProgramDB.
+INFO: 
+INFO: Looking at: FUN_00401d90
+INFO: Memory range: 00401d90-00401dac
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401db0
+INFO: Memory range: 00401db0-00401dc1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401dd0
+INFO: Memory range: 00401dd0-00401e14
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x8
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401e20
+INFO: Memory range: 00401e20-00401ee3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x4032fd
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:004032fd
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0xc]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -12 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV EAX,0x404a60
+FINE: 01  JMP 0x00403084
+FINER: All instructions matched!
+INFO: EH handler registration instructions found!
+INFO: Determined ehFuncInfoAddress: 00404a60
+FINE: About to process the EH data structures.
+WARNING: IGNORING IPToStateMap information for now.
+WARNING: IGNORING ESTypeList information for now.
+INFO: No TryBlockMapEntries to analyze.
+INFO: 
+INFO: Looking at: _Vector_val<>
+INFO: Memory range: 00401ef0-00401f1a
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401f20
+INFO: Memory range: 00401f20-00401f4a
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00401f50
+INFO: Memory range: 00401f50-00401fb5
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x403320
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:00403320
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x10]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -16 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV EAX,0x4049b0
+FINE: 01  JMP 0x00403084
+FINER: All instructions matched!
+INFO: EH handler registration instructions found!
+INFO: Determined ehFuncInfoAddress: 004049b0
+FINE: About to process the EH data structures.
+SEVERE: OH NOES! FuncInfo data type isn't valid at 004049b0 in ExceptionVS32_EHsc_GS.exe - .ProgramDB.
+INFO: 
+INFO: Looking at: FUN_00401fc0
+INFO: Memory range: 00401fc0-00402008
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0xc
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402010
+INFO: Memory range: 00402010-0040201f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH 0x404214
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402020
+INFO: Memory range: 00402020-00402080
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x18
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402090
+INFO: Memory range: 00402090-004020ca
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0xc
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004020d0
+INFO: Memory range: 004020d0-004020d9
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,0x3fffffff
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: allocate
+INFO: Memory range: 004020e0-00402101
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402110
+INFO: Memory range: 00402110-00402119
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402120
+INFO: Memory range: 00402120-00402227
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH -0x1
+FINE: 01  PUSH 0x40334d
+FINER: All instructions matched!
+INFO: Exception handling start instructions found!
+FINE: Going to look at the supposed EH setup code at location ram:0040334d
+FINE: Looking for security cookie-checking code.
+FINE: 00  NOP
+FINE: 01  NOP
+FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
+FINE: 03  LEA EAX,[EDX + 0xc]
+FINE: 04  MOV ECX,dword ptr [EDX + -0x24]
+FINE: 05  XOR ECX,EAX
+FINE: 06  CALL 0x00402463
+FINER: All instructions matched!
+FINE: Regular cookie checking instructions not found, only irregular ones!
+FINE: Scalar offset 2 irregular: -36 instead of -24
+FINE: Looking for matching EH handler registration instructions.
+FINE: 00  MOV ECX,dword ptr [EDX + -0x4]
+FINER: Instructions not matched!
+INFO: EH handler registration instructions not found!
+INFO: 
+INFO: Looking at: _Get_size_of_n<8>
+INFO: Memory range: 00402230-00402258
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x8
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: _Allocate<8,struct_std::_Default_allocate_traits,0>
+INFO: Memory range: 00402260-00402291
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  CMP dword ptr [EBP + 0x8],0x1000
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004022a0
+INFO: Memory range: 004022a0-004022bb
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004022c0
+INFO: Memory range: 004022c0-004022e6
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004022f0
+INFO: Memory range: 004022f0-00402319
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402320
+INFO: Memory range: 00402320-0040238b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x1c
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402390
+INFO: Memory range: 00402390-004023ce
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004023d0
+INFO: Memory range: 004023d0-00402434
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0xc
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402440
+INFO: Memory range: 00402440-00402462
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402463
+INFO: Memory range: 00402463-00402470
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  CMP ECX,dword ptr [0x00406004]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402471
+INFO: Memory range: 00402471-00402895
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  JMP 0x00402483
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004024a1
+INFO: Memory range: 004024a1-004024ae
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH dword ptr [EBP + 0x8]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_004024af
+INFO: Memory range: 004024af-004024d1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  TEST byte ptr [EBP + 0x8],0x1
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402597
+INFO: Memory range: 00402597-0040270f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x14
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: entry
+INFO: Memory range: 00402719-00402722
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  CALL 0x00402b3a
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402723
+INFO: Memory range: 00402723-0040274a
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH 0x0
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_0040274b
+INFO: Memory range: 0040274b-00402844
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x324
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402845
+INFO: Memory range: 00402845-0040285c
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  AND dword ptr [ECX + 0x4],0x0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_0040285d
+INFO: Memory range: 0040285d-00402878
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0xc
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: free
+INFO: Memory range: 00402897-0040289b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP 0x00403126
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: find_pe_section
+INFO: Memory range: 0040289c-004028df
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_acquire_startup_lock
+INFO: Memory range: 004028e0-00402911
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH ESI
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_initialize_crt
+INFO: Memory range: 00402912-0040294a
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  CMP dword ptr [EBP + 0x8],0x0
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_initialize_onexit_tables
+INFO: Memory range: 0040294b-004029d1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  CMP byte ptr [0x004063d5],0x0
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_is_nonwritable_in_current_image
+INFO: Memory range: 004029d2-00402a65
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x8
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_release_startup_lock
+INFO: Memory range: 00402a66-00402a82
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  CALL 0x00403078
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_uninitialize_crt
+INFO: Memory range: 00402a83-00402aaa
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  CMP byte ptr [0x004063d4],0x0
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: __onexit
+INFO: Memory range: 00402aab-00402ad7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  CMP dword ptr [0x004063d8],-0x1
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: _atexit
+INFO: Memory range: 00402ad8-00402aec
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH dword ptr [EBP + 0x8]
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___get_entropy
+INFO: Memory range: 00402aed-00402b39
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x14
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___security_init_cookie
+INFO: Memory range: 00402b3a-00402b84
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV ECX,dword ptr [0x00406004]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402b85
+INFO: Memory range: 00402b85-00402b87
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  XOR EAX,EAX
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402b88
+INFO: Memory range: 00402b88-00402b8b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  XOR EAX,EAX
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402b8c
+INFO: Memory range: 00402b8c-00402b91
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,0x4000
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402b92
+INFO: Memory range: 00402b92-00402b9d
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x4063f0
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402b9e
+INFO: Memory range: 00402b9e-00402ba0
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV AL,0x1
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402ba1
+INFO: Memory range: 00402ba1-00402bc1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x30000
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _guard_check_icall
+INFO: Memory range: 00402bc2-00402bc4
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  RET 0x0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402bc5
+INFO: Memory range: 00402bc5-00402bca
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,0x4063f8
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402bcb
+INFO: Memory range: 00402bcb-00402bd0
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,0x406400
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402bd1
+INFO: Memory range: 00402bd1-00402bed
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  CALL 0x00402bc5
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402bee
+INFO: Memory range: 00402bee-00402bf9
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  XOR EAX,EAX
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402bfa
+INFO: Memory range: 00402bfa-00402bff
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,0x406418
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402c00
+INFO: Memory range: 00402c00-00402c05
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV EAX,0x406414
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402c06
+INFO: Memory range: 00402c06-00402d20
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  SUB ESP,0x324
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: thunk_FUN_00402b85
+INFO: Memory range: 00402d21-00402d25
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP 0x00402b85
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402d26
+INFO: Memory range: 00402d26-00402d67
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x0
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402d74
+INFO: Memory range: 00402d74-00402dc8
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ESI
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402dca
+INFO: Memory range: 00402dca-00402dd1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  AND dword ptr [0x00406408],0x0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402dd2
+INFO: Memory range: 00402dd2-00402dfd
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBX
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __SEH_prolog4
+INFO: Memory range: 00402e30-00402e74
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH 0x402e75
+FINE: Issue with register 0
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __except_handler4
+INFO: Memory range: 00402e75-00402ea3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ESI
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: FUN_00402ea4
+INFO: Memory range: 00402ea4-00403077
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  AND dword ptr [0x0040640c],0x0
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: ___scrt_is_ucrt_dll_in_use
+INFO: Memory range: 00403078-00403083
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  XOR EAX,EAX
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __CxxFrameHandler3
+INFO: Memory range: 00403084-00403089
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x0040408c]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _CxxThrowException
+INFO: Memory range: 0040308a-0040308f
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404098]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __current_exception
+INFO: Memory range: 00403090-00403095
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404080]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __current_exception_context
+INFO: Memory range: 00403096-0040309b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x0040407c]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: memset
+INFO: Memory range: 0040309c-004030a1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404078]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _except_handler4_common
+INFO: Memory range: 004030a2-004030a7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404094]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _callnewh
+INFO: Memory range: 004030a8-004030ad
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040a4]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: malloc
+INFO: Memory range: 004030ae-004030b3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040a0]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _seh_filter_exe
+INFO: Memory range: 004030b4-004030b9
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x0040410c]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _set_app_type
+INFO: Memory range: 004030ba-004030bf
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404108]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __setusermatherr
+INFO: Memory range: 004030c0-004030c5
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040bc]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _configure_narrow_argv
+INFO: Memory range: 004030c6-004030cb
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404100]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _initialize_narrow_environment
+INFO: Memory range: 004030cc-004030d1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040fc]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _get_initial_narrow_environment
+INFO: Memory range: 004030d2-004030d7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040f8]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _initterm
+INFO: Memory range: 004030d8-004030dd
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040f4]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _initterm_e
+INFO: Memory range: 004030de-004030e3
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040f0]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: exit
+INFO: Memory range: 004030e4-004030e9
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404110]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _exit
+INFO: Memory range: 004030ea-004030ef
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040ec]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _set_fmode
+INFO: Memory range: 004030f0-004030f5
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x0040411c]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __p___argc
+INFO: Memory range: 004030f6-004030fb
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040dc]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __p___argv
+INFO: Memory range: 004030fc-00403101
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040e8]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _cexit
+INFO: Memory range: 00403102-00403107
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040e4]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _c_exit
+INFO: Memory range: 00403108-0040310d
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040e0]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _register_thread_local_exe_atexit_callback
+INFO: Memory range: 0040310e-00403113
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040d0]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _configthreadlocale
+INFO: Memory range: 00403114-00403119
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040b4]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __p__commode
+INFO: Memory range: 00403120-00403125
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404118]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: free
+INFO: Memory range: 00403126-0040312b
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040ac]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _initialize_onexit_table
+INFO: Memory range: 0040312c-00403131
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040c4]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _register_onexit_function
+INFO: Memory range: 00403132-00403137
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040c8]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _crt_atexit
+INFO: Memory range: 00403138-0040313d
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040cc]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: _controlfp_s
+INFO: Memory range: 0040313e-00403143
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404104]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: terminate
+INFO: Memory range: 00403144-00403149
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x004040d4]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: __filter_x86_sse2_floating_point_exception_default
+INFO: Memory range: 0040314a-004031c1
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  PUSH EBP
+FINE: 01  MOV EBP,ESP
+FINER: All instructions matched!
+INFO: Normal start instructions found!
+FINE: Looking for exception handling start instructions.
+FINE: 00  PUSH ECX
+FINER: Instructions not matched!
+INFO: Exception handling start instructions not found!
+INFO: 
+INFO: Looking at: memmove
+INFO: Memory range: 004031c2-004031c7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  JMP dword ptr [0x00404090]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Unwind@004031d0
+INFO: Memory range: 004031d0-004031d7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  LEA ECX,[EBP + -0x20]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Unwind@00403250
+INFO: Memory range: 00403250-00403257
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  LEA ECX,[EBP + -0x1c]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Unwind@00403290
+INFO: Memory range: 00403290-00403297
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  LEA ECX,[EBP + -0x18]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Unwind@004032f0
+INFO: Memory range: 004032f0-004032f7
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  MOV ECX,dword ptr [EBP + -0x10]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+INFO: 
+INFO: Looking at: Unwind@00403340
+INFO: Memory range: 00403340-00403347
+FINE: Let's start with the instructions:
+FINE: Looking for standard function prologue.
+FINE: 00  LEA ECX,[EBP + -0x1c]
+FINER: Instructions not matched!
+INFO: Normal start instructions not found!
+Finished!
