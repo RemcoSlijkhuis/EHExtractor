@@ -15,7 +15,7 @@
  */
 package ehextractor;
 
-import java.util.List;
+import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,25 +24,29 @@ import org.python.jline.internal.Log;
 import ghidra.app.services.AbstractAnalyzer;
 import ghidra.app.services.AnalyzerType;
 import ghidra.app.util.importer.MessageLog;
+import ghidra.framework.options.OptionType;
 import ghidra.framework.options.Options;
-import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressSetView;
-import ghidra.program.model.data.InvalidDataTypeException;
-import ghidra.program.model.listing.Function;
 import ghidra.program.model.listing.Program;
 import ghidra.util.exception.CancelledException;
 import ghidra.util.task.TaskMonitor;
-import msvc.exceptions.MSVCEHInfo;
-import msvc.exceptions.MSVCEHInfoFactory;
-import msvc.exceptions.code.EHHandler;
-import msvc.exceptions.code.Prologue;
 
 /**
  * TODO: Provide class-level documentation that describes what this analyzer does.
  */
 public class EHExtractorAnalyzer extends AbstractAnalyzer {
 
+	public enum LogLevelEnum {
+	    FINER, FINE, INFO, WARNING, SEVERE;
+	}
 
+	private static final String OPTION_LOG_FILE_PATH = "Log file path";
+	private static final String OPTION_LOG_LEVEL = "Minimum log level";
+	private static final LogLevelEnum OPTION_LOG_LEVEL_DEFAULT = LogLevelEnum.INFO;
+
+	private String logFilePath = null;
+	private Level logLevel = Level.ALL;
+	
 	Logger logger = null;
 	
 	public EHExtractorAnalyzer() {
@@ -68,14 +72,37 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 		}		
 		return result;
 	}
-
+	
 	@Override
 	public void registerOptions(Options options, Program program) {
+		options.registerOption(OPTION_LOG_LEVEL, OPTION_LOG_LEVEL_DEFAULT, null, "Minimum log level.");
+		options.registerOption(OPTION_LOG_FILE_PATH, OptionType.FILE_TYPE, Paths.get(System.getProperty("user.home"), "Documents", "ehextractor.log").toFile(), null, "Path to the log file.");
+	}
 
-		// TODO: If this analyzer has custom options, register them here
+	@Override
+	public void optionsChanged(Options options, Program programSoWhat) {
+		var logFile = options.getFile(OPTION_LOG_FILE_PATH, null);
+		logFilePath = logFile.getAbsolutePath();
 
-		options.registerOption("Option name goes here", false, null,
-			"Option description goes here");
+		LogLevelEnum value = options.getEnum(OPTION_LOG_LEVEL, null);
+		logLevel = convertLogLevel(value);
+	}
+
+	private Level convertLogLevel(LogLevelEnum logLevel) {
+	    switch (logLevel) {
+	        case FINER:
+	            return Level.FINER;
+	        case FINE:
+	            return Level.FINE;
+	        case INFO:
+	            return Level.INFO;
+	        case WARNING:
+	            return Level.WARNING;
+	        case SEVERE:
+	            return Level.SEVERE;
+	        default:
+	            return Level.INFO;
+	    }
 	}
 
 	@Override
@@ -88,8 +115,8 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 		Logging logging = null;
 
 		try {
-			// Set up logging.
-			logging = new Logging("C:\\Temp\\mylogfile.log", Level.ALL);
+			// Set up logging.			
+			logging = new Logging(logFilePath, logLevel);
 	    	if (logging == null || !logging.isSetupSuccess()) {
 	    		Log.error("Logger setup not successful. Unable to continue.");
 	    		return false;
