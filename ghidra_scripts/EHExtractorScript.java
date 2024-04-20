@@ -6,44 +6,17 @@
 //@toolbar 
 
 
-
 import ghidra.app.script.GhidraScript;
-import ghidra.program.model.mem.*;
-import ghidra.program.model.lang.*;
-import ghidra.util.task.ConsoleTaskMonitor;
-import ghidra.program.model.data.*;
-import ghidra.program.model.symbol.*;
-import ghidra.program.model.scalar.*;
-import ghidra.program.model.listing.*;
-import ghidra.program.database.function.OverlappingFunctionException;
-import ghidra.program.model.address.*;
-import ghidra.app.decompiler.ClangTokenGroup;
-import ghidra.app.decompiler.DecompInterface;
-import ghidra.app.decompiler.DecompileResults;
 
-import java.util.List;
 import java.util.logging.FileHandler;
-import java.util.logging.Formatter;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import ehextractor.EHExtractor;
-import ehextractor.FunctionUtils;
 import ehextractor.Logging;
 import ehextractor.ProgramValidator;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-
-import instructionpattrns.*;
 import loggingbridge.GhidraScriptHandler;
-import msvc.exceptions.*;
-import msvc.exceptions.code.EHHandler;
-import msvc.exceptions.code.Prologue;
 
 public class EHExtractorScript extends GhidraScript {  
 	final Level LOG_LEVEL = Level.ALL;

@@ -8,6 +8,7 @@ import ghidra.program.model.address.Address;
 import ghidra.program.model.data.InvalidDataTypeException;
 import ghidra.program.model.listing.Function;
 import ghidra.program.model.listing.Program;
+
 import msvc.exceptions.MSVCEHInfo;
 import msvc.exceptions.MSVCEHInfoFactory;
 import msvc.exceptions.code.EHHandler;
