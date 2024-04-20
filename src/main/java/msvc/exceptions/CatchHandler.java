@@ -9,6 +9,9 @@ import ghidra.program.model.address.Address;
 import ghidra.program.model.data.InvalidDataTypeException;
 import ghidra.program.model.scalar.Scalar;
 
+/**
+ * Represents a catch block as implemented by MSVC.
+ */
 public class CatchHandler implements ITryCatch {
 
 	private EHCatchHandlerTypeModifier adjectives = null;
@@ -24,6 +27,15 @@ public class CatchHandler implements ITryCatch {
 
 	private List<TryBlockMapEntry> nested = null;
 	
+	/**
+     * Creates a CatchHandler object (catch block).
+     * @param adjectives Modifier flags (not really used).
+     * @param pType Address of an RTTI descriptor of the exception type (not really used).
+     * @param dispCatchObj "Displacement of catch object from base" (not really used).
+     * @param address Address where the code for the catch block starts.
+     * @param typeDescriptor The type descriptor model for the exception handled by this catch block.
+     * @param handlerName The name of the function with the catch block code, as seen by Ghidra.
+     */
 	public CatchHandler(EHCatchHandlerTypeModifier adjectives, Address pType, Scalar dispCatchObj, Address address, TypeDescriptorModel typeDescriptor, String handlerName) {
 		this.adjectives = adjectives;
 		this.pType = pType;
@@ -43,6 +55,15 @@ public class CatchHandler implements ITryCatch {
 		this.nested = new ArrayList<TryBlockMapEntry>();
 	}
 
+	/**
+     * Creates a CatchHandler object (catch block).
+     * @param adjectives Modifier flags (not really used).
+     * @param pType Address of an RTTI descriptor of the exception type (not really used).
+     * @param dispCatchObj "Displacement of catch object from base" (not really used).
+     * @param address Address where the code for the catch block starts.
+     * @param typeDescriptor The type descriptor model for the exception handled by this catch block.
+     * @param handlerName The name of the function with the catch block code, as seen by Ghidra.
+     */
 	public CatchHandler(EHCatchHandlerTypeModifier adjectives, Address pType, Scalar dispCatchObj, Integer address, TypeDescriptorModel typeDescriptor, String handlerName) {
 		this.adjectives = adjectives;
 		this.pType = pType;
@@ -62,6 +83,14 @@ public class CatchHandler implements ITryCatch {
 		this.nested = new ArrayList<TryBlockMapEntry>();
 	}
 
+	/**
+     * Creates a CatchHandler object (catch block).
+     * @param adjectives Modifier flags (not really used).
+     * @param pType Address of an RTTI descriptor of the exception type (not really used).
+     * @param dispCatchObj "Displacement of catch object from base" (not really used).
+     * @param altParams Class with the other relevant (and most useful) catch block properties.
+     * @param handlerName The name of the function with the catch block code, as seen by Ghidra.
+     */
 	public CatchHandler(EHCatchHandlerTypeModifier adjectives, Address pType, Scalar dispCatchObj, AlternativeParams altParams, String handlerName) {
 		this.adjectives = adjectives;
 		this.pType = pType;
@@ -82,7 +111,9 @@ public class CatchHandler implements ITryCatch {
 		this.nested = new ArrayList<TryBlockMapEntry>();
 	}
 
-	// NOTE: Builder pattern without .build()!
+	/**
+	 * Helper class for setting several (most useful) parameters for CatchHandler construction. Uses the Builder pattern without .build().
+	 */
 	public static class AlternativeParams {
 		private Address address;
 		private Integer addressInt;
@@ -111,22 +142,42 @@ public class CatchHandler implements ITryCatch {
 		}
 	}
 
-
-	// ITryCatch methods.
+	/**
+     * Identifies this object as a catch block.
+     *
+     * @return BlockType.CATCH.
+     */
 	public BlockType getBlockType() {
 		return BlockType.CATCH;
 	}
 
+	/**
+	 * Returns this catch block's state value.
+     *
+     * @return This catch block's state value.
+	 */
 	public int getState() {
 		return state;
 	}
 
+	/**
+     * Sets the state of this catch block. Checks that it is not &lt; 1.
+     *
+     * @param state The state to set.
+     * @throws IllegalArgumentException if state &lt; 1.
+     */
 	public void setState(int state) {
 		if (state < -1)
 			throw new IllegalArgumentException("A catch block's state cannot be < -1.");
 		this.state = state;
 	}
 
+	/**
+     * Sets the state of this catch block. Checks that it is not &lt; 1. Allows null as the only way to set the state to'undefined' (-2).
+     *
+     * @param state The state to set.
+     * @throws IllegalArgumentException if state &lt; 1.
+     */
 	public void setState(Integer state) {
 		if (state == null) {
 			// Special case.
@@ -138,19 +189,32 @@ public class CatchHandler implements ITryCatch {
 		this.state = state;
 	}
 
+	/**
+     * Checks if this catch block's state is valid (>= -1).
+     *
+     * @return true if the state is valid, false otherwise.
+     */
 	public boolean hasValidState() {
 		return state >= -1;
 	}
 
+    /**
+     * Adds a nested TryBlockMapEntry to this catch block.
+     *
+     * @param tryBlockMapEntry The TryBlockMapEntry to nest.
+     */
 	public void nest(TryBlockMapEntry tryBlockMapEntry) {
 		nested.add(tryBlockMapEntry);
 	}
 
-	//
+    /**
+     * Retrieves all nested TryBlockMapEntries.
+     *
+     * @return The list of nested TryBlockMapEntries.
+     */
 	public List<TryBlockMapEntry> getNested() {
 		return nested;
 	}
-
 
 	
 	public Address getAddress() {
@@ -167,6 +231,7 @@ public class CatchHandler implements ITryCatch {
 		return typeName;
 	}
 	
+	// TODO: Can go, right?
 	public List<String> getInfoLines() {
 		List<String> lines = new ArrayList<String>();
 
@@ -195,6 +260,11 @@ public class CatchHandler implements ITryCatch {
 		return lines;
 	}
 
+    /**
+     * Describes the (possibly nested) layout of this catch block.
+     *
+     * @return A list of strings describing the (possibly nested) layout of this catch block.
+     */
 	public List<String> getNestingInfoLines() {
 		List<String> lines = new ArrayList<String>();
 

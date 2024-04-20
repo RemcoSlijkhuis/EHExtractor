@@ -8,8 +8,20 @@ import ghidra.app.cmd.data.exceptionhandling.EHTryBlockModel;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.data.InvalidDataTypeException;
 
+/**
+ * Factory class for creating TryBlockMapEntries.
+ */
 public class TryBlockMapEntryFactory {
 
+	/**
+     * Creates a list of TryBlockMapEntry instances based on the provided tryBlockMap
+     * and the specified number of TryBlockMapEntries.
+     *
+     * @param tryBlockMap The model containing try block information.
+     * @param nTryBlocks The number of TryBlockMapEntries in tryBlockMap.
+     * @return A list of TryBlockMapEntry instances.
+     * @throws InvalidDataTypeException If there is a problem accessing the tryBlockMap.
+     */
 	public List<TryBlockMapEntry> getTryBlockMapEntries(EHTryBlockModel tryBlockMap, int nTryBlocks) throws InvalidDataTypeException {
 		List<TryBlockMapEntry> tryBlockMapEntries = new ArrayList<TryBlockMapEntry>();
 		for (int i=0; i<nTryBlocks; i++) {
@@ -19,6 +31,14 @@ public class TryBlockMapEntryFactory {
 		return tryBlockMapEntries;
 	}
 
+	/**
+     * Creates a TryBlockMapEntry instance from the tryBlockMap for the specified index.
+     *
+     * @param tryBlockMap The EHTryBlockModel representing the TryBlockMap.
+     * @param index The TryBlockMapEntry index to use.
+     * @return A TryBlockMapEntry instance.
+     * @throws InvalidDataTypeException If there is a problem accessing the tryBlockMap.
+     */
 	private TryBlockMapEntry getTryBlockMapEntry(EHTryBlockModel tryBlockMap, int index) throws InvalidDataTypeException {
 		int mapIndex = index;
 		int tryLow = tryBlockMap.getTryLow(index);
@@ -32,15 +52,6 @@ public class TryBlockMapEntryFactory {
 		EHCatchHandlerModel catchHandlerModel = tryBlockMap.getCatchHandlerModel(index);		// What pHandlerArray in TryBlockMapEntry <index> points to.
 		CatchHandlerFactory catchHandlerFactory = new CatchHandlerFactory();
 		List<CatchHandler> catchHandlers = catchHandlerFactory.getCatchHandlers(catchHandlerModel, nCatches);
-
-		/* Let's do this in recurse?
-		// We can guess the state of a catch handler right now in some cases.
-		if (tryLow == tryHigh && catchHigh == tryHigh+1) {
-			for (CatchHandler catchHandler : catchHandlers) {
-				catchHandler.setState(catchHigh);
-			}
-		}
-		*/
 		
 		return new TryBlockMapEntry(mapIndex, tryLow, tryHigh, catchHigh, nCatches, pHandlerArray, tryBlock, catchHandlers);
 	}
