@@ -1,6 +1,5 @@
 package msvc.exceptions;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,15 +8,26 @@ import ghidra.app.cmd.data.exceptionhandling.EHESTypeListModel;
 import ghidra.app.cmd.data.exceptionhandling.EHFunctionInfoModel;
 import ghidra.app.cmd.data.exceptionhandling.EHIPToStateModel;
 import ghidra.app.cmd.data.exceptionhandling.EHTryBlockModel;
-import ghidra.app.cmd.data.exceptionhandling.EHUnwindModel;
 import ghidra.app.util.datatype.microsoft.DataValidationOptions;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.data.InvalidDataTypeException;
 import ghidra.program.model.lang.UndefinedValueException;
 import ghidra.program.model.listing.Program;
 
+/**
+ * Factory class to construct an MSVCEHInfo object from a given Ghidra program and FuncInfo data structure address.
+ */
 public class MSVCEHInfoFactory {
 
+	/**
+     * Creates an MSVCEHInfo object from a given Ghidra program and FuncInfo data structure address.
+     * This method combines base FuncInfo properties and objects derived from data structures linked to FuncInfo into the MSVCEHInfo object.
+     *
+     * @param program The program from which to extract the FuncInfo and other linked information.
+     * @param funcInfoAddress The address of a FuncInfo data structure.
+     * @return MSVCEHInfo The created MSVCEHInfo object.
+     * @throws InvalidDataTypeException If there is a problem processing the data structures.
+     */
 	public static MSVCEHInfo getMSVCEHInfo(Program program, Address funcInfoAddress) throws InvalidDataTypeException {
 		Logger logger = Logger.getLogger("EHExtractor");
 		

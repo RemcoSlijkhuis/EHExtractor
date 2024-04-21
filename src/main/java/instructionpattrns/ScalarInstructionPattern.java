@@ -6,6 +6,9 @@ import ghidra.program.model.lang.Register;
 import ghidra.program.model.listing.Instruction;
 import ghidra.program.model.scalar.Scalar;
 
+/**
+ * Represents an instruction pattern for matching instructions that involve scalar non-address values.
+ */
 public class ScalarInstructionPattern extends InstructionPattern {
 	String mnemonic = "";
 	String register = "";
@@ -13,16 +16,37 @@ public class ScalarInstructionPattern extends InstructionPattern {
 
 	Scalar actualScalar = null;
 
+	/**
+     * Creates an instruction pattern for matching instructions with a specific mnemonic and scalar value (e.g. PUSH -1).
+     *
+     * @param mnemonic The instruction mnemonic to match.
+     * @param scalarValue The scalar value in the instruction to match.
+     */
 	public ScalarInstructionPattern(String mnemonic, Integer scalarValue) {
 		this.mnemonic = mnemonic;
 		this.scalarValue = scalarValue;
 	}
 
+	/**
+     * Creates an instruction pattern for matching instructions with a specific mnemonic and register, and any scalar value (e.g. MOV EAX, 12).
+     *
+     * @param mnemonic The instruction mnemonic to match.
+     * @param register The register used in the instruction.
+     * @param scalarClass The Scalar class type.
+     */
 	public ScalarInstructionPattern(String mnemonic, String register, Class<Scalar> scalarClass) {
 		this.mnemonic = mnemonic;
 		this.register = register;
 	}
 	
+	/**
+     * Checks if the provided instruction matches this instruction pattern.
+     *
+     * @param inst The instruction to be checked.
+     * @param instContext The instruction context of the instruction.
+     * @param instProto The instruction prototype of the instruction.
+     * @return true if the instruction matches the instruction pattern, false otherwise.
+     */
 	@Override
 	protected boolean matchesImpl(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
 		
@@ -93,6 +117,11 @@ public class ScalarInstructionPattern extends InstructionPattern {
 		return true;
 	}
 
+	/**
+     * Returns the actual scalar value matched by the instruction pattern.
+     *
+     * @return The scalar value, if the instruction matched the pattern successfully; otherwise, null.
+     */
 	public Scalar getActualScalar() {
 		return this.actualScalar;
 	}

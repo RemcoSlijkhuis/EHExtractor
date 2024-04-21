@@ -13,11 +13,15 @@ import ghidra.program.model.listing.InstructionIterator;
 import ghidra.program.model.listing.Listing;
 import ghidra.program.model.listing.Program;
 import ghidra.program.model.scalar.Scalar;
+
 import instructionpattrns.InstructionPattern;
 import instructionpattrns.InstructionPatterns;
 import instructionpattrns.RegisterInstructionPattern;
 import instructionpattrns.ScalarInstructionPattern;
 
+/**
+ * Represents the start (prologue) of a function; analyzes the prologue of functions to identify and extract addresses related to exception handling setup as done by MSVC.
+ */
 public class Prologue {
 	
 	private Program program = null;
@@ -35,13 +39,24 @@ public class Prologue {
     		new ScalarInstructionPattern("PUSH", -1),
     		new ScalarInstructionPattern("PUSH", null)); 
 
-	public Prologue(Program program) {
+    /**
+	 * Constructs a Prologue instance for the given program.
+	 * 
+	 * @param program The program to analyze.
+	 */
+    public Prologue(Program program) {
 		logger = Logger.getLogger("EHExtractor");
 		this.program = program;
 		this.listing = program.getListing();
 	}
 	
-	public Address extractEHSetupAddress(Function func) {
+    /**
+	 * Attempts to extract the address where the code begins that registers a FuncInfo structure and that starts the main exception handler for the given function.
+	 * 
+	 * @param func The function to analyze.
+	 * @return The address of the exception handling setup/registration code if found, otherwise null.
+	 */
+    public Address extractEHSetupAddress(Function func) {
 		InstructionIterator instIter = listing.getInstructions(func.getBody(), true);
 
 		logger.log(Level.FINE, "Looking for standard function prologue.");
@@ -64,11 +79,23 @@ public class Prologue {
 		return ehSetupAddress;
 	}
 
+    /**
+     * Converts a scalar value to an Address object.
+     * 
+     * @param scalar The scalar value representing the address.
+     * @return The Address object corresponding to the provided scalar value.
+     */
 	private Address makeAddress(Scalar scalar) {
 		// TODO return toAddr(scalar.getUnsignedValue());
     	return makeAddress(scalar.getUnsignedValue());
     }
 
+    /**
+     * Converts a long value to an Address object.
+     * 
+     * @param address The long value representing the address.
+     * @return The Address object corresponding to the provided long value.
+     */
     private Address makeAddress(long address) {
 		AddressFactory addressFactory = program.getAddressFactory();
 		AddressSpace defaultAddressSpace = addressFactory.getDefaultAddressSpace();

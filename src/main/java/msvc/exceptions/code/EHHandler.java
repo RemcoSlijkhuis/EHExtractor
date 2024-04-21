@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import ehextractor.FunctionUtils;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressFactory;
 import ghidra.program.model.address.AddressSpace;
@@ -14,6 +13,8 @@ import ghidra.program.model.listing.InstructionIterator;
 import ghidra.program.model.listing.Listing;
 import ghidra.program.model.listing.Program;
 import ghidra.program.model.scalar.Scalar;
+
+import ehextractor.FunctionUtils;
 import instructionpattrns.AddressInstructionPattern;
 import instructionpattrns.InstructionPattern;
 import instructionpattrns.InstructionPatterns;
@@ -21,6 +22,9 @@ import instructionpattrns.MatchResult;
 import instructionpattrns.RegisterInstructionPattern;
 import instructionpattrns.ScalarInstructionPattern;
 
+/**
+ * Class for looking for exception handling setup code and extracting FuncInfo addresses.
+ */
 public class EHHandler {
 
 	private Program program = null; // I don't like this at all, but it is needed for makeAddress.
@@ -31,6 +35,11 @@ public class EHHandler {
 
 	private Logger logger = null;
 
+	/**
+     * Initializes an EHHandler object for the given program.
+     * 
+     * @param program The program to analyze for exception handling setup-related code.
+     */
 	public EHHandler(Program program) {
 		logger = Logger.getLogger("EHExtractor");
 		this.program = program;
@@ -43,6 +52,12 @@ public class EHHandler {
 		return allOk;
 	}
 
+	/**
+     * Attempts to find functions essential for exception handling such as
+     * CxxFrameHandler3 (mandatory) and security_check_cookie (optional).
+     * 
+     * @return true if all necessary functions are found, false otherwise.
+     */
 	private boolean initialize() {
 		// If there are exceptions, we expect an exception handler. The main one for x86
 		// is CxxFrameHandler3. We should look for this; note: could have thunks.
@@ -72,6 +87,13 @@ public class EHHandler {
 	}
 	
 	
+	/**
+     * Tries to extract the address pointing to the FuncInfo data structure from
+     * EH registration code starting at ehSetupAddress
+     * 
+     * @param ehSetupAddress The starting address of the EH setup code.
+     * @return The FuncInfo address, or null if not found.
+     */
 	public Address extractFuncInfoAddress(Address ehSetupAddress) {
 		Address startAddress = ehSetupAddress;
 
@@ -102,6 +124,14 @@ public class EHHandler {
 		return ehFuncInfoAddress;
 	}
 	
+	/**
+     * Searches for instructions associated with security cookie checks starting from a given address.
+     * 
+     * @param listing The program listing to search within.
+     * @param startAddress The address to start the search from.
+     * @param securityCheckCookie The function associated with security cookie checks.
+     * @return A MatchResult indicating if such instructions were found and if true, the address immediately after the matched code and startAddress otherwise.
+     */
 	private MatchResult lookForCookieCheckingCode(Listing listing, Address startAddress, Function securityCheckCookie) {
 		// Generic/flexible base cookie-checking code instructions.
 		// If there is cookie-checking, the following code will be there at the start.
@@ -148,6 +178,12 @@ public class EHHandler {
 		return new MatchResult(true, startAddress);		
 	}
 
+    /**
+     * Converts a long value to an Address object.
+     * 
+     * @param address The long value representing the address.
+     * @return The Address object corresponding to the provided long value.
+     */
 	// TODO: Get rid of this function here.
     private Address makeAddress(long address) {
 		AddressFactory addressFactory = program.getAddressFactory();

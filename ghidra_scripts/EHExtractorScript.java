@@ -18,7 +18,11 @@ import ehextractor.ProgramValidator;
 
 import loggingbridge.GhidraScriptHandler;
 
-public class EHExtractorScript extends GhidraScript {  
+/**
+ * Ghidra script to extract exception handling information from executables compiled with MSVC and targeted at 32-bit x86 architectures.
+ * Output is logged to both a file and to the Ghidra console.
+ */
+public class EHExtractorScript extends GhidraScript {
 	final Level LOG_LEVEL = Level.ALL;
 
 	Logger logger = null;

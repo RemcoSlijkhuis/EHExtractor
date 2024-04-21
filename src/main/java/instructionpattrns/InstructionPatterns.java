@@ -8,8 +8,21 @@ import ghidra.program.model.address.Address;
 import ghidra.program.model.listing.Instruction;
 import ghidra.program.model.listing.InstructionIterator;
 
+/**
+ * Utility class to facilitate matching a list of instruction patterns against
+ * an instruction iterator. This class is used to determine if a sequence of
+ * instructions matches a defined pattern.
+ */
 public class InstructionPatterns {
 
+	/**
+     * Matches a list of instruction patterns against instructions from an instruction iterator.
+     *
+     * @param instructionPatterns A list of instruction patterns to be matched.
+     * @param instIter An instruction iterator providing the instructions to match against.
+     * @param ignoreNops If true, NOP instructions will be ignored during the matching process.
+     * @return A MatchResult object indicating if the match was successful and the address after the last matched instruction, or the first instruction's address if the match was unsuccessful.
+     */
 	public static MatchResult match(List<InstructionPattern> instructionPatterns, InstructionIterator instIter, boolean ignoreNops) {
 		Logger logger = Logger.getLogger("EHExtractor");
 

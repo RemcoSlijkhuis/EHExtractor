@@ -13,8 +13,21 @@ import ghidra.program.model.symbol.SymbolIterator;
 import ghidra.program.model.symbol.SymbolTable;
 import ghidra.program.model.symbol.SymbolType;
 
+/**
+ * Utility class for finding functions within a given program.
+ */
 public class FunctionUtils {
 
+	/**
+     * Searches for a function in the given program based on a (possibly partial) name and optionally a (partial) namespace. If needed, thunks can be dereferenced.
+     * Tries to account for different ways a function may be known in Ghidra (by name or by label) and for multiple matches.
+	 *
+     * @param program The program in which to search for the function.
+     * @param partialName The name (or part of it) of the function to find.
+     * @param partialParentNamespace The namespace (or part of it) of the function to find.
+     * @param dereferenceThunks If true, thunks are dereferenced to their primary functions.
+     * @return The matching function, or null if no matching function is found.
+     */
 	public static Function findFunction(Program program, String partialName, String partialParentNamespace, boolean dereferenceThunks) {
 		var logger = Logger.getLogger("EHExtractor");
 		
@@ -140,6 +153,11 @@ public class FunctionUtils {
         return null;
 	}
 
+	/**
+     * Retrieves all internal functions of the given program.
+     * @param program The program from which to retrieve all interal functions.
+     * @return A list of all internal functions of the given program.
+     */
 	public static List<Function> getInternalFunctions(Program program) {
         FunctionManager functionManager = program.getFunctionManager();
 

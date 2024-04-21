@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Represents the exception handling information for Microsoft Visual C++-compiled binaries
+ * that can be derived from the various EH-related data structures used.
+ */
 public class MSVCEHInfo {
 
 	Logger logger = null;
@@ -28,6 +32,23 @@ public class MSVCEHInfo {
 	private List<TryBlockMapEntry> tryBlockMapEntries = null;
 	private UnwindMap unwindMap = null;
 
+	/**
+     * Creates an MSVCEHInfo instance which represents the FuncInfo data structure, extended with
+     * information and objects derived from the data structures linked to FuncInfo.
+     *
+     * @param magicNumber The "compiler version identifier" (but really more an identifier of which kinds of EH are supported).
+     * @param bbtFlags "Flags that may be set by BBT processing."
+     * @param maxState Number of entries in the unwind map.
+     * @param pUnwindMap Address of the unwind map.
+     * @param nTryBlocks Number of try blocks.
+     * @param pTryBlockMap Address of the TryBlockMap.
+     * @param nIPMapEntries "Number of IP-to-state map entries."
+     * @param pIPToStateMap Address of the "IP-to-state map".
+     * @param pESTypeList Address of the ESTypeList.
+     * @param ehFlags Flags for some specific EH-related features.
+     * @param unwindMap An UnwindMap instance, derived from the linked UnwindMap data structure.
+     * @param tryBlockMapEntries The list of TryBlockMapEntries, derived from the linked TryBlockMap data structure.
+     */
 	public MSVCEHInfo(int magicNumber, int bbtFlags, int maxState, Address pUnwindMap, int nTryBlocks,
 			Address pTryBlockMap, int nIPMapEntries, Address pIPToStateMap, Address pESTypeList, int ehFlags,
 			UnwindMap unwindMap, List<TryBlockMapEntry> tryBlockMapEntries) {
@@ -47,13 +68,18 @@ public class MSVCEHInfo {
 		this.unwindMap = unwindMap;
 	}
 
+	/**
+	 * Tries to determine the try/catch block layout based on the tryBlockMapEntries and the unwindMap.
+	 *
+	 * @throws InvalidDataTypeException If there is a state mismatch or other processing error.
+	 */
 	public void analyze() throws InvalidDataTypeException {
 		if (tryBlockMapEntries == null) {
 			logger.log(Level.INFO, "No TryBlockMapEntries to analyze.");
 			return;
 		}
 
-		/* Determine the layout of the try/catch blocks as much as possible just from the data structures. */
+		/* Determine the layout of the try/catch blocks as much as possible just from the tryBlockMap. */
 		ArrayList<TryBlockMapEntry> outerTryBlockMapEntries = determineLayout(tryBlockMapEntries);
 
 		// Show what we now know about the try/catch block structures.
@@ -90,10 +116,16 @@ public class MSVCEHInfo {
 			recurse(outer, null, knownStates, unwindMap, "");
 		}
 		
-		//...
+		// Display the final version of the overview after having added the information from the unwind map.
 		displayTryCatchBlockOverview(outerTryBlockMapEntries, "Try/catch block overview:");
 	}
 	
+	/**
+	 * Logs an overview of the (possibly nested) try/catch block layout from the given TryBlockMapEntries.
+	 *
+	 * @param outerTryBlockMapEntries The list of TryBlockMapEntries to derive the layout overview from.
+	 * @param header A header line to include as the first line to the overview.
+	 */
 	private void displayTryCatchBlockOverview(List<TryBlockMapEntry> outerTryBlockMapEntries, String header) {
 		List<String> lines = getTryCatchBlockOverview(outerTryBlockMapEntries, header);
 		for (String line : lines) {
@@ -101,6 +133,13 @@ public class MSVCEHInfo {
 		}
 	}
 
+	/**
+	 * Generates a list of strings with an overview of the (possibly nested) try/catch block layout from the given TryBlockMapEntries.
+	 *
+	 * @param outerTryBlockMapEntries The list of TryBlockMapEntries to derive the layout overview from.
+	 * @param header A header line to include as the first line to the overview.
+	 * @return A list of strings with the try/catch block layout.
+	 */
 	public static List<String> getTryCatchBlockOverview(List<TryBlockMapEntry> outerTryBlockMapEntries, String header) {
 		List<String> lines = new ArrayList<String>();
 		lines.add(header);
@@ -114,9 +153,10 @@ public class MSVCEHInfo {
 	}
 
 	/**
-	 *  Determine the layout of the try/catch blocks as much as possible just 'from the data structures'.
-	 * @param tryBlockMapEntries
-	 * @return
+	 * Determines the layout of the try/catch blocks as much as possible just from TryBlockMapEntries.
+
+	 * @param tryBlockMapEntries The TryBlockMapEntries from which to derive the try/catch layout.
+	 * @return A list of 'outer' TryBlockMapEntries; any nested entries will have been added as such to these outer ones.
 	 */
 	public static ArrayList<TryBlockMapEntry> determineLayout(List<TryBlockMapEntry> tryBlockMapEntries) {
 		Logger.getLogger("EHExtractor").log(Level.FINE, "Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.");
@@ -173,24 +213,17 @@ public class MSVCEHInfo {
 		return todo;
 	}
 	
-	/*
-	private void recurse(TryBlockMapEntry current, ITryCatch parent, HashSet<Integer> knownStates, EHUnwindModel unwindModel, String prefix) throws InvalidDataTypeException {
-		// This is the main 'recurse' entry point; it converts the EHUnwindModel to a proper UnwindMap object.
-	
-		// If I want to write tests for the 'recurse' method, I need to be able to construct unwind map information myself.
-		// To instantiate the EHUnwindModel class a full binary program needs to be present; this is not practical.
-		// Therefore, instead of passing unwindMap to 'recurse', let's create a replacement object containing the same information,
-		// but which can be created more easily.
-		var unwindMap = UnwindMapFactory.getUnwindMap(unwindModel);
-		
-		for (int i=0; i<unwindMap.getCount(); i++) {
-			logger.log(Level.FINE, "From " + i + " to " + unwindMap.getToState(i));
-		}
-
-		recurse(current, parent, knownStates, unwindMap, prefix);
-	}
-	*/
-
+	/**
+	 * Recursively determines nested try and catch block layout starting from a given TryBlockMapEntry,
+	 * incorporating unwind information to find catch block states and to double-check try block states.
+	 *
+	 * @param current The current TryBlockMapEntry being processed.
+	 * @param parent The parent (TryBlock or CatchHandler) for current; may be null if current is the root.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @throws InvalidDataTypeException If there is a state mismatch or other processing error.
+	 */
 	public static void recurse(TryBlockMapEntry current, ITryCatch parent, HashSet<Integer> knownStates, UnwindMap unwindMap, String prefix) throws InvalidDataTypeException {
 		var logger = Logger.getLogger("EHExtractor");
 
@@ -410,6 +443,7 @@ public class MSVCEHInfo {
 		
 	}
 
+	// TODO: Can go, right?
 	public List<String> getInfoLines() {
 		List<String> lines = new ArrayList<String>();
 		

@@ -12,6 +12,9 @@ import ghidra.program.model.listing.Instruction;
 import ghidra.program.model.scalar.Scalar;
 import ghidra.program.model.lang.Register;
 
+/**
+ * Represents an instruction pattern for matching instructions that involve addresses, using either direct (JMP 12345678) or indirect (MOV EAX, [EDX+10]) addressing modes.
+ */
 public class AddressInstructionPattern extends InstructionPattern {
 	private InstructionType instructionType = InstructionType.Direct; 
 	
@@ -24,15 +27,29 @@ public class AddressInstructionPattern extends InstructionPattern {
 	Long scalarOffset = 0L;
 	boolean specificScalar = false;
 
+	/**
+	 * Enumerates the two possible addressing modes.
+	 */
 	enum InstructionType {
 		Direct,
 		Indirect
 	}
 	
+	/**
+     * Returns the actual scalar offset value used by the matching instruction (in the case of indirect addressing).
+     *
+     * @return The scalar offset as a Long value, if the instruction matched the pattern successfully; otherwise, null.
+     */
 	public Long getScalarOffset() {
 		return this.scalarOffset;
 	}
 
+	/**
+     * Creates an instruction pattern for matching instructions involving an address and using direct addressing mode (e.g. CALL <any address>).
+     *
+     * @param mnemonic The mnemonic of the instruction to match.
+     * @param genericAddressClass The class type for matching generic address.
+     */
 	public AddressInstructionPattern(String mnemonic, Class<GenericAddress> genericAddressClass) {
 		instructionType = InstructionType.Direct;
 
@@ -46,6 +63,13 @@ public class AddressInstructionPattern extends InstructionPattern {
 		this.specificScalar = false;
 	}
 
+	/**
+     * Creates an instruction pattern for matching instructions involving a function and using direct addressing mode (e.g. CALL <some function>).
+     *
+     * @param mnemonic The instruction mnemonic to match.
+     * @param function The function involved in the instruction.
+     * @param matchThunks Whether or not to match thunks associated with the function.
+     */
 	public AddressInstructionPattern(String mnemonic, Function function, boolean matchThunks) {
 		instructionType = InstructionType.Direct;
 
@@ -59,6 +83,14 @@ public class AddressInstructionPattern extends InstructionPattern {
 		this.specificScalar = false;
 	}
 
+	/**
+	 * Creates an instruction pattern for matching instructions involving two registers and an offset, and using direct addressing mode (e.g. LEA EAX, [EDX + 0ch]).
+     * 
+	 * @param mnemonic The instruction mnemonic to match.
+	 * @param destinationRegister The destination (first) register.
+	 * @param sourceRegister The source (second) register.
+	 * @param scalarOffset The offset to use with respect to the source register value.
+	 */
 	public AddressInstructionPattern(String mnemonic, String destinationRegister, String sourceRegister, Long scalarOffset) {
 		instructionType = InstructionType.Indirect;
 
@@ -72,6 +104,14 @@ public class AddressInstructionPattern extends InstructionPattern {
 		this.specificScalar = true;
 	}
 
+	/**
+	 * Creates an instruction pattern for matching instructions involving two registers and any offset, and using direct addressing mode (e.g. MOV ECX, [EDX + <any scalar offset>]).
+     * 
+	 * @param mnemonic The instruction mnemonic to match.
+	 * @param destinationRegister The destination (first) register.
+	 * @param sourceRegister The source (second) register.
+	 * @param scalarClass The Scalar class type.
+	 */
 	public AddressInstructionPattern(String mnemonic, String destinationRegister, String sourceRegister, Class<Scalar> scalarClass) {
 		instructionType = InstructionType.Indirect;
 
@@ -85,6 +125,14 @@ public class AddressInstructionPattern extends InstructionPattern {
 		this.specificScalar = false;
 	}
 
+	/**
+     * Checks if the provided instruction matches this instruction pattern.
+     *
+     * @param inst The instruction to be checked.
+     * @param instContext The instruction context of the instruction.
+     * @param instProto The instruction prototype of the instruction.
+     * @return true if the instruction matches the instruction pattern, false otherwise.
+     */
 	@Override
 	public boolean matchesImpl(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
 		

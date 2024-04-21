@@ -10,8 +10,17 @@ import ghidra.program.model.lang.Language;
 import ghidra.program.model.lang.Processor;
 import ghidra.program.model.listing.Program;
 
+/**
+ * Class providing methods to validate if a program can be analyzed by EHExtractor.
+ */
 public class ProgramValidator {
 
+	/**
+     * Checks if the given program was compiled with MSVC and is intended for a 32-bit x86 architecture. If so, it can be analyzed by EHExtractor.
+     * @param program The program to check.
+     * @param logger The logger to use for logging details about the checks.
+     * @return true if the program can be analyzed, false otherwise.
+     */
 	public static boolean canAnalyze(Program program, Logger logger) {
 		
     	if (!checkCompiler(program, logger)) {
@@ -31,6 +40,12 @@ public class ProgramValidator {
     	return true;
     }
 
+	/**
+     * Checks if the compiler used for the given program is MSVC.
+     * @param program The program to check.
+     * @param logger The logger to use for logging details about the check.
+     * @return true if the program was compiled with MSVC, false otherwise.
+     */
 	private static boolean checkCompiler(Program program, Logger logger) {
 
 		String usedCompiler = program.getCompiler();
@@ -53,22 +68,17 @@ public class ProgramValidator {
     	return true;
 	}
 
+	/**
+     * Checks if the given program is intended for a 32-bit x86 processor.
+     * @param program The program to check.
+     * @param logger The logger to use for logging details about the check.
+     * @return true if the program is for a 32-bit x86 processor, false otherwise.
+     */
 	private static boolean checkProcessorBitness(Program program, Logger logger) {
 
 		CompilerSpec compilerSpec = program.getCompilerSpec();
     	Language sourceLanguage = compilerSpec.getLanguage();
-
-    	// Some extra things.
-    	//println("Language used: " + sourceLanguage);
-    	//if (sourceLanguage.isBigEndian()) {
-        //	println("  Big Endian");
-    	//}
-    	//else {
-        //	println("  Little Endian");
-    	//}
-    	//println("Language produced: " + compilerSpec.getDecompilerOutputLanguage());
-    	
-    	Processor processor = sourceLanguage.getProcessor();
+    	  	Processor processor = sourceLanguage.getProcessor();
     	int pointerSize = sourceLanguage.getDefaultDataSpace().getPointerSize();
 
     	if (logger != null) {

@@ -32,10 +32,14 @@ import ghidra.util.exception.CancelledException;
 import ghidra.util.task.TaskMonitor;
 
 /**
- * TODO: Provide class-level documentation that describes what this analyzer does.
+ * An analyzer that extracts x86 MSVC exception handling information from programs and writes it to a log file.
+ * The log file path and the minimum log level can be set through the Analyzer options.
  */
 public class EHExtractorAnalyzer extends AbstractAnalyzer {
 
+	/**
+	 * Enumerates the available minimum log levels to choose from.
+	 */
 	public enum LogLevelEnum {
 	    FINER, FINE, INFO, WARNING, SEVERE;
 	}

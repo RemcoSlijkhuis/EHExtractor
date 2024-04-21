@@ -15,6 +15,10 @@ import java.util.logging.Logger;
 
 import org.python.jline.internal.Log;
 
+/**
+ * Class responsible for setting up and managing logging for EHExtractor (both analyzer and script versions).
+ * Logging to a file is included by default; additional handlers can be added.
+ */
 public class Logging {
 
 	String logfilePath = null;
@@ -24,6 +28,11 @@ public class Logging {
 	
 	private List<Handler> handlers = null;
 	
+	/**
+     * Constructor to initialize logging with a file path and a minimum log level.
+     * @param logfilePath The path to the log file.
+     * @param minLogLevel The minimum log level to record.
+     */
 	public Logging(String logfilePath, Level minLogLevel) {
 		this.logfilePath = logfilePath;
 		this.minLogLevel = minLogLevel;
@@ -32,6 +41,12 @@ public class Logging {
 		setupSuccess = setupLogger();
 	}
 
+    /**
+     * Constructor to initialize logging with a file path, a minimum log level, and an external handler.
+     * @param logfilePath The path to the log file.
+     * @param otherHandler The additional log handler.
+     * @param minLogLevel The minimum log level to record.
+     */
 	public Logging(String logfilePath, Handler otherHandler, Level minLogLevel) {
 		this.logfilePath = logfilePath;
 		this.minLogLevel = minLogLevel;
@@ -41,16 +56,27 @@ public class Logging {
 		setupSuccess = setupLogger();
 	}
 
+	/**
+     * Checks if logging was successfully set up.
+     * @return true if successful, otherwise false.
+     */
 	public boolean isSetupSuccess() {
 		return setupSuccess;
 	}
 	
+	/**
+     * Closes the FileHandler associated with this logging instance.
+     */
 	public void close() {
 		if (fh != null)
 			fh.close();
 		fh = null;
 	}
 	
+	/**
+     * Sets up the logger with a minimum log level, handlers and formatters.
+     * @return true if successful, false otherwise.
+     */
 	private boolean setupLogger() {
 		// First get rid of an annoying ConsoleHandler on a nameless logger
     	// that Ghidra apparently uses to dump horribly-formatted text (in red) at
@@ -102,7 +128,10 @@ public class Logging {
     	return true;
 	}
 
-    private static void removeAnnoyingConsoleHandler() {
+	/**
+     * Removes a default console handler that creates duplicate and randomly inserted logging output lines.
+     */
+	private static void removeAnnoyingConsoleHandler() {
     	LogManager manager = LogManager.getLogManager();
     	Logger loggr = manager.getLogger("");
     	var handlers = loggr.getHandlers();
@@ -113,11 +142,21 @@ public class Logging {
 	    }
     }
 
-    private static void removeHandlers(Logger loggr) {
+	/**
+     * Removes all handlers from the given logger.
+     * @param loggr The logger from which to remove all handlers.
+     */
+	private static void removeHandlers(Logger loggr) {
     	reportRemoveHandlers(loggr, false, true);
     }
 
-    private static void reportRemoveHandlers(Logger loggr, boolean report, boolean remove) {
+	/**
+     * Method to report (deprecated) and/or remove all handlers from the given logger.
+     * @param loggr The logger to process.
+     * @param report Whether or not to report each encountered handler.
+     * @param remove Whether or not to remove each encountered handler.
+     */
+	private static void reportRemoveHandlers(Logger loggr, boolean report, boolean remove) {
 	    if (loggr == null)
 	    	return;
     	var handlers = loggr.getHandlers();
@@ -132,6 +171,10 @@ public class Logging {
 	    }
     }
 
+	/**
+	 * Returns the current date and time in the default Java logging timestamp format.
+	 * @return A string with the timestamp.
+	 */
 	private static String getCurrentTimeStamp() {
 		// Default Java logging timestamp format (right?).
         SimpleDateFormat sdfDate = new SimpleDateFormat("MMM dd, yyyy HH:mm:ss a");
@@ -139,6 +182,9 @@ public class Logging {
         return sdfDate.format(now);
     }
 	
+	/**
+     * Formatter for the initial log entry, formatting with a timestamp and a message.
+     */
 	private static class MyLogFormatterInitial extends Formatter {
 	    @Override
 	    public String format(LogRecord record) {
@@ -147,6 +193,9 @@ public class Logging {
 	    }
 	}
 
+	/**
+     * The standard formatter for logging, with optional level display (and no timestamps).
+     */
 	private static class MyLogFormatter extends Formatter {
 		private boolean showLevel = true;
 		

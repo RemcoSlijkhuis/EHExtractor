@@ -14,6 +14,10 @@ import msvc.exceptions.MSVCEHInfoFactory;
 import msvc.exceptions.code.EHHandler;
 import msvc.exceptions.code.Prologue;
 
+/**
+ * Highest-level class responsible for extracting MSVC exception handling information from a program.
+ * Called from both the analyzer and the script.
+ */
 public class EHExtractor {
 	private Logger logger = null;
 	private Program program = null;
@@ -22,12 +26,20 @@ public class EHExtractor {
 	
 	private boolean allOk = false;
 
+	/**
+     * Constructs an EHExtractor object for the given program.
+     * @param program The program from which EH information is to be extracted.
+     */
 	public EHExtractor(Program program) {
 		logger = Logger.getLogger("EHExtractor");
 		this.program = program;
 		init();
 	}
 
+	/**
+     * Logs global program information (path, address range) and initializes components necessary for finding and extracting certain (MSVC) EH information.
+     * Upon return it will be known whether or not we can continue with extracting EH information (checkable by isAllOk()).
+     */
 	private void init() {
 		// Program name and address space information.
 		Address minAddr = program.getMinAddress();
@@ -43,11 +55,18 @@ public class EHExtractor {
 		allOk = ehHandler.isAllOk();		
 	}
 
+	/**
+     * Returns if the initial setup of the EHExtractor object was successful.
+     * @return true if setup was successful, otherwise false.
+     */
 	public boolean isAllOk() {
 		return allOk;
 	}
 
-    public void showFunctionInfos() {
+	/**
+     * Processes and outputs EH information (if present) for all functions in the program.
+     */
+	public void showFunctionInfos() {
     	logger.log(Level.FINE, "Now going to look at some functions.");
     	
     	List<Function> allFuncs = FunctionUtils.getInternalFunctions(program);
@@ -57,7 +76,11 @@ public class EHExtractor {
 		}
     }
 
-    private void showFunctionInfo(Function func) {
+	/**
+     * Processes and outputs EH information (if present) for a given function.
+     * @param func The function to process.
+     */
+	private void showFunctionInfo(Function func) {
     	// Show the name and memory location range of the function.
     	logger.log(Level.INFO, "Looking at: "+func.getName());
         long addrStart = func.getBody().getMinAddress().getOffset();
