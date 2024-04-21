@@ -13,7 +13,7 @@ import ghidra.program.model.scalar.Scalar;
 import ghidra.program.model.lang.Register;
 
 /**
- * Represents an instruction pattern for matching instructions that involve addresses, using either direct (JMP 12345678) or indirect (MOV EAX, [EDX+10]) addressing modes.
+ * Represents an instruction pattern for matching instructions that involve addresses, using either direct (e.g. JMP 12345678) or indirect (e.g. MOV EAX, [EDX+10]) addressing modes.
  */
 public class AddressInstructionPattern extends InstructionPattern {
 	private InstructionType instructionType = InstructionType.Direct; 
@@ -45,7 +45,7 @@ public class AddressInstructionPattern extends InstructionPattern {
 	}
 
 	/**
-     * Creates an instruction pattern for matching instructions involving an address and using direct addressing mode (e.g. CALL <any address>).
+     * Creates an instruction pattern for matching instructions involving an address and using direct addressing mode (e.g. CALL &lt;any address%gt;).
      *
      * @param mnemonic The mnemonic of the instruction to match.
      * @param genericAddressClass The class type for matching generic address.
@@ -64,7 +64,7 @@ public class AddressInstructionPattern extends InstructionPattern {
 	}
 
 	/**
-     * Creates an instruction pattern for matching instructions involving a function and using direct addressing mode (e.g. CALL <some function>).
+     * Creates an instruction pattern for matching instructions involving a function and using direct addressing mode (e.g. CALL %lt;some function%gt;).
      *
      * @param mnemonic The instruction mnemonic to match.
      * @param function The function involved in the instruction.
@@ -105,7 +105,7 @@ public class AddressInstructionPattern extends InstructionPattern {
 	}
 
 	/**
-	 * Creates an instruction pattern for matching instructions involving two registers and any offset, and using direct addressing mode (e.g. MOV ECX, [EDX + <any scalar offset>]).
+	 * Creates an instruction pattern for matching instructions involving two registers and any offset, and using direct addressing mode (e.g. MOV ECX, [EDX + %lt;any scalar offset%gt;]).
      * 
 	 * @param mnemonic The instruction mnemonic to match.
 	 * @param destinationRegister The destination (first) register.
