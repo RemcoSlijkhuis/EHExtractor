@@ -54,7 +54,7 @@ public class InstructionPatterns {
         	if (!instructionPatterns.get(instPatternInd).matches(inst)) {
         		matched = false;
         		matchResult = new MatchResult(matched, startAddress);
-        		logger.log(Level.FINER, "Instructions not matched!");
+        		logger.log(Level.FINER, "Instructions not matched.");
     			break;
         	}
 
@@ -74,7 +74,7 @@ public class InstructionPatterns {
     			}
 
         		matchResult = new MatchResult(matched, nextAddress);
-        		logger.log(Level.FINER, "All instructions matched!");
+        		logger.log(Level.FINER, "All instructions matched.");
     			break;
     		}
 

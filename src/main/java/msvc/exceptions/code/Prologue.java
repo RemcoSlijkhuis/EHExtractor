@@ -61,17 +61,17 @@ public class Prologue {
 
 		logger.log(Level.FINE, "Looking for standard function prologue.");
 		if (!InstructionPatterns.match(startInstructions, instIter, false).isMatched()) {
-			logger.log(Level.INFO, "Normal start instructions not found!");
+			logger.log(Level.INFO, "Normal start instructions not found.");
 			return null;
 		}  
-		logger.log(Level.INFO, "Normal start instructions found!");
+		logger.log(Level.INFO, "Normal start instructions found.");
 
 		logger.log(Level.FINE, "Looking for exception handling start instructions.");
 		if (!InstructionPatterns.match(ehStartInstructions, instIter, false).isMatched()) {
-			logger.log(Level.INFO, "Exception handling start instructions not found!");
+			logger.log(Level.INFO, "Exception handling start instructions not found.");
 			return null;
 		}
-		logger.log(Level.INFO, "Exception handling start instructions found!");
+		logger.log(Level.INFO, "Exception handling start instructions found.");
 
 		// Determine the address that's pushed onto the stack.
 		Scalar ehPointer = ((ScalarInstructionPattern)ehStartInstructions.get(1)).getActualScalar();

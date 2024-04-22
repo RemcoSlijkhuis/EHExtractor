@@ -117,7 +117,8 @@ public class EHExtractor {
 			msvcEHInfo.analyze();
 		}
 		catch (InvalidDataTypeException e) { 
-			logger.log(Level.SEVERE, "OH NOES! "+ e.getMessage());
+			logger.log(Level.SEVERE, "An exception occurred processing the EH data structures. Unable to continue for this function.");
+			logger.log(Level.SEVERE, "The exception message is: "+ e.getMessage());
 		}
 		
 	}

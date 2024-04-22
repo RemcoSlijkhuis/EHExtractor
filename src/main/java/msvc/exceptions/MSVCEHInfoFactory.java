@@ -94,14 +94,14 @@ public class MSVCEHInfoFactory {
 		if (pIPToStateMap != null) {
 			ipToStateMap = funcInfo.getIPToStateModel();
 		}
-		logger.log(Level.WARNING, "IGNORING IPToStateMap information for now.");
+		logger.log(Level.FINER, "Ignoring IPToStateMap information for now.");
 
 		// ESTypeList
 		EHESTypeListModel esTypeList = null;
 		if (pESTypeList != null) {
 			esTypeList = funcInfo.getEHESTypeListModel();
 		}
-		logger.log(Level.WARNING, "IGNORING ESTypeList information for now.");
+		logger.log(Level.FINER, "Ignoring ESTypeList information for now.");
 
 		// Instantiate MSVCEHInfo.
 		return new MSVCEHInfo(magicNumber, bbtFlags, maxState, pUnwindMap, nTryBlocks,

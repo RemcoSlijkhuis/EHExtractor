@@ -66,7 +66,7 @@ public class EHHandler {
 		logger.log(Level.FINE, "Determining the address of (thunk) function *CxxFrameHandler3.");
 		cxxFrameHandler3 = FunctionUtils.findFunction(program, "CxxFrameHandler3", "vcruntime", true);
 		if (cxxFrameHandler3 == null) {
-			logger.log(Level.INFO, "Main exception handler function not found!");
+			logger.log(Level.INFO, "Main exception handler function not found.");
 			return false;
 		}
 
@@ -113,10 +113,10 @@ public class EHHandler {
 
 		logger.log(Level.FINE, "Looking for matching EH handler registration instructions.");
 		if (!InstructionPatterns.match(regInstructions, instIt, true).isMatched()) {
-			logger.log(Level.INFO, "EH handler registration instructions not found!");
+			logger.log(Level.INFO, "EH handler registration instructions not found.");
 			return null;
 		}
-		logger.log(Level.INFO, "EH handler registration instructions found!");
+		logger.log(Level.INFO, "EH handler registration instructions found.");
 
 		Scalar scalar = ((ScalarInstructionPattern)regInstructions.get(0)).getActualScalar();
 		var ehFuncInfoAddress = makeAddress(scalar.getUnsignedValue());
@@ -157,10 +157,10 @@ public class EHHandler {
 		InstructionIterator instIt = listing.getInstructions(startAddress, true);
 		MatchResult matchResult = InstructionPatterns.match(baseCookieCheckInstructions, instIt, true);
 		if (!matchResult.isMatched()) {
-			logger.log(Level.FINE, "Base cookie checking instructions not found!");
+			logger.log(Level.FINE, "Base cookie checking instructions not found.");
 			return new MatchResult(false, startAddress);
 		}
-		logger.log(Level.FINE, "Base cookie checking instructions found!");
+		logger.log(Level.FINE, "Base cookie checking instructions found.");
 		startAddress = matchResult.getNextAddress();
 
 		// There IS base cookie-checking code. Is it followed by additional cookie-checking code?

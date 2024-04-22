@@ -83,7 +83,7 @@ public class MSVCEHInfo {
 		ArrayList<TryBlockMapEntry> outerTryBlockMapEntries = determineLayout(tryBlockMapEntries);
 
 		// Show what we now know about the try/catch block structures.
-		displayTryCatchBlockOverview(outerTryBlockMapEntries, "Try/catch block overview, after determineLayout but without unwind information applied:");
+		displayTryCatchBlockOverview(outerTryBlockMapEntries, "Try/catch block overview, after determineLayout but without unwind information applied:", Level.FINE);
 
 		// About states:
 		// It is trivial to know the state used for each try block (it's the tryLow value), but the states of catch
@@ -102,13 +102,13 @@ public class MSVCEHInfo {
 		// the EH code will look for a handler in the calling functions.).
 					
 		if (unwindMap == null) {
-			logger.log(Level.INFO, "No unwind information to apply.");
+			logger.log(Level.FINE, "No unwind information to apply.");
 			return;
 		}
 
-		logger.log(Level.INFO, "Applying unwind information.");
+		logger.log(Level.FINE, "Applying unwind information.");
 		for (int i=0; i<unwindMap.getCount(); i++) {
-			logger.log(Level.FINE, "From " + i + " to " + unwindMap.getToState(i));
+			logger.log(Level.FINER, "From " + i + " to " + unwindMap.getToState(i));
 		}
 
 		HashSet<Integer> knownStates = new HashSet<Integer>();
@@ -117,7 +117,7 @@ public class MSVCEHInfo {
 		}
 		
 		// Display the final version of the overview after having added the information from the unwind map.
-		displayTryCatchBlockOverview(outerTryBlockMapEntries, "Try/catch block overview:");
+		displayTryCatchBlockOverview(outerTryBlockMapEntries, "Try/catch block overview:", Level.INFO);
 	}
 	
 	/**
@@ -126,10 +126,10 @@ public class MSVCEHInfo {
 	 * @param outerTryBlockMapEntries The list of TryBlockMapEntries to derive the layout overview from.
 	 * @param header A header line to include as the first line to the overview.
 	 */
-	private void displayTryCatchBlockOverview(List<TryBlockMapEntry> outerTryBlockMapEntries, String header) {
+	private void displayTryCatchBlockOverview(List<TryBlockMapEntry> outerTryBlockMapEntries, String header, Level logLevel) {
 		List<String> lines = getTryCatchBlockOverview(outerTryBlockMapEntries, header);
 		for (String line : lines) {
-			logger.log(Level.INFO, line);
+			logger.log(logLevel, line);
 		}
 	}
 
@@ -401,7 +401,7 @@ public class MSVCEHInfo {
 					throw new InvalidDataTypeException(msg);
 				}
 				else if (allNotYetKnownFromStates.size() == 1) {
-					logger.log(Level.FINE, prefix+"Found one state for the catch block(s)!");
+					logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
 					var catchState = allNotYetKnownFromStates.get(0);
 					logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
 					catchHandler.setState(catchState);
