@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import ehextractor.EHExtractor;
 import ehextractor.Logging;
 import ehextractor.ProgramValidator;
-
+import ehextractor.SharedReturnCalls;
 import loggingbridge.GhidraScriptHandler;
 
 /**
@@ -29,7 +29,7 @@ public class EHExtractorScript extends GhidraScript {
 	FileHandler fh = null;
 		
     public void run() throws Exception {
-    	// Set up a proper logger first. Exit when there are problems doing so.
+		// Set up a proper logger first. Exit when there are problems doing so.
     	// Note that the logger will by default log to a file but when we're running as a script,
     	// output to the console is very convenient. So, let's add a Ghidra script/console-specific handler.
     	var gsh = new GhidraScriptHandler(this);
@@ -47,6 +47,14 @@ public class EHExtractorScript extends GhidraScript {
     		if (!ProgramValidator.canAnalyze(currentProgram, logger)) {
     			return;
     		}
+   
+    		// To be able to resolve all CxxFrameHandler3 calls, we need to make sure the 
+    		// "Shared Return Calls" analyzer has been run in such a way that all possible thunks
+    		// have been found. The "Shared Return Calls" analyzer is part of the default set of
+    		// analyzers that is run when doing an auto-analysis. It was found that when this 
+    		// analyzer is run as part of the auto-analysis, it seems to be able to do only a
+    		// partial job. The following call will (re)do the analysis and produce complete results.
+    		SharedReturnCalls.discover(currentProgram, monitor, logger);
 
 
     		var ehExtractor = new EHExtractor(currentProgram);
