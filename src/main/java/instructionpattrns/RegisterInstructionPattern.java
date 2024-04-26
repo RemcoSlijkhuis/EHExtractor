@@ -52,11 +52,13 @@ public class RegisterInstructionPattern extends InstructionPattern {
 	@Override
 	protected boolean matchesImpl(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
 
+		// Do the mnemonic and number of operands match?
 		if (!instProto.getMnemonic(instContext).equals(this.mnemonic))
 			return false;
 		if (instProto.getNumOperands() != this.operands.size())  //2)
 			return false;
 
+		// Check the operands. They should all be registers (and then the right ones).
 		for (int opInd=0; opInd<this.operands.size(); opInd++) {
 			Object[] opObjects = instProto.getOpObjects(opInd, instContext);
 			if (opObjects.length != 1)

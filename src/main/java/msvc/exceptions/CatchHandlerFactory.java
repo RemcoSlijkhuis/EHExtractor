@@ -86,7 +86,6 @@ public class CatchHandlerFactory {
 		var altParams = new CatchHandler.AlternativeParams()
 							.withAddress(address)
 							.withExceptionType(typeName);
-		//CatchHandler catchHandler = new CatchHandler(adjectives, pType, dispCatchObj, address, typeDescriptorModel, name);
 		CatchHandler catchHandler = new CatchHandler(adjectives, pType, dispCatchObj, altParams, name);
 		
 		catchHandler.setState(state);

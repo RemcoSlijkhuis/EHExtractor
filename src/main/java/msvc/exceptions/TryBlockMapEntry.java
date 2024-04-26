@@ -140,6 +140,7 @@ public class TryBlockMapEntry {
     /**
      * Retrieves the list of TryBlockMapEntries that are known to be nested in catch handler (catch blocks),
      * but for which the correct catch handlers are not yet known.
+     * 
      * @return The list of TryBlockMapEntries pending to be nested in the correct catch blocks.
      */
 	public List<TryBlockMapEntry> getNestedInCatches() {
@@ -204,7 +205,6 @@ public class TryBlockMapEntry {
 		// To make sure no catch handlers are added or removed; modifying a catch handler itself is ok.
 		return Collections.unmodifiableList(catchHandlers);
 	}
-	
 	
 	public int getMapIndex() {
 		return mapIndex;

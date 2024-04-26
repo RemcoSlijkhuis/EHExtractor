@@ -27,6 +27,7 @@ public class NopInstructionPattern extends InstructionPattern {
 	@Override
 	public boolean matchesImpl(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
 
+		// Do the mnemonic and the number of operands match?
 		if (!instProto.getMnemonic(instContext).equals(this.mnemonic))
 			return false;
 		if (instProto.getNumOperands() != 0)

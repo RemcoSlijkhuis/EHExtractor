@@ -127,6 +127,7 @@ public class AddressInstructionPattern extends InstructionPattern {
 
 	/**
      * Checks if the provided instruction matches this instruction pattern.
+     * This function handles direct addressing instructions.
      *
      * @param inst The instruction to be checked.
      * @param instContext The instruction context of the instruction.
@@ -135,15 +136,19 @@ public class AddressInstructionPattern extends InstructionPattern {
      */
 	@Override
 	public boolean matchesImpl(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
-		
+
 		if (this.instructionType == InstructionType.Indirect)
 			return matchesImplIndirect(inst, instContext, instProto);
 
+		// Are the mnemonic and the number of operands what we are looking for?
 		if (!instProto.getMnemonic(instContext).equals(this.mnemonic))
 			return false;
 		if (instProto.getNumOperands() != 1)
 			return false;
 
+		// Check all operands. (Well, there's just one currently. The code looks a bit funny
+		// because it is set up to be extendible should the need arise to handle instructions
+		// with more operands.)
 		for (int opInd=0; opInd<1; opInd++) {
 			Object[] opObjects = instProto.getOpObjects(opInd, instContext);
 			if (opObjects.length != 1)
@@ -179,9 +184,11 @@ public class AddressInstructionPattern extends InstructionPattern {
 					// matches the address of this function or of one of its (possible) thunks.
 					Address functionAddress = this.function.getEntryPoint();
 
+					// Match with the function address?
 					if (functionAddress.equals(genericAddress))
 						return true;
 
+					// Match with the address of one of the function's thunks?
 					var thunkAddresses = this.function.getFunctionThunkAddresses(true);
 					if (thunkAddresses != null) {
 						for (Address thunkAddress : thunkAddresses) {
@@ -190,21 +197,34 @@ public class AddressInstructionPattern extends InstructionPattern {
 						}
 					}
 					
+					// No, also no match with a thunk address.
 					return false;					
-				}
-				
+				}				
 			}	
 		}
 
+		// We have a match (because it could not be excluded).
 		return true;
 	}
 	
+	/**
+     * Checks if the provided instruction matches this instruction pattern.
+     * This function handles indirect addressing instructions.
+     *
+     * @param inst The instruction to be checked.
+     * @param instContext The instruction context of the instruction.
+     * @param instProto The instruction prototype of the instruction.
+     * @return true if the instruction matches the instruction pattern, false otherwise.
+     */
 	private boolean matchesImplIndirect(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
+
+		// Are the mnemonic and the number of operands what we are looking for?
 		if (!instProto.getMnemonic(instContext).equals(this.mnemonic))
 			return false;
 		if (instProto.getNumOperands() != 2)
 			return false;
 
+		// Check all operands. 
 		for (int opInd=0; opInd<2; opInd++) {
 			Object[] opObjects = instProto.getOpObjects(opInd, instContext);
 
@@ -214,7 +234,7 @@ public class AddressInstructionPattern extends InstructionPattern {
 				
 				Register reg = toRegister(opObjects[0]);
 				if (reg == null || !reg.getName().equals(this.destinationRegister)) {
-					Logger.getLogger("EHExtractor").log(Level.FINER, "Issue with the destination.");
+					Logger.getLogger("EHExtractor").log(Level.FINER, "Issue with the destination register.");
 					return false;
 				}
 			}
@@ -224,13 +244,13 @@ public class AddressInstructionPattern extends InstructionPattern {
 
 				Register reg = toRegister(opObjects[0]);
 				if (reg == null || !reg.getName().equals(this.sourceRegister)) {
-					Logger.getLogger("EHExtractor").log(Level.FINER, "Issue with the source.");
+					Logger.getLogger("EHExtractor").log(Level.FINER, "Issue with the source register.");
 					return false;
 				}
 
 				Scalar scalar = toScalar(opObjects[1]);
 				if (scalar == null || (specificScalar && scalar.getValue() != this.scalarOffset)) {
-					Logger.getLogger("EHExtractor").log(Level.FINER, "Issue with the scalar.");
+					Logger.getLogger("EHExtractor").log(Level.FINER, "Issue with the scalar value.");
 					return false;
 				}
 				else if (!specificScalar) {

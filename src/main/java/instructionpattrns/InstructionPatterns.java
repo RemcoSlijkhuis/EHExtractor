@@ -34,15 +34,17 @@ public class InstructionPatterns {
         
         int instPatternInd = 0;
         int actualInstInd = 0;
-        while (instIter.hasNext()) {  //! && !monitor.isCancelled()) {
+        while (instIter.hasNext()) {
         	Instruction inst = instIter.next();
         	logger.log(Level.FINE, String.format("%02d  ", actualInstInd) + inst.toString());
 
+        	// Store the address of the first instruction. If we don't have match, the start address is the address we should return.
         	if (startAddress == null) {
         		startAddress = inst.getAddress();
         		matchResult = new MatchResult(matched, startAddress);
         	}
         	
+        	// Ignore NOPs if needed.
         	// TODO Handle the case where ignoreNops is true but one of the instruction patterns is actually a NOP.
         	if (ignoreNops) {        		
         		if (nop.matches(inst) ) {
@@ -51,18 +53,23 @@ public class InstructionPatterns {
         		}
         	}
         	
+        	// Do the pattern and the instruction match?
         	if (!instructionPatterns.get(instPatternInd).matches(inst)) {
+        		// No match.
         		matched = false;
         		matchResult = new MatchResult(matched, startAddress);
         		logger.log(Level.FINER, "Instructions not matched.");
     			break;
         	}
 
+        	// There is a match. Advance the instruction and pattern pointers.
         	instPatternInd++;
         	actualInstInd++;
 
+        	// Have we matched all patterns?
     		if (instPatternInd == instructionPatterns.size()) {
     			matched = true;
+    			// Get the next address after the final matched instruction. 
     			// Easy way to get the address after the current instruction possible?
     			Address nextAddress = null;
     			var nextInst = inst.getNext();
@@ -77,7 +84,6 @@ public class InstructionPatterns {
         		logger.log(Level.FINER, "All instructions matched.");
     			break;
     		}
-
         }
 
         return matchResult;

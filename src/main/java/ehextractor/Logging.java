@@ -78,11 +78,12 @@ public class Logging {
      * @return true if successful, false otherwise.
      */
 	private boolean setupLogger() {
-		// First get rid of an annoying ConsoleHandler on a nameless logger
-    	// that Ghidra apparently uses to dump horribly-formatted text (in red) at
+		// First get rid of an unwanted ConsoleHandler on a nameless logger
+    	// that Ghidra apparently uses to dump badly-formatted text (in red) at
     	// random places in the Eclipse Console when you use a logger.
-    	removeAnnoyingConsoleHandler();
+    	removeUnwantedConsoleHandler();
 
+    	// Get or create a logger named "EHExtractor".
     	var logger = Logger.getLogger("EHExtractor");
     	
     	try {
@@ -92,6 +93,7 @@ public class Logging {
     	    // When running the script in Ghidra again without having restarted Ghidra, the
     	    // logger will still be around and have handlers attached (even when having made
     	    // changes in Eclipse); we need to clean up these old handlers.
+    	    // (and also for an analyzer it's a good idea.)
         	removeHandlers(logger);
     	    
     	    /* Configure the logger with handlers and formatters. */
@@ -131,7 +133,7 @@ public class Logging {
 	/**
      * Removes a default console handler that creates duplicate and randomly inserted logging output lines.
      */
-	private static void removeAnnoyingConsoleHandler() {
+	private static void removeUnwantedConsoleHandler() {
     	LogManager manager = LogManager.getLogManager();
     	Logger loggr = manager.getLogger("");
     	var handlers = loggr.getHandlers();
@@ -147,27 +149,12 @@ public class Logging {
      * @param loggr The logger from which to remove all handlers.
      */
 	private static void removeHandlers(Logger loggr) {
-    	reportRemoveHandlers(loggr, false, true);
-    }
-
-	/**
-     * Method to report (deprecated) and/or remove all handlers from the given logger.
-     * @param loggr The logger to process.
-     * @param report Whether or not to report each encountered handler.
-     * @param remove Whether or not to remove each encountered handler.
-     */
-	private static void reportRemoveHandlers(Logger loggr, boolean report, boolean remove) {
 	    if (loggr == null)
 	    	return;
     	var handlers = loggr.getHandlers();
-	    //if (report)
-	    //	println("Nr handlers: " + handlers.length);
 	    for (int i = handlers.length-1; i>=0; i--) {
 	    	var handler = handlers[i];
-	    //	if (report)
-	    //		println("" + i + ": " + handler);
-	    	if (remove)
-	    		loggr.removeHandler(handler);
+    		loggr.removeHandler(handler);
 	    }
     }
 

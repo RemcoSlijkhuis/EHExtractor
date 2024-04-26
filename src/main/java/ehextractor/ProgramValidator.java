@@ -22,7 +22,7 @@ public class ProgramValidator {
      * @return true if the program can be analyzed, false otherwise.
      */
 	public static boolean canAnalyze(Program program, Logger logger) {
-		
+
     	if (!checkCompiler(program, logger)) {
     		if (logger != null)
     			logger.log(Level.INFO, "This executable was not compiled using MSVC.");

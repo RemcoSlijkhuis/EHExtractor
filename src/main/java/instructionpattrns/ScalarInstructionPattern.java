@@ -51,11 +51,15 @@ public class ScalarInstructionPattern extends InstructionPattern {
 	protected boolean matchesImpl(Instruction inst, InstructionContext instContext, InstructionPrototype instProto) {
 		
 		if (this.register.equals("")) {
+			// Instruction pattern is a specific mnemonic and scalar value (e.g. PUSH -1).
+			
+			// Do the mnemonic and the number of operands match?
 			if (!instProto.getMnemonic(instContext).equals(this.mnemonic))
 				return false;
 			if (instProto.getNumOperands() != 1)
 				return false;
 
+			// Check the operand.
 			for (int opInd=0; opInd<1; opInd++) {
 				Object[] opObjects = instProto.getOpObjects(opInd, instContext);
 				if (opObjects.length != 1)
@@ -63,11 +67,11 @@ public class ScalarInstructionPattern extends InstructionPattern {
 				
 				Object opObject = opObjects[opInd];
 				
-				// Scalar?
+				// is it a scalar?
 				if (!(opObject instanceof Scalar))
 					return false;
 				
-				// Now compare the value.
+				// Yes, it's a scalar. Now compare the value.
 				Scalar scalar = (Scalar)opObject;
 				if (scalar.bitLength() != 32)	// TODO hardwire!
 					return false;
@@ -79,11 +83,15 @@ public class ScalarInstructionPattern extends InstructionPattern {
 			}
 		}
 		else {
+			// Instruction pattern is a specific mnemonic and register, and any scalar value (e.g. MOV EAX, 12).
+			
+			// Do the mnemonic and the number of operands match?
 			if (!instProto.getMnemonic(instContext).equals(this.mnemonic))
 				return false;
 			if (instProto.getNumOperands() != 2)
 				return false;
 
+			// Check the operands.
 			for (int opInd=0; opInd<2; opInd++) {
 				Object[] opObjects = instProto.getOpObjects(opInd, instContext);
 				if (opObjects.length != 1)
@@ -92,11 +100,13 @@ public class ScalarInstructionPattern extends InstructionPattern {
 				Object opObject = opObjects[0];
 
 				if (opInd == 0) {
+					// First operand a register, and the right one?
 					Register reg = toRegister(opObject);
 					if (reg == null || !reg.getName().equals(this.register))
 						return false;					
 				}
 				if (opInd == 1) {
+					// Second operand a scalar, and a matching one?
 					if (!(opObject instanceof Scalar))
 						return false;
 
@@ -110,9 +120,7 @@ public class ScalarInstructionPattern extends InstructionPattern {
 					// We have a match. Store the actual scalar, we might have a use for it.
 					this.actualScalar = scalar;
 				}
-				
 			}
-			
 		}
 		return true;
 	}

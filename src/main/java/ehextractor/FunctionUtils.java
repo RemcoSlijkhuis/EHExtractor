@@ -31,12 +31,14 @@ public class FunctionUtils {
 	public static Function findFunction(Program program, String partialName, String partialParentNamespace, boolean dereferenceThunks) {
 		var logger = Logger.getLogger("EHExtractor");
 		
+		// Set up the (partial) namespace string to be matched (if specified).
 		partialName = partialName.toLowerCase();
 		boolean checkParentNamespace = partialParentNamespace != null && !partialParentNamespace.isBlank();
 	    if (checkParentNamespace) {
 	        partialParentNamespace = partialParentNamespace.toLowerCase();
 	    }
 	    
+	    // Loop over all symbols, looking for functions matching the name and namespace criteria.
         FunctionManager functionManager = program.getFunctionManager();
 		SymbolTable symbolTable = program.getSymbolTable();
         SymbolIterator symbolIterator = symbolTable.getAllSymbols(true);
@@ -53,47 +55,44 @@ public class FunctionUtils {
                 if (function == null)
                 	continue;
 
+                // Dereference the found function if needed.
                 if (function.isThunk() && dereferenceThunks) {
-                	//println("  Thunk: " + function.getName() + " @ " + function.getEntryPoint());
                 	function = function.getThunkedFunction(true);
-                	//println("  Thunked function: " + function.getName() + " @ " + function.getEntryPoint());
                 }
 
+                // Name ok?
             	if (!function.getName().toLowerCase().contains(partialName))
             		continue;
 
+            	// Namespace ok?
             	if (checkParentNamespace && !function.getParentNamespace().getName().toLowerCase().contains(partialParentNamespace))
             		continue;
 
+            	// Found a function, matching by name. Add it to the list if not yet seen.
             	if (!functionsByName.contains(function) ) {
                 	functionsByName.add(function);
             	}
             }
             else if (symbol.getSymbolType() == SymbolType.LABEL &&  symbol.getName().toLowerCase().contains(partialName)) {
-            	//logger.log(Level.WARNING, "  SYMBOL FOUND! " + symbol.getName());
-            	//println("  --SymbolType: " + symbol.getSymbolType());
-            	//println("  --Address: " + symbol.getAddress());
-            	
+            	// Symbol found, matching the requested (partial) name.
+
+            	// Is there an actual (known) function at that symbol's address?
             	Function function = functionManager.getFunctionAt(symbol.getAddress());
                 if (function == null) {
-                	//logger.log(Level.WARNING, "  No function found at address of symbol!");
+                	// No function here, let's continue looking.
                 	continue;                	
                 }
                 
-
-            	//logger.log(Level.WARNING, "  Function: " + function.getName());
-            	//logger.log(Level.WARNING, "  --Function.isThunk(): " + function.isThunk());
-            	//logger.log(Level.WARNING, "  --Function.getParentNamespace(): " + function.getParentNamespace());            	
-
+                // Deference the found function, if needed.
                 if (function.isThunk() && dereferenceThunks) {
-                	//logger.log(Level.WARNING, "    xThunk: " + function.getName() + " @ " + function.getEntryPoint());
                 	function = function.getThunkedFunction(true);
-                	//logger.log(Level.WARNING, "    xThunked function: " + function.getName() + " @ " + function.getEntryPoint());
                 }
 
+                // Namespace ok?
             	if (checkParentNamespace && !function.getParentNamespace().getName().toLowerCase().contains(partialParentNamespace))
             		continue;
 
+            	// Found a function, matching by label. Add it to the list if not yet seen.
             	if (!functionsByLabel.contains(function) ) {
                 	functionsByLabel.add(function);
             	}
