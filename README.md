@@ -90,6 +90,7 @@ Running the script requires not only a working installation of Ghidra, but also 
 - Run "EHExtractorScript.java" by double-clicking on it or selecting it and clicking the green play button. The analyzer output will be written to the log file and to the Ghidra console.
 
 <sup>2</sup><span style="font-size:0.75em;"> Once Ghidra has started, the minimum log level and output file location can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</span>
+
 <sup>3</sup><span style="font-size:0.75em;"> Unlike the analyzer version of EHExtractor, the script version will execute the "Shared Return Calls" functionality.</span>
 
 ## Options
