@@ -56,14 +56,16 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	Logger logger = null;
 	
 	public EHExtractorAnalyzer() {
-		// TODO: Correct AnalyzerType? 
-		super("EHExtractor", "Extracts x86 MSVC exception handling construct information.", AnalyzerType.FUNCTION_ANALYZER);
+		// We actually don't want this analyzer to be triggered in an automated fashion.
+		// It makes the most sense to do this as a single-shot analysis.
+		super("EHExtractor", "Extracts x86 MSVC exception handling construct information.", AnalyzerType.BYTE_ANALYZER);
+		super.setSupportsOneTimeAnalysis(true);
 	}
 
 	@Override
 	public boolean getDefaultEnablement(Program program) {
-		// TODO: Change to false when shipping?
-		return true;
+		// Return false to prevent this analyzer from being triggered in an automated fashion.
+		return false;
 	}
 
 	@Override
@@ -107,15 +109,10 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	}
 
 	@Override
-	public boolean added(Program program, AddressSetView set, TaskMonitor monitor, MessageLog log)
-			throws CancelledException {
-
-		// TODO: Perform analysis when things get added to the 'program'.  Return true if the
-		// analysis succeeded.
-
+	public boolean added(Program program, AddressSetView set, TaskMonitor monitor, MessageLog log) throws CancelledException {
+		
 		// Start looking for (and logging) MSVC EH information in the given program. 
 		Logging logging = null;
-
 		try {
 			// Set up logging.			
 			logging = new Logging(logFilePath, logLevel);

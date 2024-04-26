@@ -66,10 +66,11 @@ Running the script requires not only a working installation of Ghidra, but also 
 #### Analyzer
 
 - Start Ghidra and open the binary you want to analyze.
-- Select Analysis/Auto Analyze from the menu.
-- If the binary has not been analyzed before (or previous results were not saved):
+- If the binary has not been analyzed before with the standard set of analyzers (or previous results were not saved):
+	- Select Analysis/Auto Analyze from the menu.
 	- Run the standard set of analyzers on it first.
 	- Follow this up with a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers.
+- Select Analysis/Auto Analyze from the menu.
 - Select EHExtractor and enabled it if not yet enabled<sup>1</sup>.
 - Adjust the minimum logging level and the location of the output file to your liking. (See the [options](#options) section for an explanation of the possible values.)
 - Click Analyze. The analyzer output will be written to the log file.
