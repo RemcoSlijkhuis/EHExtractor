@@ -231,35 +231,6 @@ public class CatchHandler implements ITryCatch {
 		return typeName;
 	}
 	
-	// TODO: Can go, right?
-	public List<String> getInfoLines() {
-		List<String> lines = new ArrayList<String>();
-
-		lines.add("adjectives: " + String.format("%08x", adjectives.hashCode()));
-		lines.add("pType: " + pType);
-		lines.add("dispCatchObj: " + dispCatchObj);
-		lines.add("address: " + address);
-		lines.add("typeDescriptor: " + typeDescriptor);
-		lines.add("type name: " + typeName);
-		lines.add("handler name: " + handlerName);
-		if (typeDescriptor != null) {
-			lines.add("getDemangledTypeDescriptor: " + typeDescriptor.getDemangledTypeDescriptor());
-			lines.add("getDescriptorName: " + typeDescriptor.getDescriptorName());
-			try {
-				lines.add("getTypeName: " + typeDescriptor.getTypeName());
-			} catch (InvalidDataTypeException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			lines.add("getRefType: " + typeDescriptor.getRefType());
-			lines.add("getParentNamespace: " + typeDescriptor.getParentNamespace());
-			lines.add("getDescriptorTypeNamespace: " + typeDescriptor.getDescriptorTypeNamespace());
-			
-		}
-		
-		return lines;
-	}
-
     /**
      * Describes the (possibly nested) layout of this catch block.
      *

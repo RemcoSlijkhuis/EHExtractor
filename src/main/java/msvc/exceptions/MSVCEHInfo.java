@@ -79,7 +79,7 @@ public class MSVCEHInfo {
 			return;
 		}
 
-		/* Determine the layout of the try/catch blocks as much as possible just from the tryBlockMap. */
+		// Determine the layout of the try/catch blocks as much as possible just from the tryBlockMap.
 		ArrayList<TryBlockMapEntry> outerTryBlockMapEntries = determineLayout(tryBlockMapEntries);
 
 		// Show what we now know about the try/catch block structures.
@@ -106,11 +106,11 @@ public class MSVCEHInfo {
 			return;
 		}
 
+		// Refine and double-check the layout of the try/catch blocks by applying unwind information.
 		logger.log(Level.FINE, "Applying unwind information.");
 		for (int i=0; i<unwindMap.getCount(); i++) {
 			logger.log(Level.FINER, "From " + i + " to " + unwindMap.getToState(i));
 		}
-
 		HashSet<Integer> knownStates = new HashSet<Integer>();
 		for (var outer : outerTryBlockMapEntries) {
 			recurse(outer, null, knownStates, unwindMap, "");
@@ -159,7 +159,7 @@ public class MSVCEHInfo {
 	 * @return A list of 'outer' TryBlockMapEntries; any nested entries will have been added as such to these outer ones.
 	 */
 	public static ArrayList<TryBlockMapEntry> determineLayout(List<TryBlockMapEntry> tryBlockMapEntries) {
-		Logger.getLogger("EHExtractor").log(Level.FINE, "Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.");
+		Logger.getLogger("EHExtractor").log(Level.FINE, "Going to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.");
 
 		// Sort the tryBlockMapEntries in DESCENDING order of their tryLow value.
 		var tryLowComparator =  new TryLowComparator();
@@ -170,15 +170,9 @@ public class MSVCEHInfo {
 		for (var tryBlockMapEntry : tryBlockMapEntries) {
 			var tryHigh = tryBlockMapEntry.getTryHigh();
 			var catchHigh = tryBlockMapEntry.getCatchHigh();
-			
-			var nestingInTry = tryBlockMapEntry.nestingInTry();				
-			var nestingInCatches = tryBlockMapEntry.nestingInCatches();
-			var isLeaf = tryBlockMapEntry.isLeaf();
-			var isSingletLeaf = tryBlockMapEntry.isSingletLeaf();
-			
-			// TODO Make unit tests for this!
 
 			// If this is a leaf, it can only be nested itself inside another try or catch block we haven't encountered yet: put it on the todo list.
+			var isLeaf = tryBlockMapEntry.isLeaf();
 			if (isLeaf) {
 				todo.add(tryBlockMapEntry);
 				continue;
@@ -264,7 +258,7 @@ public class MSVCEHInfo {
 		logger.log(Level.FINE, prefix+"Handling current's try block.");
 		// Get the state of the try block for the current/child TryBlockMapEntry and
 		// look up the state to which it will unwind; it should match the state of the parent.
-		var tryState = current.getTryBlock().getState();  //current.getTryLow();
+		var tryState = current.getTryBlock().getState();
 		var tryToState = unwindMap.getToState(tryState);
 		logger.log(Level.FINE, prefix+"Current try state "+tryState+" unwinds to toState "+tryToState);
 		knownStates.add(tryState);
@@ -439,37 +433,7 @@ public class MSVCEHInfo {
 		else {
 			logger.log(Level.FINE, prefix+"Parent is null so cannot do anything for it.");
 		}
-		// TODO Can I know anything about what a valid parent state would be?
-		
-	}
-
-	// TODO: Can go, right?
-	public List<String> getInfoLines() {
-		List<String> lines = new ArrayList<String>();
-		
-		lines.add("magicNumber: " + String.format("%08x", magicNumber));
-		lines.add("bbtFlags: " + String.format("%3s", Integer.toBinaryString(bbtFlags)).replace(' ', '0'));
-		lines.add("maxState: " + maxState);
-		lines.add("pUnwindMap: " + pUnwindMap);
-		lines.add("nTryBlocks: " + nTryBlocks);
-		lines.add("pTryBlockMap: " + pTryBlockMap);
-		lines.add("nIPMapEntries: " + nIPMapEntries);
-		lines.add("pIPToStateMap: " + pIPToStateMap);
-		lines.add("pESTypeList: " + pESTypeList);
-		lines.add("ehFlags: " + String.format("%08x", ehFlags));
-
-		if (tryBlockMapEntries != null) {
-			for (int i = 0; i < tryBlockMapEntries.size(); i++) {
-				lines.add("  TryBlockMapENtry " + i + ":");
-				var tbmeLines = tryBlockMapEntries.get(i).getInfoLines();
-				for (var tbmeLine : tbmeLines) {
-					lines.add("  " + tbmeLine);
-				}			
-			}
-	
-		}
-
-		return lines;
+		// TODO Can I know anything about what a valid parent state would be?		
 	}
 
 }

@@ -22,7 +22,8 @@ import loggingbridge.GhidraScriptHandler;
  * Output is logged to both a file and to the Ghidra console.
  */
 public class EHExtractorScript extends GhidraScript {
-	final Level LOG_LEVEL = Level.ALL;
+	// The minimum log level. Level.INFO is the most useful one for everyday use.
+	final Level LOG_LEVEL = Level.INFO;
 
 	Logger logger = null;
 	FileHandler fh = null;

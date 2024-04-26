@@ -234,26 +234,6 @@ public class TryBlockMapEntry {
 		return String.format("TryBlockMapEntry [%d]\t%d-%d,%d,%d", mapIndex, tryLow, tryHigh, catchHigh, nCatches);
 	}
 
-	// TODO: Can go, right?
-	public List<String> getInfoLines() {
-		List<String> lines = new ArrayList<String>();
-
-		lines.add("tryLow: " + tryLow);
-		lines.add("tryHigh: " + tryHigh);
-		lines.add("catchHigh: " + catchHigh);
-		lines.add("nCatches: " + nCatches);
-		lines.add("pHandlerArray: " + pHandlerArray);
-
-		for (int i = 0; i < catchHandlers.size(); i++) {
-			lines.add("CatchHandler " + i + ":");
-			var chLines = catchHandlers.get(i).getInfoLines();
-			for (var chLine : chLines) {
-				lines.add("  " + chLine);
-			}			
-		}
-		return lines;
-	}
-
     /**
      * Describes the (possibly nested) layout of this TryBlockMapEntry.
      *
