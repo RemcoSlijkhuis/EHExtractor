@@ -15,6 +15,7 @@
  */
 package ehextractor;
 
+import java.io.File;
 import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,12 +42,13 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	 * Enumerates the available minimum log levels to choose from.
 	 */
 	public enum LogLevelEnum {
-	    FINER, FINE, INFO, WARNING, SEVERE;
+	    FINER, FINE, INFO;
 	}
 
 	private static final String OPTION_LOG_FILE_PATH = "Log file path";
 	private static final String OPTION_LOG_LEVEL = "Minimum log level";
 	private static final LogLevelEnum OPTION_LOG_LEVEL_DEFAULT = LogLevelEnum.INFO;
+	private static final File OPTION_LOG_FILE_PATH_DEFAULT = Paths.get(System.getProperty("user.home"), "Documents", "ehextractor.log").toFile();
 
 	private String logFilePath = null;
 	private Level logLevel = Level.ALL;
@@ -67,9 +69,8 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	@Override
 	public boolean canAnalyze(Program program) {
 
-		// TODO: Examine 'program' to determine if this analyzer should analyze it.  Return true
-		// if it can.
-
+		// Check that the binary is an MSVC-compiled x86 binary.
+		// Only then does it make sense to run this analyzer. 
 		var result = ProgramValidator.canAnalyze(program, null);		
 		if (!result) {
 			Log.info("EHExtractor cannot analyze the binary as it is not 32-bit x86 MSVC-compiled.");
@@ -80,7 +81,7 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	@Override
 	public void registerOptions(Options options, Program program) {
 		options.registerOption(OPTION_LOG_LEVEL, OPTION_LOG_LEVEL_DEFAULT, null, "Minimum log level.");
-		options.registerOption(OPTION_LOG_FILE_PATH, OptionType.FILE_TYPE, Paths.get(System.getProperty("user.home"), "Documents", "ehextractor.log").toFile(), null, "Path to the log file.");
+		options.registerOption(OPTION_LOG_FILE_PATH, OptionType.FILE_TYPE, OPTION_LOG_FILE_PATH_DEFAULT, null, "Path to the log file.");
 	}
 
 	@Override
@@ -100,10 +101,6 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	            return Level.FINE;
 	        case INFO:
 	            return Level.INFO;
-	        case WARNING:
-	            return Level.WARNING;
-	        case SEVERE:
-	            return Level.SEVERE;
 	        default:
 	            return Level.INFO;
 	    }
@@ -116,6 +113,7 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 		// TODO: Perform analysis when things get added to the 'program'.  Return true if the
 		// analysis succeeded.
 
+		// Start looking for (and logging) MSVC EH information in the given program. 
 		Logging logging = null;
 
 		try {
@@ -126,14 +124,17 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	    		return false;
 	    	}
 
+    		// Log global information about the file and set up some required internal objects.
     		var ehExtractor = new EHExtractor(program);
     		if (!ehExtractor.isAllOk()) {
     			return false;
     		}
+    		// Everything ready to go. Let's look for EH constructs!
     		ehExtractor.showFunctionInfos();
     		
 		}
 		finally {
+    		// Close the file used for logging.
 			logging.close();
 		}
 		

@@ -70,22 +70,25 @@ public class FunctionUtils {
             	}
             }
             else if (symbol.getSymbolType() == SymbolType.LABEL &&  symbol.getName().toLowerCase().contains(partialName)) {
-            	//println("  SYMBOL FOUND! " + symbol.getName());
+            	//logger.log(Level.WARNING, "  SYMBOL FOUND! " + symbol.getName());
             	//println("  --SymbolType: " + symbol.getSymbolType());
             	//println("  --Address: " + symbol.getAddress());
             	
             	Function function = functionManager.getFunctionAt(symbol.getAddress());
-                if (function == null)
-                	continue;
+                if (function == null) {
+                	//logger.log(Level.WARNING, "  No function found at address of symbol!");
+                	continue;                	
+                }
+                
 
-                //println("  --Function: " + function.getName());
-            	//println("  --Function.isThunk(): " + function.isThunk());
-            	//println("  --Function.getParentNamespace(): " + function.getParentNamespace());            	
+            	//logger.log(Level.WARNING, "  Function: " + function.getName());
+            	//logger.log(Level.WARNING, "  --Function.isThunk(): " + function.isThunk());
+            	//logger.log(Level.WARNING, "  --Function.getParentNamespace(): " + function.getParentNamespace());            	
 
                 if (function.isThunk() && dereferenceThunks) {
-                	//println("    xThunk: " + function.getName() + " @ " + function.getEntryPoint());
+                	//logger.log(Level.WARNING, "    xThunk: " + function.getName() + " @ " + function.getEntryPoint());
                 	function = function.getThunkedFunction(true);
-                	//println("    xThunked function: " + function.getName() + " @ " + function.getEntryPoint());
+                	//logger.log(Level.WARNING, "    xThunked function: " + function.getName() + " @ " + function.getEntryPoint());
                 }
 
             	if (checkParentNamespace && !function.getParentNamespace().getName().toLowerCase().contains(partialParentNamespace))

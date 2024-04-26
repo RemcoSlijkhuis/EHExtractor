@@ -1,10 +1,9 @@
-//TODO Deze komt uit TestModuleProject
-//@author 
-//@category _NEW_
+//This script extracts x86 MSVC exception handling information from binaries and writes it to a log file and the console.
+//@author Remco Slijkhuis
+//@category C++
 //@keybinding 
 //@menupath 
 //@toolbar 
-
 
 import ghidra.app.script.GhidraScript;
 
@@ -29,6 +28,7 @@ public class EHExtractorScript extends GhidraScript {
 	FileHandler fh = null;
 		
     public void run() throws Exception {
+    	
 		// Set up a proper logger first. Exit when there are problems doing so.
     	// Note that the logger will by default log to a file but when we're running as a script,
     	// output to the console is very convenient. So, let's add a Ghidra script/console-specific handler.
@@ -56,11 +56,12 @@ public class EHExtractorScript extends GhidraScript {
     		// partial job. The following call will (re)do the analysis and produce complete results.
     		SharedReturnCalls.discover(currentProgram, monitor, logger);
 
-
+    		// Log global information about the file and set up some required internal objects.
     		var ehExtractor = new EHExtractor(currentProgram);
     		if (!ehExtractor.isAllOk()) {
     			return;
     		}
+    		// Everything ready to go. Let's look for EH constructs!
     		ehExtractor.showFunctionInfos();
 
     	}
