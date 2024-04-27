@@ -246,11 +246,12 @@ public class MSVCEHInfo {
 
 		logger.log(Level.FINE, prefix+"Looking at current's try block. State is " + current.getTryLow());
 		
-		// TODO Hm #2... Should make this depth-first.				
+		// First do everything nested in the current try block.
 		if (current.nestingInTry()) {
 			logger.log(Level.FINE, prefix+"Going into try/catches nested in current's try block.");
 			// We need to have the states of all try blocks that are direct descendants of the current try block
-			// in order to assign the proper states to their catch blocks.
+			// in order to assign the proper states to their catch blocks. That's why we collect these states
+			// before calling recurse for each 'try child'.
 			for (var child : current.getNestedInTry()) {
 				knownStates.add(child.getTryLow());
 			}
@@ -259,10 +260,11 @@ public class MSVCEHInfo {
 			}
 		}
 
-		// Now handle the current try.
+		// Now handle the current try block itself.
 		logger.log(Level.FINE, prefix+"Handling current's try block.");
-		// Get the state of the try block for the current/child TryBlockMapEntry and
-		// look up the state to which it will unwind; it should match the state of the parent.
+
+		// Get the state of the try block for the current TryBlockMapEntry and look
+		// up the state to which it will unwind; it should match the state of its parent.
 		var tryState = current.getTryBlock().getState();
 		var tryToState = unwindMap.getToState(tryState);
 		logger.log(Level.FINE, prefix+"Current try state "+tryState+" unwinds to toState "+tryToState);
@@ -288,20 +290,19 @@ public class MSVCEHInfo {
 		else {
 			logger.log(Level.FINE, prefix+"Parent is null so cannot do anything for it.");
 		}
-		// TODO Can I know anything about what a valid parent state would be?
 
 		// Now it's catch block handling time.
 
 		// First handle anything that is nested in this TryBlockMapEntry's catch blocks. 
 		if (current.nestingInCatches()) {
 			logger.log(Level.FINE, prefix+"Going into try/catches nested in current's catch blocks.");
-			// Things can already be nested in specific catch handlers.
+			// Some TryBlockMapEntries may already be nested in specific catch handlers. Let's do these first.
 			for (var catchHandler : current.getCatchHandlers()) {
 				for (var child : catchHandler.getNested()) {
 					recurse(child, catchHandler, knownStates, unwindMap, prefix+"  ");
 				}
 			}
-			// For other things, we may know that they are nested in some catch handler(s), but we
+			// For other TryBlockMapEntries, we may know that they are nested in some catch handler(s), but we
 			// don't know in which.
 			for (var child : current.getToBeNestedInCatches()) {
 				// TODO The parent is null here, which may pose problems in some cases; I think...
@@ -311,9 +312,9 @@ public class MSVCEHInfo {
 		
 		// Now handle the current TryBlockMapEntry's catches.
 		logger.log(Level.FINE, prefix+"Handling current's catch blocks.");
-		// I should have a valid parent state (if I have a parent) because we handled the try block first.
-		// TODO "because we handled the try block first"... does that make sense?
 
+		// I should have a valid parent state (if I have a parent) because we handled the try block first
+		// (and a state mismatch would have resulted in an exit), but let's double-check.
 		if (parent != null && !parent.hasValidState()) {
 			var msg = "Expected to have a valid parent state by now!";
 			logger.log(Level.SEVERE, prefix+msg);
@@ -329,116 +330,107 @@ public class MSVCEHInfo {
 		}
 		logger.log(Level.FINE, prefix + "targetToState determined to be " + targetToState);
 		
-		if (true || parent != null) {
+		List<Integer> currentsNewCatchBlockStates = new ArrayList<Integer>();
 
-			//var targetToState = parent.getState(); // Checked while handling the try block to which this catch block belongs.
-
-			List<Integer> currentsNewCatchBlockStates = new ArrayList<Integer>();
-
-			for (var catchHandler : current.getCatchHandlers()) {
-				// If we already know this catch block's state there is no need to do anything.
-				if (catchHandler.hasValidState()) {
-					logger.log(Level.FINE, prefix+"State already determined for this catch block (it's "+catchHandler.getState()+").");
-					continue;
-				}
-				
-				// Get the list of all 'from' states that have not been assigned to a try or catch block yet.
-				// One of these must be the one for this catch block.
-				var allNotYetKnownFromStates = new ArrayList<Integer>();
-				var nrUnwindMapEntries = unwindMap.getCount();
-				for (var unwindOrdinal = 0; unwindOrdinal < nrUnwindMapEntries; unwindOrdinal++) {
-					if (knownStates.contains(unwindOrdinal))  // && !currentsCatchBlockStates.contains(unwindOrdinal))
-						continue;
-					var toState = unwindMap.getToState(unwindOrdinal);
-					if (toState != targetToState)
-						continue;
-					allNotYetKnownFromStates.add(unwindOrdinal);
-				}
-
-				// Now determine the state of the current catch block.
-				logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
-
-				var strTryStates = prefix+"- Known (try?) states: ";
-				for (var knownState : knownStates) {
-					strTryStates += knownState + ",";
-				}
-				logger.log(Level.FINE, strTryStates);
-
-				var strCatchStates = prefix+"- Possible catch states: ";
-				for (var i=0; i<allNotYetKnownFromStates.size(); i++) {
-					strCatchStates += allNotYetKnownFromStates.get(i) + ",";
-				}
-				logger.log(Level.FINE, strCatchStates);
-				
-				if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 0) {
-					var msg = "Did not find any possible states for catch blocks!";
-					logger.log(Level.SEVERE, prefix+msg);
-					throw new InvalidDataTypeException(msg);
-				}
-				else if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
-					logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
-					var catchState = currentsNewCatchBlockStates.get(0);
-					logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-					catchHandler.setState(catchState);
-					continue;
-				}
-				else if (allNotYetKnownFromStates.size() > 1) {
-					var msg = "Found multiple possible states for catch blocks, trying to limit them.";
-					logger.log(Level.FINE, prefix+msg);
-					var tempStates = new ArrayList<Integer>();
-					for (var tempState : allNotYetKnownFromStates) {
-						if (tempState > current.getTryLow()) {
-							tempStates.add(tempState);
-						}
-					}
-					allNotYetKnownFromStates = tempStates;
-				}
-
-				if (allNotYetKnownFromStates.size() == 0) {
-					var msg = "Did not find any possible states for catch blocks with a value higher than the try block!";
-					logger.log(Level.SEVERE, prefix+msg);
-					throw new InvalidDataTypeException(msg);
-				}
-				else if (allNotYetKnownFromStates.size() == 1) {
-					logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
-					var catchState = allNotYetKnownFromStates.get(0);
-					logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-					catchHandler.setState(catchState);
-					knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
-					currentsNewCatchBlockStates.add(catchState);
-				}
-				else if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
-					logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
-					var catchState = currentsNewCatchBlockStates.get(0);
-					logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-					catchHandler.setState(catchState);
-				}
-				else {
-					var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
-					logger.log(Level.FINE, prefix+msg);
-					
-					// It can be really simple...
-					if (current.getTryLow() == current.getTryHigh() && current.getCatchHigh() == current.getTryHigh()+1) {
-						var catchState = current.getTryHigh()+1;
-						if (allNotYetKnownFromStates.contains(catchState)) {
-							logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-							catchHandler.setState(catchState);
-							knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
-							currentsNewCatchBlockStates.add(catchState);
-							continue;
-						}
-					}					
-					
-					msg = "No, cannot determine the catch block state!";
-					throw new InvalidDataTypeException(msg);
-				}
-				
+		for (var catchHandler : current.getCatchHandlers()) {
+			// If we already know this catch block's state there is no need to do anything.
+			if (catchHandler.hasValidState()) {
+				logger.log(Level.FINE, prefix+"State already determined for this catch block (it's "+catchHandler.getState()+").");
+				continue;
 			}
+			
+			// Get the list of all 'from' states that have not been assigned to a try or catch block yet.
+			// One of these must be the one for this catch block.
+			var allNotYetKnownFromStates = new ArrayList<Integer>();
+			var nrUnwindMapEntries = unwindMap.getCount();
+			for (var unwindOrdinal = 0; unwindOrdinal < nrUnwindMapEntries; unwindOrdinal++) {
+				if (knownStates.contains(unwindOrdinal))  // && !currentsCatchBlockStates.contains(unwindOrdinal))
+					continue;
+				var toState = unwindMap.getToState(unwindOrdinal);
+				if (toState != targetToState)
+					continue;
+				allNotYetKnownFromStates.add(unwindOrdinal);
+			}
+
+			// Now determine the state of the current catch block.
+			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
+
+			var strTryStates = prefix+"- Known (try?) states: ";
+			for (var knownState : knownStates) {
+				strTryStates += knownState + ",";
+			}
+			logger.log(Level.FINE, strTryStates);
+
+			var strCatchStates = prefix+"- Possible catch states: ";
+			for (var i=0; i<allNotYetKnownFromStates.size(); i++) {
+				strCatchStates += allNotYetKnownFromStates.get(i) + ",";
+			}
+			logger.log(Level.FINE, strCatchStates);
+			
+			if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 0) {
+				var msg = "Did not find any possible states for catch blocks!";
+				logger.log(Level.SEVERE, prefix+msg);
+				throw new InvalidDataTypeException(msg);
+			}
+			else if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
+				logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
+				var catchState = currentsNewCatchBlockStates.get(0);
+				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+				catchHandler.setState(catchState);
+				continue;
+			}
+			else if (allNotYetKnownFromStates.size() > 1) {
+				var msg = "Found multiple possible states for catch blocks, trying to limit them.";
+				logger.log(Level.FINE, prefix+msg);
+				var tempStates = new ArrayList<Integer>();
+				for (var tempState : allNotYetKnownFromStates) {
+					if (tempState > current.getTryLow()) {
+						tempStates.add(tempState);
+					}
+				}
+				allNotYetKnownFromStates = tempStates;
+			}
+
+			if (allNotYetKnownFromStates.size() == 0) {
+				var msg = "Did not find any possible states for catch blocks with a value higher than the try block!";
+				logger.log(Level.SEVERE, prefix+msg);
+				throw new InvalidDataTypeException(msg);
+			}
+			else if (allNotYetKnownFromStates.size() == 1) {
+				logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
+				var catchState = allNotYetKnownFromStates.get(0);
+				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+				catchHandler.setState(catchState);
+				knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
+				currentsNewCatchBlockStates.add(catchState);
+			}
+			else if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
+				logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
+				var catchState = currentsNewCatchBlockStates.get(0);
+				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+				catchHandler.setState(catchState);
+			}
+			else {
+				var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
+				logger.log(Level.FINE, prefix+msg);
+				
+				// It can be really simple...
+				if (current.getTryLow() == current.getTryHigh() && current.getCatchHigh() == current.getTryHigh()+1) {
+					var catchState = current.getTryHigh()+1;
+					if (allNotYetKnownFromStates.contains(catchState)) {
+						logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+						catchHandler.setState(catchState);
+						knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
+						currentsNewCatchBlockStates.add(catchState);
+						continue;
+					}
+				}					
+				
+				msg = "No, cannot determine the catch block state!";
+				throw new InvalidDataTypeException(msg);
+			}
+			
 		}
-		else {
-			logger.log(Level.FINE, prefix+"Parent is null so cannot do anything for it.");
-		}
-		// TODO Can I know anything about what a valid parent state would be?		
 	}
 
 }
