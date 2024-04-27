@@ -6,6 +6,9 @@ import org.junit.Test;
 
 import msvc.exceptions.*;
 
+/**
+ * unit tests for TryBlock. Could be extended to use the resources containing output layouts for more variety.
+ */
 public class TryBlockTest {
 
 	protected TryBlock tryBlock_0_10;

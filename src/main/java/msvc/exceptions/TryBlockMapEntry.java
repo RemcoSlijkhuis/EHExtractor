@@ -161,6 +161,9 @@ public class TryBlockMapEntry {
 	
     /**
      * Nests a TryBlockMapEntry in the try block associated with the current TryBlockMapEntry.
+     * Note that this method is intended for constructing based on existing structures and not
+     * for constructing new structures from scratch; hence, value like tryHigh will not be updated!
+     * 
      * @param tryBlockMapEntry The TryBlockMapEntry to nest in the try block.
      */
 	public void nestInTry(TryBlockMapEntry tryBlockMapEntry) {
@@ -172,6 +175,9 @@ public class TryBlockMapEntry {
      * If there is a single catch handler, the TryBlockMapEntry will be nested in that handler;
      * if there are multiple catch handlers, The TryBlockMapEntry will be accepted, but the
      * correct handler will have to be determined later.
+     * Note that this method is intended for constructing based on existing structures and not
+     * for constructing new structures from scratch; hence, value like catchHigh will not be updated!
+     * 
      * @param tryBlockMapEntry The TryBlockMapEntry to nest in a catch handler.
      */
 	public void nestInCatches(TryBlockMapEntry tryBlockMapEntry) {

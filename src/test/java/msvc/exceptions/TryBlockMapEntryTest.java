@@ -14,6 +14,9 @@ import ghidra.program.model.scalar.Scalar;
 
 import msvc.exceptions.*;
 
+/**
+ * Unit tests for TryBlockMapEntry. Could be extended to use the resources containing output layouts for more variety.
+ */
 public class TryBlockMapEntryTest {
 
 	protected TryBlockMapEntry tryBlockMapEntry;
@@ -101,35 +104,36 @@ public class TryBlockMapEntryTest {
 		assertEquals(0, tryBlockMapEntry.getNestedInTry().size());
 	}
 
-	@Test
-	public void testGetNestedInTry() {
-		fail("Not yet implemented");
-	}
+// This unit test will become useful when more complex structures are introduced using the output layout resources.
+//	@Test
+//	public void testGetNestedInTry() {
+//		fail("Not yet implemented");
+//	}
 
 	@Test
 	public void testGetNestedInCatchesEmpty() {
 		assertEquals(0, tryBlockMapEntry.getNestedInCatches().size());
 	}
 
-	@Test
-	public void testGetNestedInCatches() {
-		fail("Not yet implemented");
-	}
+// This unit test will become useful when more complex structures are introduced using the output layout resources.
+//	@Test
+//	public void testGetNestedInCatches() {
+//		fail("Not yet implemented");
+//	}
 
-	@Test
-	public void testNestInTry() {
-		var tryBlockToNest = new TryBlock(10, 10);
-		//tryBlockMapEntry.nestInTry(tryBlockMapEntryToNest);
-		
-		// Hm... After nesting something, tryLow and tryHigh might change! Should check this. 
-		
-		fail("Not yet implemented");
-	}
+// Current nestInTry method is intended for constructing based on existing structures and not for constructing new structures from scratch.
+// As such, the only thing that currently happens in nestInTry is adding an object to a list. This is not very useful to unit test.
+//	@Test
+//	public void testNestInTry() {
+//		fail("Not yet implemented");
+//	}
 
-	@Test
-	public void testNestInCatches() {
-		fail("Not yet implemented");
-	}
+// Current nestInCatches method is intended for constructing based on existing structures and not for constructing new structures from scratch.
+// As such, the only thing that currently happens in nestInCatches is adding an object to a list. This is not very useful to unit test.
+//	@Test
+//	public void testNestInCatches() {
+//		fail("Not yet implemented");
+//	}
 
 	@Test
 	public void testGetTryBlock() {

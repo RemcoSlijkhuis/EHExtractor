@@ -161,7 +161,12 @@ public class MSVCEHInfo {
 	public static ArrayList<TryBlockMapEntry> determineLayout(List<TryBlockMapEntry> tryBlockMapEntries) {
 		Logger.getLogger("EHExtractor").log(Level.FINE, "Going to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.");
 
-		// Sort the tryBlockMapEntries in DESCENDING order of their tryLow value.
+		// Sort the tryBlockMapEntries in DESCENDING order of their tryLow values.
+		// This takes into account the observed ordering of state values the compiler imposes.
+		// By processing the TryBlockMapEntries in descending order of their tryLow values,
+		// we ensure that we start with the last/deepest nested try/block maps first, making
+		// the determination of parents and nesting simpler and more performant, compared
+		// to an unsorted approach.
 		var tryLowComparator =  new TryLowComparator();
 		Collections.sort(tryBlockMapEntries, tryLowComparator.reversed());
 

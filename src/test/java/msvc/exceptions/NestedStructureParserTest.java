@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
+/**
+ * Unit tests for the parser for the output produced by EHExtractor, for use in unit tests.
+ */
 public class NestedStructureParserTest {
 
 	private NestedStructureParser nsp;

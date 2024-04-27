@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * A parser for the output produced by EHExtractor, for use in unit tests.
+ */
 public class NestedStructureParser {
 	
     private Stack<Object> stack = new Stack<>();

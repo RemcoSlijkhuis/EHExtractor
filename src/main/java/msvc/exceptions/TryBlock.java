@@ -76,6 +76,8 @@ public class TryBlock implements ITryCatch {
 
     /**
      * Adds a nested TryBlockMapEntry to this try block.
+     * Note that this method is intended for constructing based on existing structures and not
+     * for constructing new structures from scratch; hence, value like tryHigh will not be updated!
      *
      * @param tryBlockMapEntry The TryBlockMapEntry to nest.
      */

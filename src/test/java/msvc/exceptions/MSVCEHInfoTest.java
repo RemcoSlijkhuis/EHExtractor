@@ -19,6 +19,10 @@ import ghidra.program.model.data.InvalidDataTypeException;
 
 import msvc.exceptions.*;
 
+/**
+ * Unit tests for MSVCEHInfo. Currently mostly for the 'recurse' method as this is the most
+ * complex method in this class.
+ */
 public class MSVCEHInfoTest {
 
 	protected TryBlockMapEntry tryBlockMapEntry0;

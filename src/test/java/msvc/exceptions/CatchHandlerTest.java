@@ -11,6 +11,9 @@ import ghidra.program.model.scalar.Scalar;
 
 import msvc.exceptions.*;
 
+/**
+ * Unit tests for CatchHandler. Could be extended to use the resources containing output layouts for more variety.
+ */
 public class CatchHandlerTest {
 
 	protected CatchHandler catchHandler;

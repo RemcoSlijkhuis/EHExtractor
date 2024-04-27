@@ -5,6 +5,9 @@ import org.junit.Test;
 
 import msvc.exceptions.*;
 
+/**
+ * Unit tests for the generic Range class.
+ */
 public class RangeTest {
 
 	@Test
