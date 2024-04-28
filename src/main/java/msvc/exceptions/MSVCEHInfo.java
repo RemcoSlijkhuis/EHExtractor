@@ -311,18 +311,9 @@ public class MSVCEHInfo {
 				continue;
 			}
 			
-			// Get the list of all 'from' states that have not been assigned to a try or catch block yet.
-			// One of these must be the one for this catch block.
-			var allNotYetKnownFromStates = new ArrayList<Integer>();
-			var nrUnwindMapEntries = unwindMap.getCount();
-			for (var unwindOrdinal = 0; unwindOrdinal < nrUnwindMapEntries; unwindOrdinal++) {
-				if (knownStates.contains(unwindOrdinal))  // && !currentsCatchBlockStates.contains(unwindOrdinal))
-					continue;
-				var toState = unwindMap.getToState(unwindOrdinal);
-				if (toState != targetToState)
-					continue;
-				allNotYetKnownFromStates.add(unwindOrdinal);
-			}
+			// Get the list of all 'from' states that have not been assigned to a try or catch block yet AND that
+			// unwind to the correct state (targetToState). One of these must be the one for this catch block.
+			ArrayList<Integer> allNotYetKnownFromStates = getUnassignedFromStates(unwindMap, knownStates, targetToState);
 
 			// Now determine the state of the current catch block.
 			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
@@ -452,6 +443,29 @@ public class MSVCEHInfo {
 			logger.log(Level.SEVERE, prefix+msg);
 			throw new InvalidDataTypeException(msg);
 		}
+	}
+
+	/**
+	 * Returns the 'from states' from the unwind map that have not yet been assigned to a try or catch block and that unwind to the given targetToState. 
+	 * 
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param knownStates The already-assigned states.
+	 * @param targetToState The state a 'from state' should unwind to.
+	 * @return A list of 'from states' that have not yet been assigned to a try or catch block.
+	 * @throws InvalidDataTypeException If there is a problem accessing the unwind map.
+	 */
+	private static ArrayList<Integer> getUnassignedFromStates(UnwindMap unwindMap, HashSet<Integer> knownStates, Integer targetToState) throws InvalidDataTypeException {
+		var allNotYetKnownFromStates = new ArrayList<Integer>();
+		var nrUnwindMapEntries = unwindMap.getCount();
+		for (var unwindOrdinal = 0; unwindOrdinal < nrUnwindMapEntries; unwindOrdinal++) {
+			if (knownStates.contains(unwindOrdinal))
+				continue;
+			var toState = unwindMap.getToState(unwindOrdinal);
+			if (toState != targetToState)
+				continue;
+			allNotYetKnownFromStates.add(unwindOrdinal);
+		}
+		return allNotYetKnownFromStates;
 	}
 
 }
