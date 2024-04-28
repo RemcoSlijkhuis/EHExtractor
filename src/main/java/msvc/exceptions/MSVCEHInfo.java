@@ -327,8 +327,7 @@ public class MSVCEHInfo {
 			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
 
 			// Display some debugging information about the known states and the possible catch block states.
-			logStatesLine(knownStates, prefix+"- Known states: ", Level.FINE, logger);
-			logStatesLine(allNotYetKnownFromStates, prefix+"- Possible catch states: ", Level.FINE, logger);
+			logStates(knownStates, possibleStates, prefix, logger);
 
 			if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() != 1) {
 				var msg = "Did not find any possible states for catch blocks!";
@@ -345,10 +344,7 @@ public class MSVCEHInfo {
 			else if (allNotYetKnownFromStates.size() == 1) {
 				logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
 				var catchState = allNotYetKnownFromStates.get(0);
-				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-				catchHandler.setState(catchState);
-				knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
-				currentsNewCatchBlockStates.add(catchState);
+				assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
 			}
 			else {
 				var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
@@ -358,10 +354,7 @@ public class MSVCEHInfo {
 				if (current.isLeaf()) {
 					var catchState = current.getTryHigh()+1;
 					if (allNotYetKnownFromStates.contains(catchState)) {
-						logger.log(Level.FINE, prefix+"Leaf found. Setting this catch block's state to " + catchState);
-						catchHandler.setState(catchState);
-						knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
-						currentsNewCatchBlockStates.add(catchState);
+						assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
 						continue;
 					}
 				}					
@@ -371,6 +364,22 @@ public class MSVCEHInfo {
 			}
 			
 		}
+	}
+
+	/**
+	 * @param catchHandler
+	 * @param catchState
+	 * @param knownStates
+	 * @param currentsNewCatchBlockStates
+	 * @param prefix
+	 * @param logger
+	 */
+	private static void assignCatchState(CatchHandler catchHandler, int catchState, HashSet<Integer> knownStates,
+			List<Integer> currentsNewCatchBlockStates, String prefix, Logger logger) {
+		logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+		catchHandler.setState(catchState);
+		knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
+		currentsNewCatchBlockStates.add(catchState);
 	}
 
 	/**
@@ -445,6 +454,20 @@ public class MSVCEHInfo {
 			allNotYetKnownFromStates.add(unwindOrdinal);
 		}
 		return allNotYetKnownFromStates;
+	}
+
+	/**
+	 * Logs debugging information about the known states and the possible catch block states.
+	 * 
+	 * @param knownStates The already-assigned states.
+	 * @param allNotYetKnownFromStates The possible catch block states.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 */
+	private static void logStates(HashSet<Integer> knownStates, List<Integer> allNotYetKnownFromStates, String prefix,
+			Logger logger) {
+		logStatesLine(knownStates, prefix+"- Known states: ", Level.FINE, logger);
+		logStatesLine(allNotYetKnownFromStates, prefix+"- Possible catch states: ", Level.FINE, logger);
 	}
 
 	/**
