@@ -303,15 +303,21 @@ public class MSVCEHInfo {
 
 		logger.log(Level.FINE, prefix + "targetToState determined to be " + targetToState);
 		
+		// A TryBlockMapEntry may have multiple catch blocks. If we were to store the state of the
+		// first catch block we determine in knownStates, we would not be able to determine the
+		// states of the other catch blocks in the same TryBlockMapEntry anymore. Therefore, we keep
+		// track of the newly assigned catch block states in a separate variable.
 		List<Integer> currentsNewCatchBlockStates = new ArrayList<Integer>();
 
+		// Loop over all catch blocks in this TryBlockmapEntry and try to find their state values
+		// if we don't have them yet.
 		for (var catchHandler : current.getCatchHandlers()) {
 			// If we already know this catch block's state there is no need to do anything.
 			if (catchHandler.hasValidState()) {
 				logger.log(Level.FINE, prefix+"State already determined for this catch block (it's "+catchHandler.getState()+").");
 				continue;
 			}
-			
+
 			// Get the list of all 'from' states that have not been assigned to a try or catch block yet AND that
 			// unwind to the correct state (targetToState) AND that are higher than the try block's state.
 			// One of these must be the 'from state' for this catch block.
@@ -321,11 +327,10 @@ public class MSVCEHInfo {
 			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
 
 			// Display some debugging information about the known states and the possible catch block states.
-			logStatesLine(knownStates, prefix+"- Known (try?) states: ", Level.FINE, logger);
+			logStatesLine(knownStates, prefix+"- Known states: ", Level.FINE, logger);
 			logStatesLine(allNotYetKnownFromStates, prefix+"- Possible catch states: ", Level.FINE, logger);
 
-			
-			if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 0) {
+			if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() != 1) {
 				var msg = "Did not find any possible states for catch blocks!";
 				logger.log(Level.SEVERE, prefix+msg);
 				throw new InvalidDataTypeException(msg);
@@ -337,31 +342,25 @@ public class MSVCEHInfo {
 				catchHandler.setState(catchState);
 				continue;
 			}
-
-			if (allNotYetKnownFromStates.size() == 0) {
-				var msg = "Did not find any possible states for catch blocks with a value higher than the try block!";
-				logger.log(Level.SEVERE, prefix+msg);
-				throw new InvalidDataTypeException(msg);
-			}
 			else if (allNotYetKnownFromStates.size() == 1) {
 				logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
 				var catchState = allNotYetKnownFromStates.get(0);
 				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
 				catchHandler.setState(catchState);
-				knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
+				knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
 				currentsNewCatchBlockStates.add(catchState);
 			}
 			else {
 				var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
 				logger.log(Level.FINE, prefix+msg);
 				
-				// It can be really simple...
-				if (current.getTryLow() == current.getTryHigh() && current.getCatchHigh() == current.getTryHigh()+1) {
+				// It can be really simple and be a leaf; we're going depth-first after all.
+				if (current.isLeaf()) {
 					var catchState = current.getTryHigh()+1;
 					if (allNotYetKnownFromStates.contains(catchState)) {
-						logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+						logger.log(Level.FINE, prefix+"Leaf found. Setting this catch block's state to " + catchState);
 						catchHandler.setState(catchState);
-						knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
+						knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
 						currentsNewCatchBlockStates.add(catchState);
 						continue;
 					}
@@ -461,8 +460,11 @@ public class MSVCEHInfo {
 		for (var state : states) {
 			strStates.append(state).append(",");
 		}
+		// Clean up the output; make sure there is no trailing comma.
+		if (strStates.length() > 0) {
+			strStates.deleteCharAt(strStates.length() - 1);
+		}			
 		logger.log(logLevel, strStates.toString());
-
 	}
 
 }
