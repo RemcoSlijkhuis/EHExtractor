@@ -323,56 +323,87 @@ public class MSVCEHInfo {
 			// One of these must be the 'from state' for this catch block.
 			List<Integer> possibleStates = filterFromStates(unwindMap, knownStates, targetToState, current.getTryHigh());
 
-			// Now determine the state of the current catch block.
-			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
-
 			// Display some debugging information about the known states and the possible catch block states.
+			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
 			logStates(knownStates, possibleStates, prefix, logger);
 
-			if (possibleStates.size() == 0 && currentsNewCatchBlockStates.size() != 1) {
-				var msg = "Did not find any possible states for catch blocks!";
-				logger.log(Level.SEVERE, prefix+msg);
-				throw new InvalidDataTypeException(msg);
-			}
-			else if (possibleStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
-				logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
-				var catchState = currentsNewCatchBlockStates.get(0);
-				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-				catchHandler.setState(catchState);
-				continue;
-			}
-			else if (possibleStates.size() == 1) {
-				logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
-				var catchState = possibleStates.get(0);
-				assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
-			}
-			else {
-				var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
-				logger.log(Level.FINE, prefix+msg);
-				
-				// It can be really simple and be a leaf; we're going depth-first after all.
-				if (current.isLeaf()) {
-					var catchState = current.getTryHigh()+1;
-					if (possibleStates.contains(catchState)) {
-						assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
-						continue;
-					}
-				}					
-				
-				msg = "No, cannot determine the catch block state!";
-				throw new InvalidDataTypeException(msg);
-			}
-			
+			// Now determine the state of the current catch block.
+			handleCatchStateAssignment(catchHandler, current, knownStates, possibleStates, currentsNewCatchBlockStates, prefix, logger);
 		}
 	}
 
 	/**
-	 * @param catchHandler
-	 * @param catchState
-	 * @param knownStates
-	 * @param currentsNewCatchBlockStates
-	 * @param prefix
-	 * @param logger
+	 * Tries to determine the state value of a catch block.
+	 * 
+	 * @param catchHandler The CatchHandler for which the state must be determined.
+	 * @param current The current TryBlockMapEntry (of which catchHandler is a part).
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param possibleStates The list of possible catch block states.
+	 * @param currentsNewCatchBlockStates The newly assigned catch block states.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @throws InvalidDataTypeException If there is a problem determining the catch block state. 
+	 */
+	private static void handleCatchStateAssignment(CatchHandler catchHandler, TryBlockMapEntry current, 
+												   HashSet<Integer> knownStates, List<Integer> possibleStates, 
+												   List<Integer> currentsNewCatchBlockStates,
+												   String prefix, Logger logger) throws InvalidDataTypeException {
+		if (possibleStates.size() == 0 && currentsNewCatchBlockStates.size() != 1) {
+			var msg = "Did not find any possible states for catch blocks!";
+			logger.log(Level.SEVERE, prefix+msg);
+			throw new InvalidDataTypeException(msg);
+		}
+		else if (possibleStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
+			logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
+			var catchState = currentsNewCatchBlockStates.get(0);
+			assignCatchState(catchHandler, catchState, prefix, logger);
+			return;
+		}
+		else if (possibleStates.size() == 1) {
+			logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
+			var catchState = possibleStates.get(0);
+			assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
+		}
+		else {
+			var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
+			logger.log(Level.FINE, prefix+msg);
+			
+			// It can be really simple and be a leaf; we're going depth-first after all.
+			if (current.isLeaf()) {
+				var catchState = current.getTryHigh()+1;
+				if (possibleStates.contains(catchState)) {
+					assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
+					return;
+				}
+			}					
+			
+			msg = "No, cannot determine the catch block state!";
+			throw new InvalidDataTypeException(msg);
+		}
+	}
+
+	/**
+	 * Sets the state for the given CatchHandler to the given value.
+	 * 
+	 * @param catchHandler The CatchHandler for which to set the state.
+	 * @param catchState The state to set for catchHandler.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 */
+	private static void assignCatchState(CatchHandler catchHandler, Integer catchState, String prefix, Logger logger) {
+		logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
+		catchHandler.setState(catchState);
+	}
+
+	/**
+	 * Sets the state for the given CatchHandler to the given value. Updates the list of 'known' states and the list of newly assigned catch block states.
+	 * 
+	 * @param catchHandler The CatchHandler for which to set the state.
+	 * @param catchState The state to set for catchHandler.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block). Will be updated with catchState.
+	 * @param currentsNewCatchBlockStates The newly assigned catch block states. Will be updated with catchState.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
 	 */
 	private static void assignCatchState(CatchHandler catchHandler, int catchState, HashSet<Integer> knownStates,
 			List<Integer> currentsNewCatchBlockStates, String prefix, Logger logger) {
@@ -381,6 +412,7 @@ public class MSVCEHInfo {
 		knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
 		currentsNewCatchBlockStates.add(catchState);
 	}
+
 
 	/**
 	 * Checks that the given parent's state (if valid) matches the given targetToState. An invalid parent state is set to tryToState.
