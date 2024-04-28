@@ -4,6 +4,7 @@ import ghidra.program.model.data.*;
 import ghidra.program.model.address.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -318,17 +319,10 @@ public class MSVCEHInfo {
 			// Now determine the state of the current catch block.
 			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
 
-			var strTryStates = prefix+"- Known (try?) states: ";
-			for (var knownState : knownStates) {
-				strTryStates += knownState + ",";
-			}
-			logger.log(Level.FINE, strTryStates);
+			// Display some debugging information about the known states and the possible catch block states.
+			logStatesLine(knownStates, prefix+"- Known (try?) states: ", Level.FINE, logger);
+			logStatesLine(allNotYetKnownFromStates, prefix+"- Possible catch states: ", Level.FINE, logger);
 
-			var strCatchStates = prefix+"- Possible catch states: ";
-			for (var i=0; i<allNotYetKnownFromStates.size(); i++) {
-				strCatchStates += allNotYetKnownFromStates.get(i) + ",";
-			}
-			logger.log(Level.FINE, strCatchStates);
 			
 			if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 0) {
 				var msg = "Did not find any possible states for catch blocks!";
@@ -403,7 +397,7 @@ public class MSVCEHInfo {
 	 * @param targetToState The state the parent should have. 
 	 * @param knownStates The set of 'known' states (states already matched to a try or catch block). Will be updated when the parent state is set.
 	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
-	 * @param logger The logger to be used.
+	 * @param logger The logger to use.
 	 * @throws InvalidDataTypeException If there is a state mismatch between the parent and the tryToState.
 	 */
 	private static void checkAndSetParentState(ITryCatch parent, Integer targetToState, HashSet<Integer> knownStates, String prefix, Logger logger) throws InvalidDataTypeException {
@@ -434,7 +428,7 @@ public class MSVCEHInfo {
 	 * 
 	 * @param parent A parent TryBlock or CatchHandler.
 	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
-	 * @param logger The logger to be used.
+	 * @param logger The logger to use.
 	 * @throws InvalidDataTypeException If there is a state mismatch between the parent and the tryToState.
 	 */
 	private static void checkParentState(ITryCatch parent, String prefix, Logger logger) throws InvalidDataTypeException {
@@ -466,6 +460,23 @@ public class MSVCEHInfo {
 			allNotYetKnownFromStates.add(unwindOrdinal);
 		}
 		return allNotYetKnownFromStates;
+	}
+
+	/**
+	 * Logs a line showing all states in the given collection.
+	 * 
+	 * @param states The collection of states to be logged. 
+	 * @param prefix The line prefix.
+	 * @param logLevel The log level to use.
+	 * @param logger The logger to use.
+	 */
+	private static void logStatesLine(Collection<Integer> states, String prefix, Level logLevel, Logger logger) {
+		var strStates = new StringBuilder(prefix);
+		for (var state : states) {
+			strStates.append(state).append(",");
+		}
+		logger.log(logLevel, strStates.toString());
+
 	}
 
 }
