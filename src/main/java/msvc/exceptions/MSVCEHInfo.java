@@ -276,22 +276,27 @@ public class MSVCEHInfo {
 
 
 		// Now it's catch block handling time.
+		handleCatchBlocks(current, parent, targetToState, knownStates, unwindMap, prefix, logger);
+	}
 
+	/**
+	 * Determines the states of all catch blocks of a TryBlockMapEntry.
+	 * 
+	 * @param current The TryBlockMapEntry for which all catch blocks (unnested, nested, and to-be-nested) need to be processed.
+	 * @param parent The parent TryBlock or CatchHandler for current.
+	 * @param targetToState The state the catch block needs to unwind to.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @throws InvalidDataTypeException If there is a problem determining the states of the catch blocks. 
+	 */
+	private static void handleCatchBlocks(TryBlockMapEntry current, ITryCatch parent, Integer targetToState,
+			HashSet<Integer> knownStates, UnwindMap unwindMap, String prefix, Logger logger)
+			throws InvalidDataTypeException {
 		// First handle anything that is nested in this TryBlockMapEntry's catch blocks. 
 		if (current.nestingInCatches()) {
-			logger.log(Level.FINE, prefix+"Going into try/catches nested in current's catch blocks.");
-			// Some TryBlockMapEntries may already be nested in specific catch handlers. Let's do these first.
-			for (var catchHandler : current.getCatchHandlers()) {
-				for (var child : catchHandler.getNested()) {
-					recurse(child, catchHandler, knownStates, unwindMap, prefix+"  ");
-				}
-			}
-			// For other TryBlockMapEntries, we may know that they are nested in some catch handler(s), but we
-			// don't know in which.
-			for (var child : current.getToBeNestedInCatches()) {
-				// TODO The parent is null here, which may pose problems in some cases; I think...
-				recurse(child, null, knownStates, unwindMap, prefix+"  ");
-			}
+			processNestedCatchBlocks(current, unwindMap, knownStates, prefix, logger);
 		}
 		
 		// Now handle the current TryBlockMapEntry's catches.
@@ -312,28 +317,74 @@ public class MSVCEHInfo {
 		// Loop over all catch blocks in this TryBlockmapEntry and try to find their state values
 		// if we don't have them yet.
 		for (var catchHandler : current.getCatchHandlers()) {
-			// If we already know this catch block's state there is no need to do anything.
-			if (catchHandler.hasValidState()) {
-				logger.log(Level.FINE, prefix+"State already determined for this catch block (it's "+catchHandler.getState()+").");
-				continue;
-			}
-
-			// Get the list of all 'from' states that have not been assigned to a try or catch block yet AND that
-			// unwind to the correct state (targetToState) AND that are higher than the try block's state.
-			// One of these must be the 'from state' for this catch block.
-			List<Integer> possibleStates = filterFromStates(unwindMap, knownStates, targetToState, current.getTryHigh());
-
-			// Display some debugging information about the known states and the possible catch block states.
-			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
-			logStates(knownStates, possibleStates, prefix, logger);
-
-			// Now determine the state of the current catch block.
-			handleCatchStateAssignment(catchHandler, current, knownStates, possibleStates, currentsNewCatchBlockStates, prefix, logger);
+			processCatchBlock(catchHandler, current, unwindMap, targetToState, knownStates, currentsNewCatchBlockStates, prefix, logger);
 		}
 	}
 
 	/**
-	 * Tries to determine the state value of a catch block.
+	 * Determines the states of all nested and to-be-nested catch blocks of a TryBlockMapEntry.
+	 * 
+	 * @param current The TryBlockMapEntry for which the nested and to-be-nested catch blocks need to be processed.
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @throws InvalidDataTypeException If there is a problem determining the catch block state. 
+	 */
+	private static void processNestedCatchBlocks(TryBlockMapEntry current, UnwindMap unwindMap,
+			HashSet<Integer> knownStates, String prefix, Logger logger) throws InvalidDataTypeException {
+		logger.log(Level.FINE, prefix+"Going into try/catches nested in current's catch blocks.");
+		// Some TryBlockMapEntries may already be nested in specific catch handlers. Let's do these first.
+		for (var catchHandler : current.getCatchHandlers()) {
+			for (var child : catchHandler.getNested()) {
+				recurse(child, catchHandler, knownStates, unwindMap, prefix+"  ");
+			}
+		}
+		// For other TryBlockMapEntries, we may know that they are nested in some catch handler(s), but we
+		// don't know in which.
+		for (var child : current.getToBeNestedInCatches()) {
+			// TODO The parent is null here, which may pose problems in some cases; I think...
+			recurse(child, null, knownStates, unwindMap, prefix+"  ");
+		}
+	}
+
+	/**
+	 * Determines the states of all unnested catch blocks of a TryBlockMapEntry.
+	 * 
+	 * @param catchHandler The CatchHandler for which the state must be determined.
+	 * @param current The current TryBlockMapEntry (of which catchHandler is a part).
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param targetToState The state the catch block needs to unwind to.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param currentsNewCatchBlockStates The newly assigned catch block states.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @throws InvalidDataTypeException If there is a problem determining the catch block state. 
+	 */
+	private static void processCatchBlock(CatchHandler catchHandler, TryBlockMapEntry current, UnwindMap unwindMap,
+										  Integer targetToState, HashSet<Integer> knownStates, List<Integer> currentsNewCatchBlockStates,
+										  String prefix, Logger logger) throws InvalidDataTypeException {
+
+		// If we already know this catch block's state there is no need to do anything.
+		if (catchHandler.hasValidState()) {
+			logger.log(Level.FINE, prefix+"State already determined for this catch block (it's "+catchHandler.getState()+").");
+			return;
+		}
+		// Get the list of all 'from' states that have not been assigned to a try or catch block yet AND that
+		// unwind to the correct state (targetToState) AND that are higher than the try block's state.
+		// One of these must be the 'from state' for this catch block.
+		List<Integer> possibleStates = filterFromStates(unwindMap, knownStates, targetToState, current.getTryHigh());
+
+		// Display some debugging information about the known states and the possible catch block states.
+		logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
+		logStates(knownStates, possibleStates, prefix, logger);
+
+		// Now determine the state of the current catch block.
+		handleCatchStateAssignment(catchHandler, current, knownStates, possibleStates, currentsNewCatchBlockStates, prefix, logger);
+	}
+	
+	/**
+	 * Determines the state value of a catch block.
 	 * 
 	 * @param catchHandler The CatchHandler for which the state must be determined.
 	 * @param current The current TryBlockMapEntry (of which catchHandler is a part).
@@ -412,7 +463,6 @@ public class MSVCEHInfo {
 		knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
 		currentsNewCatchBlockStates.add(catchState);
 	}
-
 
 	/**
 	 * Checks that the given parent's state (if valid) matches the given targetToState. An invalid parent state is set to tryToState.
