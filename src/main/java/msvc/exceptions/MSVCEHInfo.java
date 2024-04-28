@@ -266,30 +266,13 @@ public class MSVCEHInfo {
 		// Get the state of the try block for the current TryBlockMapEntry and look
 		// up the state to which it will unwind; it should match the state of its parent.
 		var tryState = current.getTryBlock().getState();
-		var tryToState = unwindMap.getToState(tryState);
-		logger.log(Level.FINE, prefix+"Current try state "+tryState+" unwinds to toState "+tryToState);
+		var targetToState = unwindMap.getToState(tryState);
+		logger.log(Level.FINE, prefix+"Current try state "+tryState+" unwinds to toState "+targetToState);
 		knownStates.add(tryState);
 			
-		if (parent != null) {
-			if (parent.hasValidState()) {
-				if (tryToState != parent.getState()) {
-					var msg = "States do not match! toState " + tryToState + " != parent try state " + parent.getState();
-					logger.log(Level.SEVERE, prefix+msg);
-					throw new InvalidDataTypeException(msg);
-				}
-				else {
-					logger.log(Level.FINE, prefix+"Parent's state matches the expected value.");
-				}
-			}
-			else {
-				logger.log(Level.FINE, prefix+"Setting parent state to " + tryToState);
-				parent.setState(tryToState);
-				knownStates.add(tryToState);
-			}
-		}
-		else {
-			logger.log(Level.FINE, prefix+"Parent is null so cannot do anything for it.");
-		}
+		// If we have a parent, check that its state matches tryToState. If it does not have a valid state yet, set it (to targetToState). 
+		checkAndSetParentState(parent, targetToState, knownStates, prefix, logger);
+
 
 		// Now it's catch block handling time.
 
@@ -313,21 +296,10 @@ public class MSVCEHInfo {
 		// Now handle the current TryBlockMapEntry's catches.
 		logger.log(Level.FINE, prefix+"Handling current's catch blocks.");
 
-		// I should have a valid parent state (if I have a parent) because we handled the try block first
+		// We should have a valid parent state (if we have a parent) because we handled the try block first
 		// (and a state mismatch would have resulted in an exit), but let's double-check.
-		if (parent != null && !parent.hasValidState()) {
-			var msg = "Expected to have a valid parent state by now!";
-			logger.log(Level.SEVERE, prefix+msg);
-			throw new InvalidDataTypeException(msg);
-		}
+		checkParentState(parent, prefix, logger);
 
-		int targetToState = -100;
-		if (parent != null) {
-			targetToState = parent.getState(); // Checked while handling the try block to which this catch block belongs.
-		}
-		else {
-			targetToState = tryToState;
-		}
 		logger.log(Level.FINE, prefix + "targetToState determined to be " + targetToState);
 		
 		List<Integer> currentsNewCatchBlockStates = new ArrayList<Integer>();
@@ -430,6 +402,55 @@ public class MSVCEHInfo {
 				throw new InvalidDataTypeException(msg);
 			}
 			
+		}
+	}
+
+	/**
+	 * Checks that the given parent's state (if valid) matches the given targetToState. An invalid parent state is set to tryToState.
+	 * 
+	 * @param parent A parent TryBlock or CatchHandler.
+	 * @param targetToState The state the parent should have. 
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block). Will be updated when the parent state is set.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to be used.
+	 * @throws InvalidDataTypeException If there is a state mismatch between the parent and the tryToState.
+	 */
+	private static void checkAndSetParentState(ITryCatch parent, Integer targetToState, HashSet<Integer> knownStates, String prefix, Logger logger) throws InvalidDataTypeException {
+		if (parent == null) {
+			logger.log(Level.FINE, prefix+"Parent is null so cannot do anything for it.");
+			return;
+		}
+
+		if (parent.hasValidState()) {
+			if (targetToState != parent.getState()) {
+				var msg = "States do not match! toState " + targetToState + " != parent try state " + parent.getState();
+				logger.log(Level.SEVERE, prefix+msg);
+				throw new InvalidDataTypeException(msg);
+			}
+			else {
+				logger.log(Level.FINE, prefix+"Parent's state matches the expected value.");
+			}
+		}
+		else {
+			logger.log(Level.FINE, prefix+"Setting parent state to " + targetToState);
+			parent.setState(targetToState);
+			knownStates.add(targetToState);
+		}
+	}
+
+	/**
+	 * Checks that the given parent's state is valid.
+	 * 
+	 * @param parent A parent TryBlock or CatchHandler.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to be used.
+	 * @throws InvalidDataTypeException If there is a state mismatch between the parent and the tryToState.
+	 */
+	private static void checkParentState(ITryCatch parent, String prefix, Logger logger) throws InvalidDataTypeException {
+		if (parent != null && !parent.hasValidState()) {
+			var msg = "Expected to have a valid parent state by now!";
+			logger.log(Level.SEVERE, prefix+msg);
+			throw new InvalidDataTypeException(msg);
 		}
 	}
 
