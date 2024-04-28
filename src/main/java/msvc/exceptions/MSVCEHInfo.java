@@ -321,7 +321,7 @@ public class MSVCEHInfo {
 			// Get the list of all 'from' states that have not been assigned to a try or catch block yet AND that
 			// unwind to the correct state (targetToState) AND that are higher than the try block's state.
 			// One of these must be the 'from state' for this catch block.
-			List<Integer> allNotYetKnownFromStates = filterFromStates(unwindMap, knownStates, targetToState, current.getTryHigh());
+			List<Integer> possibleStates = filterFromStates(unwindMap, knownStates, targetToState, current.getTryHigh());
 
 			// Now determine the state of the current catch block.
 			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
@@ -329,21 +329,21 @@ public class MSVCEHInfo {
 			// Display some debugging information about the known states and the possible catch block states.
 			logStates(knownStates, possibleStates, prefix, logger);
 
-			if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() != 1) {
+			if (possibleStates.size() == 0 && currentsNewCatchBlockStates.size() != 1) {
 				var msg = "Did not find any possible states for catch blocks!";
 				logger.log(Level.SEVERE, prefix+msg);
 				throw new InvalidDataTypeException(msg);
 			}
-			else if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
+			else if (possibleStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
 				logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
 				var catchState = currentsNewCatchBlockStates.get(0);
 				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
 				catchHandler.setState(catchState);
 				continue;
 			}
-			else if (allNotYetKnownFromStates.size() == 1) {
+			else if (possibleStates.size() == 1) {
 				logger.log(Level.FINE, prefix+"Found one state for the catch block(s).");
-				var catchState = allNotYetKnownFromStates.get(0);
+				var catchState = possibleStates.get(0);
 				assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
 			}
 			else {
@@ -353,7 +353,7 @@ public class MSVCEHInfo {
 				// It can be really simple and be a leaf; we're going depth-first after all.
 				if (current.isLeaf()) {
 					var catchState = current.getTryHigh()+1;
-					if (allNotYetKnownFromStates.contains(catchState)) {
+					if (possibleStates.contains(catchState)) {
 						assignCatchState(catchHandler, catchState, knownStates, currentsNewCatchBlockStates, prefix, logger);
 						continue;
 					}
