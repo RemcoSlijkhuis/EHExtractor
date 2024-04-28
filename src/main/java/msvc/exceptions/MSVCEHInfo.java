@@ -313,8 +313,9 @@ public class MSVCEHInfo {
 			}
 			
 			// Get the list of all 'from' states that have not been assigned to a try or catch block yet AND that
-			// unwind to the correct state (targetToState). One of these must be the one for this catch block.
-			ArrayList<Integer> allNotYetKnownFromStates = getUnassignedFromStates(unwindMap, knownStates, targetToState);
+			// unwind to the correct state (targetToState) AND that are higher than the try block's state.
+			// One of these must be the 'from state' for this catch block.
+			List<Integer> allNotYetKnownFromStates = filterFromStates(unwindMap, knownStates, targetToState, current.getTryHigh());
 
 			// Now determine the state of the current catch block.
 			logger.log(Level.FINE, prefix+String.format("- Current try state: %d", current.getTryLow()));
@@ -336,17 +337,6 @@ public class MSVCEHInfo {
 				catchHandler.setState(catchState);
 				continue;
 			}
-			else if (allNotYetKnownFromStates.size() > 1) {
-				var msg = "Found multiple possible states for catch blocks, trying to limit them.";
-				logger.log(Level.FINE, prefix+msg);
-				var tempStates = new ArrayList<Integer>();
-				for (var tempState : allNotYetKnownFromStates) {
-					if (tempState > current.getTryLow()) {
-						tempStates.add(tempState);
-					}
-				}
-				allNotYetKnownFromStates = tempStates;
-			}
 
 			if (allNotYetKnownFromStates.size() == 0) {
 				var msg = "Did not find any possible states for catch blocks with a value higher than the try block!";
@@ -360,12 +350,6 @@ public class MSVCEHInfo {
 				catchHandler.setState(catchState);
 				knownStates.add(catchState);		// <-- Wrong: the catch state should only be added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
 				currentsNewCatchBlockStates.add(catchState);
-			}
-			else if (allNotYetKnownFromStates.size() == 0 && currentsNewCatchBlockStates.size() == 1) {
-				logger.log(Level.FINE, prefix+"No new state available but we found one state for an earlier catch block at this level; going to use that.");
-				var catchState = currentsNewCatchBlockStates.get(0);
-				logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
-				catchHandler.setState(catchState);
 			}
 			else {
 				var msg = "Still have multiple possible states for catch blocks! Doing some more checking.";
@@ -440,21 +424,23 @@ public class MSVCEHInfo {
 	}
 
 	/**
-	 * Returns the 'from states' from the unwind map that have not yet been assigned to a try or catch block and that unwind to the given targetToState. 
+	 * Returns the 'from states' from the unwind map that have not yet been assigned to a try or catch block,
+	 * that unwind to the given targetToState, and that are higher than a given value.
 	 * 
 	 * @param unwindMap An UnwindMap containing state transition information.
 	 * @param knownStates The already-assigned states.
 	 * @param targetToState The state a 'from state' should unwind to.
+	 * @param cutoffFromState The value above which a 'from state' must be to qualify for inclusion.
 	 * @return A list of 'from states' that have not yet been assigned to a try or catch block.
 	 * @throws InvalidDataTypeException If there is a problem accessing the unwind map.
 	 */
-	private static ArrayList<Integer> getUnassignedFromStates(UnwindMap unwindMap, HashSet<Integer> knownStates, Integer targetToState) throws InvalidDataTypeException {
+	private static List<Integer> filterFromStates(UnwindMap unwindMap, HashSet<Integer> knownStates, Integer targetToState, Integer cutoffFromState) throws InvalidDataTypeException {
 		var allNotYetKnownFromStates = new ArrayList<Integer>();
 		var nrUnwindMapEntries = unwindMap.getCount();
 		for (var unwindOrdinal = 0; unwindOrdinal < nrUnwindMapEntries; unwindOrdinal++) {
-			if (knownStates.contains(unwindOrdinal))
-				continue;
 			var toState = unwindMap.getToState(unwindOrdinal);
+			if (knownStates.contains(unwindOrdinal) || unwindOrdinal <= cutoffFromState)
+				continue;
 			if (toState != targetToState)
 				continue;
 			allNotYetKnownFromStates.add(unwindOrdinal);
