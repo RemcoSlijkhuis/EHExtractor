@@ -228,6 +228,33 @@ public class MSVCEHInfo {
 		var logger = Logger.getLogger("EHExtractor");
 
 		// Display some debugging info.
+		logInitialDebuggingInfo(current, parent, prefix, logger);
+
+		// This function is about applying unwind information, so if we don't have it, there's nothing to do.
+		if (unwindMap == null || unwindMap.getCount() == 0) {
+			logger.log(Level.FINE, prefix+"No unwind map information; nothing to do.");
+			return;
+		}
+		
+		// Handle the try block and everything nested in it.
+		var targetToState = handleTryBlock(current, unwindMap, knownStates, prefix, logger);
+		
+		// If we have a parent, check that its state matches tryToState. If it does not have a valid state yet, set it (to targetToState). 
+		checkAndSetParentState(parent, targetToState, knownStates, prefix, logger);
+
+		// Handle the catch blocks and everything in them.
+		handleCatchBlocks(current, parent, targetToState, knownStates, unwindMap, prefix, logger);
+	}
+
+	/**
+	 * Displays some debugging info specific to the start of the 'recurse' method.
+	 * 
+	 * @param current The current TryBlockMapEntry being processed.
+	 * @param parent The parent (TryBlock or CatchHandler) for current; may be null if current is the root.
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 */
+	private static void logInitialDebuggingInfo(TryBlockMapEntry current, ITryCatch parent, String prefix, Logger logger) {
 		logger.log(Level.FINE, prefix+"Current: " + current.getHeaderInfoLine());
 		logger.log(Level.FINE, prefix+"Nesting in try: " + current.nestingInTry());
 		logger.log(Level.FINE, prefix+"Nesting in catches: " + current.nestingInCatches());
@@ -237,16 +264,46 @@ public class MSVCEHInfo {
 		else {
 			logger.log(Level.FINE, prefix+"Parent is null.");
 		}
+	}
+	
+	/**
+	 * Recursively handles current's try block and everything nested in it.
+	 * 
+	 * @param current The current TryBlockMapEntry being processed.
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @return The state current's try block unwinds to.
+	 * @throws InvalidDataTypeException If there is a problem determining the state of a try or catch block. 
+	 */
+	private static Integer handleTryBlock(TryBlockMapEntry current, UnwindMap unwindMap, HashSet<Integer> knownStates,
+										  String prefix, Logger logger) throws InvalidDataTypeException {
 
-		// This function is about applying unwind information, so if we don't have it, there's nothing to do.
-		if (unwindMap == null || unwindMap.getCount() == 0) {
-			logger.log(Level.FINE, prefix+"No unwind map information; nothing to do.");
-			return;
-		}
-		
-
+		// Handle the try block and everything nested in it.
 		logger.log(Level.FINE, prefix+"Looking at current's try block. State is " + current.getTryLow());
 		
+		// First do everything nested in the current try block.
+		processTryBlockNestlings(current, unwindMap, knownStates, prefix, logger);
+
+		// Now handle the current try block itself.
+		var targetToState = processTryBlock(current, unwindMap, knownStates, prefix, logger);
+		return targetToState;
+	}
+
+	/**
+	 * Recursively processes all TryCatchBlockEntries nested in current's try block.
+	 * 
+	 * @param current The current TryBlockMapEntry being processed.
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @throws InvalidDataTypeException If there is a problem determining the state of a try or catch block. 
+	 */
+	private static void processTryBlockNestlings(TryBlockMapEntry current, UnwindMap unwindMap, HashSet<Integer> knownStates,
+												 String prefix, Logger logger) throws InvalidDataTypeException {
+
 		// First do everything nested in the current try block.
 		if (current.nestingInTry()) {
 			logger.log(Level.FINE, prefix+"Going into try/catches nested in current's try block.");
@@ -260,6 +317,21 @@ public class MSVCEHInfo {
 				recurse(child, current.getTryBlock(), knownStates, unwindMap, prefix+"  ");
 			}
 		}
+	}
+
+	/**
+	 * Determines the target state current's try block unwinds to.
+	 * 
+	 * @param current The current TryBlockMapEntry being processed.
+	 * @param unwindMap An UnwindMap containing state transition information.
+	 * @param knownStates The set of 'known' states (states already matched to a try or catch block).
+	 * @param prefix A string prefix used for logging to indicate the level of recursion (depth).
+	 * @param logger The logger to use.
+	 * @return The state current's try block unwinds to.
+	 * @throws InvalidDataTypeException If there is a problem with the unwind map.
+	 */
+	private static Integer processTryBlock(TryBlockMapEntry current, UnwindMap unwindMap, HashSet<Integer> knownStates,
+										   String prefix, Logger logger) throws InvalidDataTypeException {
 
 		// Now handle the current try block itself.
 		logger.log(Level.FINE, prefix+"Handling current's try block.");
@@ -270,17 +342,12 @@ public class MSVCEHInfo {
 		var targetToState = unwindMap.getToState(tryState);
 		logger.log(Level.FINE, prefix+"Current try state "+tryState+" unwinds to toState "+targetToState);
 		knownStates.add(tryState);
-			
-		// If we have a parent, check that its state matches tryToState. If it does not have a valid state yet, set it (to targetToState). 
-		checkAndSetParentState(parent, targetToState, knownStates, prefix, logger);
-
-
-		// Now it's catch block handling time.
-		handleCatchBlocks(current, parent, targetToState, knownStates, unwindMap, prefix, logger);
+		return targetToState;
 	}
 
+
 	/**
-	 * Determines the states of all catch blocks of a TryBlockMapEntry.
+	 * Recursively determines the states of all catch blocks of a TryBlockMapEntry.
 	 * 
 	 * @param current The TryBlockMapEntry for which all catch blocks (unnested, nested, and to-be-nested) need to be processed.
 	 * @param parent The parent TryBlock or CatchHandler for current.
@@ -322,7 +389,7 @@ public class MSVCEHInfo {
 	}
 
 	/**
-	 * Determines the states of all nested and to-be-nested catch blocks of a TryBlockMapEntry.
+	 * Recursively determines the states of all nested and to-be-nested catch blocks of a TryBlockMapEntry.
 	 * 
 	 * @param current The TryBlockMapEntry for which the nested and to-be-nested catch blocks need to be processed.
 	 * @param unwindMap An UnwindMap containing state transition information.
@@ -457,7 +524,7 @@ public class MSVCEHInfo {
 	 * @param logger The logger to use.
 	 */
 	private static void assignCatchState(CatchHandler catchHandler, int catchState, HashSet<Integer> knownStates,
-			List<Integer> currentsNewCatchBlockStates, String prefix, Logger logger) {
+			                             List<Integer> currentsNewCatchBlockStates, String prefix, Logger logger) {
 		logger.log(Level.FINE, prefix+"Setting this catch block's state to " + catchState);
 		catchHandler.setState(catchState);
 		knownStates.add(catchState);		// <-- Ideally, the catch state is only added to knownStates after all current's catch blocks have been handled, because if there is another catch block (for the current try block) at the same level as the catch block we're looking at now, this should have the same state!
