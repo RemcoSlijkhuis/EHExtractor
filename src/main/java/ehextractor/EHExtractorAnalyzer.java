@@ -47,11 +47,15 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 
 	private static final String OPTION_LOG_FILE_PATH = "Log file path";
 	private static final String OPTION_LOG_LEVEL = "Minimum log level";
+	private static final String OPTION_SHOW_LOG_LEVEL = "Show log level";
+
 	private static final LogLevelEnum OPTION_LOG_LEVEL_DEFAULT = LogLevelEnum.INFO;
 	private static final File OPTION_LOG_FILE_PATH_DEFAULT = Paths.get(System.getProperty("user.home"), "Documents", "ehextractor.log").toFile();
+	private static final boolean OPTION_SHOW_LOG_LEVEL_DEFAULT = false;
 
 	private String logFilePath = null;
 	private Level logLevel = Level.ALL;
+	private boolean showLogLevel = true;
 	
 	Logger logger = null;
 	
@@ -84,6 +88,7 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 	public void registerOptions(Options options, Program program) {
 		options.registerOption(OPTION_LOG_LEVEL, OPTION_LOG_LEVEL_DEFAULT, null, "Minimum log level.");
 		options.registerOption(OPTION_LOG_FILE_PATH, OptionType.FILE_TYPE, OPTION_LOG_FILE_PATH_DEFAULT, null, "Path to the log file.");
+		options.registerOption(OPTION_SHOW_LOG_LEVEL, OPTION_SHOW_LOG_LEVEL_DEFAULT, null, "Show log level.");
 	}
 
 	@Override
@@ -93,6 +98,8 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 
 		LogLevelEnum value = options.getEnum(OPTION_LOG_LEVEL, null);
 		logLevel = convertLogLevel(value);
+		
+		showLogLevel = options.getBoolean(OPTION_SHOW_LOG_LEVEL, OPTION_SHOW_LOG_LEVEL_DEFAULT);
 	}
 
 	private Level convertLogLevel(LogLevelEnum logLevel) {
@@ -115,7 +122,7 @@ public class EHExtractorAnalyzer extends AbstractAnalyzer {
 		Logging logging = null;
 		try {
 			// Set up logging.			
-			logging = new Logging(logFilePath, logLevel);
+			logging = new Logging(logFilePath, logLevel, showLogLevel);
 	    	if (logging == null || !logging.isSetupSuccess()) {
 	    		Log.error("Logger setup not successful. Unable to continue.");
 	    		return false;

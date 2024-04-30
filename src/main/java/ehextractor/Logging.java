@@ -23,6 +23,8 @@ public class Logging {
 
 	String logfilePath = null;
 	Level minLogLevel = Level.ALL;
+	boolean showLogLevel = true;
+	
 	FileHandler fh = null;
 	boolean setupSuccess = false;
 	
@@ -33,9 +35,10 @@ public class Logging {
      * @param logfilePath The path to the log file.
      * @param minLogLevel The minimum log level to record.
      */
-	public Logging(String logfilePath, Level minLogLevel) {
+	public Logging(String logfilePath, Level minLogLevel, boolean showLogLevel) {
 		this.logfilePath = logfilePath;
 		this.minLogLevel = minLogLevel;
+		this.showLogLevel = showLogLevel;
 		handlers = new ArrayList<Handler>();
 
 		setupSuccess = setupLogger();
@@ -47,9 +50,10 @@ public class Logging {
      * @param otherHandler The additional log handler.
      * @param minLogLevel The minimum log level to record.
      */
-	public Logging(String logfilePath, Handler otherHandler, Level minLogLevel) {
+	public Logging(String logfilePath, Handler otherHandler, Level minLogLevel, boolean showLogLevel) {
 		this.logfilePath = logfilePath;
 		this.minLogLevel = minLogLevel;
+		this.showLogLevel = showLogLevel;
 		handlers = new ArrayList<Handler>();
 		handlers.add(otherHandler);
 
@@ -115,7 +119,7 @@ public class Logging {
     	    logger.log(Level.INFO, "EHExtractor");
 
     	    // Switch to the normal formatter.
-    	    var normalLogFormatter = new MyLogFormatter(true);
+    	    var normalLogFormatter = new MyLogFormatter(this.showLogLevel);
     	    for (Handler handler : handlers) {
         	    handler.setFormatter(normalLogFormatter);
     	    }
