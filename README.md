@@ -77,7 +77,7 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 - Adjust the minimum logging level, the location of the output file, and whether or not to prefix the output lines with the log level to your liking. (See the [options](#options) section for an explanation of the possible values.)
 - Click Analyze. The analyzer output will be written to the log file.
 
-<sup>1</sup><span style="font-size:0.75em;"> If the opened binary is not an x86 MSVC-compiled binary, the analyzer will not be listed.</span>
+<sup>1 If the opened binary is not an x86 MSVC-compiled binary, the analyzer will not be listed.</sup>
 
 #### Script
 - Adjust the minimum logging level, the location of the output file, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>2</sup>. (See the [options](#options) section for an explanation of the possible values.)
@@ -91,9 +91,8 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 - Go to the Script Manager (Window/Script Manager) and open the folder "C++".
 - Run "EHExtractorScript.java" by double-clicking on it or selecting it and clicking the green play button. The analyzer output will be written to the log file and to the Ghidra console.
 
-<sup>2</sup><span style="font-size:0.75em;"> Once Ghidra has started, the minimum log level and output file location can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</span>
-
-<sup>3</sup><span style="font-size:0.75em;"> Unlike the analyzer version of EHExtractor, the script version will execute the "Shared Return Calls" functionality.</span>
+<sup>2 Once Ghidra has started, the options can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</sup><br>
+<sup>3 Unlike the analyzer version of EHExtractor, the script version will execute the "Shared Return Calls" functionality.</sup>
 
 ## Options
 
