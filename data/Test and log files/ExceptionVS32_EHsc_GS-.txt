@@ -1,2102 +1,794 @@
-Running...
-Apr 12, 2024 08:15:03 AM EHExtractor
-FINE: Compiler check
-FINE: Processor & bitness check:
-FINE:   Processor type: x86
-FINE:   Pointer size: 32 bits
-INFO: Executable is for 32-bit x86 and is compiled using MSVC.
-INFO: Program file: /D:/UserData/rgs/Dropbox/OU/AF/Test files/ExceptionVS32_EHsc_GS-.exe
-INFO: Program spans addresses 00400000-ffdfffff
-FINE: Determining the address of (thunk) function *CxxFrameHandler3.
-FINER:   Functions found that match by name:
-FINER:     VCRUNTIME140.DLL::__CxxFrameHandler3 @ EXTERNAL:00000016
-FINER:   No functions found that match by label.
-FINER:   Returning the 1 function that matched by name: __CxxFrameHandler3
-FINE: Looking up a security_check_cookie function.
-FINER:   No functions found that match by name.
-FINER:   No functions found that match by label.
-FINER: No matching function found.
-FINE: No clear security_check_cookie function found.
-FINE: Now going to look at some functions.
-INFO: 
-INFO: Looking at: FUN_00401000
-INFO: Memory range: 00401000-00401007
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,dword ptr [EBP + 0xc]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: exception
-INFO: Memory range: 00401010-0040103e
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401040
-INFO: Memory range: 00401040-0040107c
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401080
-INFO: Memory range: 00401080-004010a3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: what
-INFO: Memory range: 004010b0-004010da
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x8
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004010e0
-INFO: Memory range: 004010e0-0040110d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: bad_alloc
-INFO: Memory range: 00401110-00401136
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FID_conflict:`scalar_deleting_destructor'
-INFO: Memory range: 00401140-0040116d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401170
-INFO: Memory range: 00401170-00401182
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: bad_array_new_length
-INFO: Memory range: 00401190-004011b3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FID_conflict:`scalar_deleting_destructor'
-INFO: Memory range: 004011c0-004011ed
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004011f0
-INFO: Memory range: 004011f0-00401202
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401210
-INFO: Memory range: 00401210-0040122b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0xc
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FID_conflict:evaluation_error
-INFO: Memory range: 00401230-00401254
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401260
-INFO: Memory range: 00401260-00401284
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401290
-INFO: Memory range: 00401290-00401299
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,0x7fffffff
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: _Allocate
-INFO: Memory range: 004012a0-004012b0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004012c0
-INFO: Memory range: 004012c0-00401325
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x10
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401330
-INFO: Memory range: 00401330-0040133a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401340
-INFO: Memory range: 00401340-0040134f
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401350
-INFO: Memory range: 00401350-0040136a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401370
-INFO: Memory range: 00401370-004013cb
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x40310d
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:0040310d
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404878
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404878
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 00404878
-FINE: About to process the EH data structures.
-WARNING: IGNORING IPToStateMap information for now.
-WARNING: IGNORING ESTypeList information for now.
-FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-INFO: /* TryBlockMapEntry [0]	0-0,1,1 */
-INFO: Try (state=0) {}
-INFO: Catch (...) (state=?)	@0x004013cc {}
-INFO: /* TryBlockMapEntry [1]	2-2,3,1 */
-INFO: Try (state=2) {}
-INFO: Catch (...) (state=?)	@0x004013fd {}
-INFO: /* TryBlockMapEntry [2]	5-5,6,2 */
-INFO: Try (state=5) {}
-INFO: Catch (std::out_of_range) (state=?)	@0x0040148f {}
-INFO: Catch (...) (state=?)	@0x0040149e {}
-INFO: Applying unwind information.
-FINE: From 0 to -1
-FINE: From 1 to -1
-FINE: From 2 to -1
-FINE: From 3 to -1
-FINE: From 4 to -1
-FINE: From 5 to 4
-FINE: From 6 to 4
-FINE: Current: TryBlockMapEntry [0]	0-0,1,1
-FINE: Nesting in try: false
-FINE: Nesting in catches: false
-FINE: Parent is null.
-FINE: Looking at current's try block. State is 0
-FINE: Handling current's try block.
-FINE: Current try state 0 unwinds to toState -1
-FINE: Parent is null so cannot do anything for it.
-FINE: Handling current's catch blocks.
-FINE: targetToState determined to be -1
-FINE: - Current try state: 0
-FINE: - Known (try?) states: 0,
-FINE: - Possible catch states: 1,2,3,4,
-FINE: Found multiple possible states for catch blocks, trying to limit them.
-FINE: Still have multiple possible states for catch blocks! Doing some more checking.
-FINE: Setting this catch block's state to 1
-FINE: Current: TryBlockMapEntry [1]	2-2,3,1
-FINE: Nesting in try: false
-FINE: Nesting in catches: false
-FINE: Parent is null.
-FINE: Looking at current's try block. State is 2
-FINE: Handling current's try block.
-FINE: Current try state 2 unwinds to toState -1
-FINE: Parent is null so cannot do anything for it.
-FINE: Handling current's catch blocks.
-FINE: targetToState determined to be -1
-FINE: - Current try state: 2
-FINE: - Known (try?) states: 0,1,2,
-FINE: - Possible catch states: 3,4,
-FINE: Found multiple possible states for catch blocks, trying to limit them.
-FINE: Still have multiple possible states for catch blocks! Doing some more checking.
-FINE: Setting this catch block's state to 3
-FINE: Current: TryBlockMapEntry [2]	5-5,6,2
-FINE: Nesting in try: false
-FINE: Nesting in catches: false
-FINE: Parent is null.
-FINE: Looking at current's try block. State is 5
-FINE: Handling current's try block.
-FINE: Current try state 5 unwinds to toState 4
-FINE: Parent is null so cannot do anything for it.
-FINE: Handling current's catch blocks.
-FINE: targetToState determined to be 4
-FINE: - Current try state: 5
-FINE: - Known (try?) states: 0,1,2,3,5,
-FINE: - Possible catch states: 6,
-FINE: Found one state for the catch block(s)!
-FINE: Setting this catch block's state to 6
-FINE: - Current try state: 5
-FINE: - Known (try?) states: 0,1,2,3,5,6,
-FINE: - Possible catch states: 
-FINE: No new state available but we found one state for an earlier catch block at this level; going to use that.
-FINE: Setting this catch block's state to 6
-INFO: Try/catch block overview:
-INFO: /* TryBlockMapEntry [0]	0-0,1,1 */
-INFO: Try (state=0) {}
-INFO: Catch (...) (state=1)	@0x004013cc {}
-INFO: /* TryBlockMapEntry [1]	2-2,3,1 */
-INFO: Try (state=2) {}
-INFO: Catch (...) (state=3)	@0x004013fd {}
-INFO: /* TryBlockMapEntry [2]	5-5,6,2 */
-INFO: Try (state=5) {}
-INFO: Catch (std::out_of_range) (state=6)	@0x0040148f {}
-INFO: Catch (...) (state=6)	@0x0040149e {}
-INFO: 
-INFO: Looking at: Catch_All@004013cc
-INFO: Memory range: 004013cc-004013da
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,dword ptr [EBP + -0x18]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004013db
-INFO: Memory range: 004013db-004013fc
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Catch_All@004013fd
-INFO: Memory range: 004013fd-0040140b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EDX,dword ptr [EBP + -0x18]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_0040140c
-INFO: Memory range: 0040140c-0040148e
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Catch@0040148f
-INFO: Memory range: 0040148f-0040149d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EDX,dword ptr [EBP + -0x18]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Catch_All@0040149e
-INFO: Memory range: 0040149e-004014ac
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,dword ptr [EBP + -0x18]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004014ad
-INFO: Memory range: 004014ad-004014f0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV dword ptr [EBP + -0x4],0x4
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401500
-INFO: Memory range: 00401500-0040153b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x403120
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:00403120
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404950
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404950
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 00404950
-FINE: About to process the EH data structures.
-WARNING: IGNORING IPToStateMap information for now.
-WARNING: IGNORING ESTypeList information for now.
-FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-INFO: /* TryBlockMapEntry [0]	0-0,1,1 */
-INFO: Try (state=0) {}
-INFO: Catch (...) (state=?)	@0x0040153c {}
-INFO: Applying unwind information.
-FINE: From 0 to -1
-FINE: From 1 to -1
-FINE: Current: TryBlockMapEntry [0]	0-0,1,1
-FINE: Nesting in try: false
-FINE: Nesting in catches: false
-FINE: Parent is null.
-FINE: Looking at current's try block. State is 0
-FINE: Handling current's try block.
-FINE: Current try state 0 unwinds to toState -1
-FINE: Parent is null so cannot do anything for it.
-FINE: Handling current's catch blocks.
-FINE: targetToState determined to be -1
-FINE: - Current try state: 0
-FINE: - Known (try?) states: 0,
-FINE: - Possible catch states: 1,
-FINE: Found one state for the catch block(s)!
-FINE: Setting this catch block's state to 1
-INFO: Try/catch block overview:
-INFO: /* TryBlockMapEntry [0]	0-0,1,1 */
-INFO: Try (state=0) {}
-INFO: Catch (...) (state=1)	@0x0040153c {}
-INFO: 
-INFO: Looking at: Catch_All@0040153c
-INFO: Memory range: 0040153c-00401555
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x4041e0
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401556
-INFO: Memory range: 00401556-00401588
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401590
-INFO: Memory range: 00401590-004015b0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004015c0
-INFO: Memory range: 004015c0-004015f7
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x8
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401600
-INFO: Memory range: 00401600-00401612
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401620
-INFO: Memory range: 00401620-0040167a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x10
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401680
-INFO: Memory range: 00401680-0040168d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: size
-INFO: Memory range: 00401690-004016a8
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004016b0
-INFO: Memory range: 004016b0-004016c0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004016d0
-INFO: Memory range: 004016d0-004016df
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004016e0
-INFO: Memory range: 004016e0-004016ef
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH 0x4041f8
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004016f0
-INFO: Memory range: 004016f0-004017a3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x403130
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:00403130
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049a8
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049a8
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 004049a8
-FINE: About to process the EH data structures.
-SEVERE: OH NOES! FuncInfo data type isn't valid at 004049a8 in ExceptionVS32_EHsc_GS-.exe - .ProgramDB.
-INFO: 
-INFO: Looking at: FUN_004017b0
-INFO: Memory range: 004017b0-004017b7
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  OR EAX,0xffffffff
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004017c0
-INFO: Memory range: 004017c0-004017e7
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004017f0
-INFO: Memory range: 004017f0-00401827
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x10
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401830
-INFO: Memory range: 00401830-00401842
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401850
-INFO: Memory range: 00401850-0040186f
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401870
-INFO: Memory range: 00401870-00401b01
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x40314d
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:0040314d
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049cc
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049cc
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 004049cc
-FINE: About to process the EH data structures.
-WARNING: IGNORING IPToStateMap information for now.
-WARNING: IGNORING ESTypeList information for now.
-FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-INFO: /* TryBlockMapEntry [0]	1-1,2,1 */
-INFO: Try (state=1) {}
-INFO: Catch (...) (state=?)	@0x00401b02 {}
-INFO: Applying unwind information.
-FINE: From 0 to -1
-FINE: From 1 to 0
-FINE: From 2 to 0
-FINE: Current: TryBlockMapEntry [0]	1-1,2,1
-FINE: Nesting in try: false
-FINE: Nesting in catches: false
-FINE: Parent is null.
-FINE: Looking at current's try block. State is 1
-FINE: Handling current's try block.
-FINE: Current try state 1 unwinds to toState 0
-FINE: Parent is null so cannot do anything for it.
-FINE: Handling current's catch blocks.
-FINE: targetToState determined to be 0
-FINE: - Current try state: 1
-FINE: - Known (try?) states: 1,
-FINE: - Possible catch states: 2,
-FINE: Found one state for the catch block(s)!
-FINE: Setting this catch block's state to 2
-INFO: Try/catch block overview:
-INFO: /* TryBlockMapEntry [0]	1-1,2,1 */
-INFO: Try (state=1) {}
-INFO: Catch (...) (state=2)	@0x00401b02 {}
-INFO: 
-INFO: Looking at: Catch_All@00401b02
-INFO: Memory range: 00401b02-00401b1e
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x1
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401b1f
-INFO: Memory range: 00401b1f-00401b27
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV dword ptr [EBP + -0x4],0x0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401b2f
-INFO: Memory range: 00401b2f-00401b6e
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x0
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _Vector_alloc<>
-INFO: Memory range: 00401b70-00401b87
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401b90
-INFO: Memory range: 00401b90-00401b97
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401ba0
-INFO: Memory range: 00401ba0-00401c56
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x40316d
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:0040316d
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404a2c
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404a2c
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 00404a2c
-FINE: About to process the EH data structures.
-WARNING: IGNORING IPToStateMap information for now.
-WARNING: IGNORING ESTypeList information for now.
-INFO: No TryBlockMapEntries to analyze.
-INFO: 
-INFO: Looking at: _Min_value<>
-INFO: Memory range: 00401c60-00401c8c
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x8
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401c90
-INFO: Memory range: 00401c90-00401c94
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  POP EBP
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401ca0
-INFO: Memory range: 00401ca0-00401cee
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x403130
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:00403130
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049a8
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049a8
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 004049a8
-FINE: About to process the EH data structures.
-SEVERE: OH NOES! FuncInfo data type isn't valid at 004049a8 in ExceptionVS32_EHsc_GS-.exe - .ProgramDB.
-INFO: 
-INFO: Looking at: FUN_00401d00
-INFO: Memory range: 00401d00-00401d1c
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401d20
-INFO: Memory range: 00401d20-00401d31
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401d40
-INFO: Memory range: 00401d40-00401d84
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x8
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401d90
-INFO: Memory range: 00401d90-00401e48
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x40318d
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:0040318d
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404a58
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404a58
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 00404a58
-FINE: About to process the EH data structures.
-WARNING: IGNORING IPToStateMap information for now.
-WARNING: IGNORING ESTypeList information for now.
-INFO: No TryBlockMapEntries to analyze.
-INFO: 
-INFO: Looking at: _Vector_val<>
-INFO: Memory range: 00401e50-00401e7a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401e80
-INFO: Memory range: 00401e80-00401eaa
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401eb0
-INFO: Memory range: 00401eb0-00401f0a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x403130
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:00403130
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049a8
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x4049a8
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 004049a8
-FINE: About to process the EH data structures.
-SEVERE: OH NOES! FuncInfo data type isn't valid at 004049a8 in ExceptionVS32_EHsc_GS-.exe - .ProgramDB.
-INFO: 
-INFO: Looking at: FUN_00401f10
-INFO: Memory range: 00401f10-00401f58
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0xc
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401f60
-INFO: Memory range: 00401f60-00401f6f
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH 0x404214
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401f70
-INFO: Memory range: 00401f70-00401fd0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x18
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00401fe0
-INFO: Memory range: 00401fe0-0040201a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0xc
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402020
-INFO: Memory range: 00402020-00402029
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,0x3fffffff
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: allocate
-INFO: Memory range: 00402030-00402051
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402060
-INFO: Memory range: 00402060-00402069
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402070
-INFO: Memory range: 00402070-00402155
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH -0x1
-FINE: 01  PUSH 0x4031ad
-FINER: All instructions matched!
-INFO: Exception handling start instructions found!
-FINE: Going to look at the supposed EH setup code at location ram:004031ad
-FINE: Looking for security cookie-checking code.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404a84
-FINER: Issue with the destination.
-FINER: Instructions not matched!
-FINE: Cookie checking instructions not found!
-FINE: Looking for matching EH handler registration instructions.
-FINE: 00  NOP
-FINE: 01  NOP
-FINE: 02  MOV EAX,0x404a84
-FINE: 03  JMP 0x00402fb4
-FINER: All instructions matched!
-INFO: EH handler registration instructions found!
-INFO: Determined ehFuncInfoAddress: 00404a84
-FINE: About to process the EH data structures.
-WARNING: IGNORING IPToStateMap information for now.
-WARNING: IGNORING ESTypeList information for now.
-INFO: No TryBlockMapEntries to analyze.
-INFO: 
-INFO: Looking at: _Get_size_of_n<8>
-INFO: Memory range: 00402160-00402188
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x8
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: _Allocate<8,struct_std::_Default_allocate_traits,0>
-INFO: Memory range: 00402190-004021c1
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  CMP dword ptr [EBP + 0x8],0x1000
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004021d0
-INFO: Memory range: 004021d0-004021eb
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004021f0
-INFO: Memory range: 004021f0-00402216
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402220
-INFO: Memory range: 00402220-00402249
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402250
-INFO: Memory range: 00402250-004022bb
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x1c
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004022c0
-INFO: Memory range: 004022c0-004022fe
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402300
-INFO: Memory range: 00402300-00402364
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0xc
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402370
-INFO: Memory range: 00402370-00402392
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402393
-INFO: Memory range: 00402393-00402695
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  JMP 0x004023a5
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004023c3
-INFO: Memory range: 004023c3-004023d0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH dword ptr [EBP + 0x8]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004023d1
-INFO: Memory range: 004023d1-004023f3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  TEST byte ptr [EBP + 0x8],0x1
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004024b9
-INFO: Memory range: 004024b9-00402631
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x14
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: entry
-INFO: Memory range: 0040263b-00402644
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  CALL 0x0040293a
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402645
-INFO: Memory range: 00402645-0040265c
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  AND dword ptr [ECX + 0x4],0x0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_0040265d
-INFO: Memory range: 0040265d-00402678
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0xc
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: free
-INFO: Memory range: 00402697-0040269b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP 0x00403058
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: find_pe_section
-INFO: Memory range: 0040269c-004026df
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_acquire_startup_lock
-INFO: Memory range: 004026e0-00402711
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH ESI
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_initialize_crt
-INFO: Memory range: 00402712-0040274a
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  CMP dword ptr [EBP + 0x8],0x0
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_initialize_onexit_tables
-INFO: Memory range: 0040274b-004027d1
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  CMP byte ptr [0x004060c1],0x0
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_is_nonwritable_in_current_image
-INFO: Memory range: 004027d2-00402865
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x8
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_release_startup_lock
-INFO: Memory range: 00402866-00402882
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  CALL 0x00402e78
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_uninitialize_crt
-INFO: Memory range: 00402883-004028aa
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  CMP byte ptr [0x004060c0],0x0
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: __onexit
-INFO: Memory range: 004028ab-004028d7
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  CMP dword ptr [0x004060c4],-0x1
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: _atexit
-INFO: Memory range: 004028d8-004028ec
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH dword ptr [EBP + 0x8]
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___get_entropy
-INFO: Memory range: 004028ed-00402939
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x14
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___security_init_cookie
-INFO: Memory range: 0040293a-00402984
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV ECX,dword ptr [0x00406018]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402985
-INFO: Memory range: 00402985-00402987
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  XOR EAX,EAX
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402988
-INFO: Memory range: 00402988-0040298b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  XOR EAX,EAX
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_0040298c
-INFO: Memory range: 0040298c-00402991
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,0x4000
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402992
-INFO: Memory range: 00402992-0040299d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x4060e0
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_0040299e
-INFO: Memory range: 0040299e-004029a0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV AL,0x1
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004029a1
-INFO: Memory range: 004029a1-004029c1
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x30000
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _guard_check_icall
-INFO: Memory range: 004029c2-004029c4
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  RET 0x0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004029c5
-INFO: Memory range: 004029c5-004029ca
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,0x4060e8
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004029cb
-INFO: Memory range: 004029cb-004029d0
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,0x4060f0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004029d1
-INFO: Memory range: 004029d1-004029ed
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  CALL 0x004029c5
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004029ee
-INFO: Memory range: 004029ee-004029f9
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  XOR EAX,EAX
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_004029fa
-INFO: Memory range: 004029fa-004029ff
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,0x406428
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402a00
-INFO: Memory range: 00402a00-00402a05
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV EAX,0x406424
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402a06
-INFO: Memory range: 00402a06-00402b20
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x324
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: thunk_FUN_00402985
-INFO: Memory range: 00402b21-00402b25
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP 0x00402985
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402b26
-INFO: Memory range: 00402b26-00402b67
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x0
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402b74
-INFO: Memory range: 00402b74-00402bc8
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ESI
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402bca
-INFO: Memory range: 00402bca-00402bd1
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  AND dword ptr [0x004060f8],0x0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402bd2
-INFO: Memory range: 00402bd2-00402bfd
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBX
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __SEH_prolog4
-INFO: Memory range: 00402c30-00402c74
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH 0x402c75
-FINE: Issue with register 0
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __except_handler4
-INFO: Memory range: 00402c75-00402ca3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ESI
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402ca4
-INFO: Memory range: 00402ca4-00402e77
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  AND dword ptr [0x004060fc],0x0
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: ___scrt_is_ucrt_dll_in_use
-INFO: Memory range: 00402e78-00402e83
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  XOR EAX,EAX
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402e92
-INFO: Memory range: 00402e92-00402eb9
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH 0x0
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: FUN_00402eba
-INFO: Memory range: 00402eba-00402fb3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  SUB ESP,0x324
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: __CxxFrameHandler3
-INFO: Memory range: 00402fb4-00402fb9
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x0040408c]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _CxxThrowException
-INFO: Memory range: 00402fba-00402fbf
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404098]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __current_exception
-INFO: Memory range: 00402fc0-00402fc5
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404080]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __current_exception_context
-INFO: Memory range: 00402fc6-00402fcb
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x0040407c]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: memset
-INFO: Memory range: 00402fcc-00402fd1
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404078]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _except_handler4_common
-INFO: Memory range: 00402fd2-00402fd7
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404094]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _callnewh
-INFO: Memory range: 00402fd8-00402fdd
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040a4]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: malloc
-INFO: Memory range: 00402fde-00402fe3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040a0]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _seh_filter_exe
-INFO: Memory range: 00402fe4-00402fe9
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x0040410c]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _set_app_type
-INFO: Memory range: 00402fea-00402fef
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404108]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __setusermatherr
-INFO: Memory range: 00402ff0-00402ff5
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040bc]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _configure_narrow_argv
-INFO: Memory range: 00402ff6-00402ffb
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404100]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _initialize_narrow_environment
-INFO: Memory range: 00402ffe-00403003
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040fc]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _get_initial_narrow_environment
-INFO: Memory range: 00403004-00403009
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040f8]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _initterm
-INFO: Memory range: 0040300a-0040300f
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040f4]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _initterm_e
-INFO: Memory range: 00403010-00403015
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040f0]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: exit
-INFO: Memory range: 00403016-0040301b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404110]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _exit
-INFO: Memory range: 0040301c-00403021
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040ec]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _set_fmode
-INFO: Memory range: 00403022-00403027
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x0040411c]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __p___argc
-INFO: Memory range: 00403028-0040302d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040dc]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __p___argv
-INFO: Memory range: 0040302e-00403033
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040e8]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _cexit
-INFO: Memory range: 00403034-00403039
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040e4]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _c_exit
-INFO: Memory range: 0040303a-0040303f
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040e0]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _register_thread_local_exe_atexit_callback
-INFO: Memory range: 00403040-00403045
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040d0]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _configthreadlocale
-INFO: Memory range: 00403046-0040304b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040b4]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __p__commode
-INFO: Memory range: 00403052-00403057
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404118]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: free
-INFO: Memory range: 00403058-0040305d
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040ac]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _initialize_onexit_table
-INFO: Memory range: 0040305e-00403063
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040c4]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _register_onexit_function
-INFO: Memory range: 00403064-00403069
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040c8]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _crt_atexit
-INFO: Memory range: 0040306a-0040306f
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040cc]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: _controlfp_s
-INFO: Memory range: 00403070-00403075
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404104]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: terminate
-INFO: Memory range: 00403076-0040307b
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x004040d4]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: __filter_x86_sse2_floating_point_exception_default
-INFO: Memory range: 0040307c-004030f3
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  PUSH EBP
-FINE: 01  MOV EBP,ESP
-FINER: All instructions matched!
-INFO: Normal start instructions found!
-FINE: Looking for exception handling start instructions.
-FINE: 00  PUSH ECX
-FINER: Instructions not matched!
-INFO: Exception handling start instructions not found!
-INFO: 
-INFO: Looking at: memmove
-INFO: Memory range: 004030f4-004030f9
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  JMP dword ptr [0x00404090]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Unwind@00403100
-INFO: Memory range: 00403100-00403107
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  LEA ECX,[EBP + -0x40]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Unwind@00403140
-INFO: Memory range: 00403140-00403147
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  LEA ECX,[EBP + -0x68]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Unwind@00403160
-INFO: Memory range: 00403160-00403167
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  LEA ECX,[EBP + -0x1c]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Unwind@00403180
-INFO: Memory range: 00403180-00403187
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  MOV ECX,dword ptr [EBP + -0x10]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-INFO: 
-INFO: Looking at: Unwind@004031a0
-INFO: Memory range: 004031a0-004031a7
-FINE: Let's start with the instructions:
-FINE: Looking for standard function prologue.
-FINE: 00  LEA ECX,[EBP + -0x28]
-FINER: Instructions not matched!
-INFO: Normal start instructions not found!
-Finished!
+May 01, 2024 11:19:20 AM EHExtractor
+Output log location is C:\Users\rgs\Documents\ehextractor.log.
+Program file: /D:/UserData/rgs/Dropbox/OU/AF/Test files/ExceptionVS32_EHsc_GS-.exe
+Program spans addresses 00400000-ffdfffff
+
+Looking at: FUN_00401000
+Memory range: 00401000-00401007
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: exception
+Memory range: 00401010-0040103e
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401040
+Memory range: 00401040-0040107c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401080
+Memory range: 00401080-004010a3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: what
+Memory range: 004010b0-004010da
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004010e0
+Memory range: 004010e0-0040110d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: bad_alloc
+Memory range: 00401110-00401136
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FID_conflict:`scalar_deleting_destructor'
+Memory range: 00401140-0040116d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401170
+Memory range: 00401170-00401182
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: bad_array_new_length
+Memory range: 00401190-004011b3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FID_conflict:`scalar_deleting_destructor'
+Memory range: 004011c0-004011ed
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004011f0
+Memory range: 004011f0-00401202
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401210
+Memory range: 00401210-0040122b
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FID_conflict:evaluation_error
+Memory range: 00401230-00401254
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401260
+Memory range: 00401260-00401284
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401290
+Memory range: 00401290-00401299
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Allocate
+Memory range: 004012a0-004012b0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004012c0
+Memory range: 004012c0-00401325
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401330
+Memory range: 00401330-0040133a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401340
+Memory range: 00401340-0040134f
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401350
+Memory range: 00401350-0040136a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401370
+Memory range: 00401370-004013cb
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404878
+Try/catch block overview:
+/* TryBlockMapEntry [0]	0-0,1,1 */
+Try (state=0) {}
+Catch (...) (state=1)	@0x004013cc {}
+/* TryBlockMapEntry [1]	2-2,3,1 */
+Try (state=2) {}
+Catch (...) (state=3)	@0x004013fd {}
+/* TryBlockMapEntry [2]	5-5,6,2 */
+Try (state=5) {}
+Catch (std::out_of_range) (state=6)	@0x0040148f {}
+Catch (...) (state=6)	@0x0040149e {}
+
+Looking at: Catch_All@004013cc
+Memory range: 004013cc-004013da
+Normal start instructions not found.
+
+Looking at: FUN_004013db
+Memory range: 004013db-004013fc
+Normal start instructions not found.
+
+Looking at: Catch_All@004013fd
+Memory range: 004013fd-0040140b
+Normal start instructions not found.
+
+Looking at: FUN_0040140c
+Memory range: 0040140c-0040148e
+Normal start instructions not found.
+
+Looking at: Catch@0040148f
+Memory range: 0040148f-0040149d
+Normal start instructions not found.
+
+Looking at: Catch_All@0040149e
+Memory range: 0040149e-004014ac
+Normal start instructions not found.
+
+Looking at: FUN_004014ad
+Memory range: 004014ad-004014f0
+Normal start instructions not found.
+
+Looking at: FUN_00401500
+Memory range: 00401500-0040153b
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404950
+Try/catch block overview:
+/* TryBlockMapEntry [0]	0-0,1,1 */
+Try (state=0) {}
+Catch (...) (state=1)	@0x0040153c {}
+
+Looking at: Catch_All@0040153c
+Memory range: 0040153c-00401555
+Normal start instructions not found.
+
+Looking at: FUN_00401556
+Memory range: 00401556-00401588
+Normal start instructions not found.
+
+Looking at: FUN_00401590
+Memory range: 00401590-004015b0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004015c0
+Memory range: 004015c0-004015f7
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401600
+Memory range: 00401600-00401612
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401620
+Memory range: 00401620-0040167a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401680
+Memory range: 00401680-0040168d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: size
+Memory range: 00401690-004016a8
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004016b0
+Memory range: 004016b0-004016c0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004016d0
+Memory range: 004016d0-004016df
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004016e0
+Memory range: 004016e0-004016ef
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004016f0
+Memory range: 004016f0-004017a3
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 004049a8
+An exception occurred processing the EH data structures. Unable to continue for this function.
+The exception message is: FuncInfo data type isn't valid at 004049a8 in ExceptionVS32_EHsc_GS-.exe - .ProgramDB.
+
+Looking at: FUN_004017b0
+Memory range: 004017b0-004017b7
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004017c0
+Memory range: 004017c0-004017e7
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004017f0
+Memory range: 004017f0-00401827
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401830
+Memory range: 00401830-00401842
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401850
+Memory range: 00401850-0040186f
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401870
+Memory range: 00401870-00401b01
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 004049cc
+Try/catch block overview:
+/* TryBlockMapEntry [0]	1-1,2,1 */
+Try (state=1) {}
+Catch (...) (state=2)	@0x00401b02 {}
+
+Looking at: Catch_All@00401b02
+Memory range: 00401b02-00401b1e
+Normal start instructions not found.
+
+Looking at: FUN_00401b1f
+Memory range: 00401b1f-00401b27
+Normal start instructions not found.
+
+Looking at: FUN_00401b2f
+Memory range: 00401b2f-00401b6e
+Normal start instructions not found.
+
+Looking at: _Vector_alloc<>
+Memory range: 00401b70-00401b87
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401b90
+Memory range: 00401b90-00401b97
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401ba0
+Memory range: 00401ba0-00401c56
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404a2c
+No TryBlockMapEntries to analyze.
+
+Looking at: _Min_value<>
+Memory range: 00401c60-00401c8c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401c90
+Memory range: 00401c90-00401c94
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401ca0
+Memory range: 00401ca0-00401cee
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 004049a8
+An exception occurred processing the EH data structures. Unable to continue for this function.
+The exception message is: FuncInfo data type isn't valid at 004049a8 in ExceptionVS32_EHsc_GS-.exe - .ProgramDB.
+
+Looking at: FUN_00401d00
+Memory range: 00401d00-00401d1c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401d20
+Memory range: 00401d20-00401d31
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401d40
+Memory range: 00401d40-00401d84
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401d90
+Memory range: 00401d90-00401e48
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404a58
+No TryBlockMapEntries to analyze.
+
+Looking at: _Vector_val<>
+Memory range: 00401e50-00401e7a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401e80
+Memory range: 00401e80-00401eaa
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401eb0
+Memory range: 00401eb0-00401f0a
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 004049a8
+An exception occurred processing the EH data structures. Unable to continue for this function.
+The exception message is: FuncInfo data type isn't valid at 004049a8 in ExceptionVS32_EHsc_GS-.exe - .ProgramDB.
+
+Looking at: FUN_00401f10
+Memory range: 00401f10-00401f58
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401f60
+Memory range: 00401f60-00401f6f
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401f70
+Memory range: 00401f70-00401fd0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401fe0
+Memory range: 00401fe0-0040201a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402020
+Memory range: 00402020-00402029
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: allocate
+Memory range: 00402030-00402051
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402060
+Memory range: 00402060-00402069
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402070
+Memory range: 00402070-00402155
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404a84
+No TryBlockMapEntries to analyze.
+
+Looking at: _Get_size_of_n<8>
+Memory range: 00402160-00402188
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Allocate<8,struct_std::_Default_allocate_traits,0>
+Memory range: 00402190-004021c1
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004021d0
+Memory range: 004021d0-004021eb
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004021f0
+Memory range: 004021f0-00402216
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402220
+Memory range: 00402220-00402249
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402250
+Memory range: 00402250-004022bb
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004022c0
+Memory range: 004022c0-004022fe
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402300
+Memory range: 00402300-00402364
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402370
+Memory range: 00402370-00402392
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402393
+Memory range: 00402393-00402695
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004023c3
+Memory range: 004023c3-004023d0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004023d1
+Memory range: 004023d1-004023f3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004024b9
+Memory range: 004024b9-00402631
+Normal start instructions not found.
+
+Looking at: entry
+Memory range: 0040263b-00402644
+Normal start instructions not found.
+
+Looking at: FUN_00402645
+Memory range: 00402645-0040265c
+Normal start instructions not found.
+
+Looking at: FUN_0040265d
+Memory range: 0040265d-00402678
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: free
+Memory range: 00402697-0040269b
+Normal start instructions not found.
+
+Looking at: find_pe_section
+Memory range: 0040269c-004026df
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_acquire_startup_lock
+Memory range: 004026e0-00402711
+Normal start instructions not found.
+
+Looking at: ___scrt_initialize_crt
+Memory range: 00402712-0040274a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_initialize_onexit_tables
+Memory range: 0040274b-004027d1
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_is_nonwritable_in_current_image
+Memory range: 004027d2-00402865
+Normal start instructions not found.
+
+Looking at: ___scrt_release_startup_lock
+Memory range: 00402866-00402882
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_uninitialize_crt
+Memory range: 00402883-004028aa
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: __onexit
+Memory range: 004028ab-004028d7
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _atexit
+Memory range: 004028d8-004028ec
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___get_entropy
+Memory range: 004028ed-00402939
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___security_init_cookie
+Memory range: 0040293a-00402984
+Normal start instructions not found.
+
+Looking at: FUN_00402985
+Memory range: 00402985-00402987
+Normal start instructions not found.
+
+Looking at: FUN_00402988
+Memory range: 00402988-0040298b
+Normal start instructions not found.
+
+Looking at: FUN_0040298c
+Memory range: 0040298c-00402991
+Normal start instructions not found.
+
+Looking at: FUN_00402992
+Memory range: 00402992-0040299d
+Normal start instructions not found.
+
+Looking at: FUN_0040299e
+Memory range: 0040299e-004029a0
+Normal start instructions not found.
+
+Looking at: FUN_004029a1
+Memory range: 004029a1-004029c1
+Normal start instructions not found.
+
+Looking at: _guard_check_icall
+Memory range: 004029c2-004029c4
+Normal start instructions not found.
+
+Looking at: FUN_004029c5
+Memory range: 004029c5-004029ca
+Normal start instructions not found.
+
+Looking at: FUN_004029cb
+Memory range: 004029cb-004029d0
+Normal start instructions not found.
+
+Looking at: FUN_004029d1
+Memory range: 004029d1-004029ed
+Normal start instructions not found.
+
+Looking at: FUN_004029ee
+Memory range: 004029ee-004029f9
+Normal start instructions not found.
+
+Looking at: FUN_004029fa
+Memory range: 004029fa-004029ff
+Normal start instructions not found.
+
+Looking at: FUN_00402a00
+Memory range: 00402a00-00402a05
+Normal start instructions not found.
+
+Looking at: FUN_00402a06
+Memory range: 00402a06-00402b20
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: thunk_FUN_00402985
+Memory range: 00402b21-00402b25
+Normal start instructions not found.
+
+Looking at: FUN_00402b26
+Memory range: 00402b26-00402b67
+Normal start instructions not found.
+
+Looking at: FUN_00402b74
+Memory range: 00402b74-00402bc8
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402bca
+Memory range: 00402bca-00402bd1
+Normal start instructions not found.
+
+Looking at: FUN_00402bd2
+Memory range: 00402bd2-00402bfd
+Normal start instructions not found.
+
+Looking at: __SEH_prolog4
+Memory range: 00402c30-00402c74
+Normal start instructions not found.
+
+Looking at: __except_handler4
+Memory range: 00402c75-00402ca3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402ca4
+Memory range: 00402ca4-00402e77
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_is_ucrt_dll_in_use
+Memory range: 00402e78-00402e83
+Normal start instructions not found.
+
+Looking at: FUN_00402e92
+Memory range: 00402e92-00402eb9
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402eba
+Memory range: 00402eba-00402fb3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: __CxxFrameHandler3
+Memory range: 00402fb4-00402fb9
+Normal start instructions not found.
+
+Looking at: _CxxThrowException
+Memory range: 00402fba-00402fbf
+Normal start instructions not found.
+
+Looking at: __current_exception
+Memory range: 00402fc0-00402fc5
+Normal start instructions not found.
+
+Looking at: __current_exception_context
+Memory range: 00402fc6-00402fcb
+Normal start instructions not found.
+
+Looking at: memset
+Memory range: 00402fcc-00402fd1
+Normal start instructions not found.
+
+Looking at: _except_handler4_common
+Memory range: 00402fd2-00402fd7
+Normal start instructions not found.
+
+Looking at: _callnewh
+Memory range: 00402fd8-00402fdd
+Normal start instructions not found.
+
+Looking at: malloc
+Memory range: 00402fde-00402fe3
+Normal start instructions not found.
+
+Looking at: _seh_filter_exe
+Memory range: 00402fe4-00402fe9
+Normal start instructions not found.
+
+Looking at: _set_app_type
+Memory range: 00402fea-00402fef
+Normal start instructions not found.
+
+Looking at: __setusermatherr
+Memory range: 00402ff0-00402ff5
+Normal start instructions not found.
+
+Looking at: _configure_narrow_argv
+Memory range: 00402ff6-00402ffb
+Normal start instructions not found.
+
+Looking at: _initialize_narrow_environment
+Memory range: 00402ffe-00403003
+Normal start instructions not found.
+
+Looking at: _get_initial_narrow_environment
+Memory range: 00403004-00403009
+Normal start instructions not found.
+
+Looking at: _initterm
+Memory range: 0040300a-0040300f
+Normal start instructions not found.
+
+Looking at: _initterm_e
+Memory range: 00403010-00403015
+Normal start instructions not found.
+
+Looking at: exit
+Memory range: 00403016-0040301b
+Normal start instructions not found.
+
+Looking at: _exit
+Memory range: 0040301c-00403021
+Normal start instructions not found.
+
+Looking at: _set_fmode
+Memory range: 00403022-00403027
+Normal start instructions not found.
+
+Looking at: __p___argc
+Memory range: 00403028-0040302d
+Normal start instructions not found.
+
+Looking at: __p___argv
+Memory range: 0040302e-00403033
+Normal start instructions not found.
+
+Looking at: _cexit
+Memory range: 00403034-00403039
+Normal start instructions not found.
+
+Looking at: _c_exit
+Memory range: 0040303a-0040303f
+Normal start instructions not found.
+
+Looking at: _register_thread_local_exe_atexit_callback
+Memory range: 00403040-00403045
+Normal start instructions not found.
+
+Looking at: _configthreadlocale
+Memory range: 00403046-0040304b
+Normal start instructions not found.
+
+Looking at: __p__commode
+Memory range: 00403052-00403057
+Normal start instructions not found.
+
+Looking at: free
+Memory range: 00403058-0040305d
+Normal start instructions not found.
+
+Looking at: _initialize_onexit_table
+Memory range: 0040305e-00403063
+Normal start instructions not found.
+
+Looking at: _register_onexit_function
+Memory range: 00403064-00403069
+Normal start instructions not found.
+
+Looking at: _crt_atexit
+Memory range: 0040306a-0040306f
+Normal start instructions not found.
+
+Looking at: _controlfp_s
+Memory range: 00403070-00403075
+Normal start instructions not found.
+
+Looking at: terminate
+Memory range: 00403076-0040307b
+Normal start instructions not found.
+
+Looking at: __filter_x86_sse2_floating_point_exception_default
+Memory range: 0040307c-004030f3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: memmove
+Memory range: 004030f4-004030f9
+Normal start instructions not found.
+
+Looking at: Unwind@00403100
+Memory range: 00403100-00403107
+Normal start instructions not found.
+
+Looking at: Unwind@00403140
+Memory range: 00403140-00403147
+Normal start instructions not found.
+
+Looking at: Unwind@00403160
+Memory range: 00403160-00403167
+Normal start instructions not found.
+
+Looking at: Unwind@00403180
+Memory range: 00403180-00403187
+Normal start instructions not found.
+
+Looking at: Unwind@004031a0
+Memory range: 004031a0-004031a7
+Normal start instructions not found.

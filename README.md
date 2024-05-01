@@ -45,7 +45,7 @@ Catch (...) (state=6)	@0x004019b0 {
 
 #### Analyzer
 
-- Download the ghidra*.zip file from the [dist](/dist) directory.
+- Download the ghidra*.zip file from the ["dist"](/dist) directory.
 - Start Ghidra.
 - From the Project window, click File/Install Extensions...
 - Click the + icon (top right) and navigate to the location of the ghidra*.zip file. Select the file and click OK.
@@ -62,6 +62,8 @@ Running the script requires not only a working installation of Ghidra, but also 
 
 
 ## Usage
+
+Instructions for using EHExtractor are listed below. Test binaries and corresponding output log files can be found in the ["data/Test and log files"](/data/Test and log files) folder together with a [step-by-step example](data/Test and log files/README.md) of running the analyzer.
 
 #### Analyzer
 

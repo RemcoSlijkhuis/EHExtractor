@@ -1,2981 +1,1005 @@
-EHExtractor.java> Running...
-EHExtractor.java> Apr 12, 2024 13:39:52 PM EHExtractor
-EHExtractor.java> FINE: Compiler check
-EHExtractor.java> FINE: Processor & bitness check:
-EHExtractor.java> FINE:   Processor type: x86
-EHExtractor.java> FINE:   Pointer size: 32 bits
-EHExtractor.java> INFO: Executable is for 32-bit x86 and is compiled using MSVC.
-EHExtractor.java> INFO: Program file: /D:/UserData/rgs/Dropbox/OU/AF/Test files/NestedExceptionVS32_EHsc_GS.exe
-EHExtractor.java> INFO: Program spans addresses 00400000-ffdfffff
-EHExtractor.java> FINE: Determining the address of (thunk) function *CxxFrameHandler3.
-EHExtractor.java> FINER:   Functions found that match by name:
-EHExtractor.java> FINER:     VCRUNTIME140.DLL::__CxxFrameHandler3 @ EXTERNAL:00000007
-EHExtractor.java> FINER:   No functions found that match by label.
-EHExtractor.java> FINER:   Returning the 1 function that matched by name: __CxxFrameHandler3
-EHExtractor.java> FINE: Looking up a security_check_cookie function.
-EHExtractor.java> FINER:   No functions found that match by name.
-EHExtractor.java> FINER:   No functions found that match by label.
-EHExtractor.java> FINER: No matching function found.
-EHExtractor.java> FINE: No clear security_check_cookie function found.
-EHExtractor.java> FINE: Now going to look at some functions.
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401000
-EHExtractor.java> INFO: Memory range: 00401000-00401007
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + 0xc]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: exception
-EHExtractor.java> INFO: Memory range: 00401010-0040103e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401040
-EHExtractor.java> INFO: Memory range: 00401040-0040107c
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401080
-EHExtractor.java> INFO: Memory range: 00401080-004010a3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: what
-EHExtractor.java> INFO: Memory range: 004010b0-004010da
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x8
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004010e0
-EHExtractor.java> INFO: Memory range: 004010e0-0040110d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: bad_alloc
-EHExtractor.java> INFO: Memory range: 00401110-00401136
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FID_conflict:`scalar_deleting_destructor'
-EHExtractor.java> INFO: Memory range: 00401140-0040116d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401170
-EHExtractor.java> INFO: Memory range: 00401170-00401182
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: bad_array_new_length
-EHExtractor.java> INFO: Memory range: 00401190-004011b3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FID_conflict:`scalar_deleting_destructor'
-EHExtractor.java> INFO: Memory range: 004011c0-004011ed
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004011f0
-EHExtractor.java> INFO: Memory range: 004011f0-00401202
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401210
-EHExtractor.java> INFO: Memory range: 00401210-0040122b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0xc
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FID_conflict:evaluation_error
-EHExtractor.java> INFO: Memory range: 00401230-00401254
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401260
-EHExtractor.java> INFO: Memory range: 00401260-00401284
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401290
-EHExtractor.java> INFO: Memory range: 00401290-00401299
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x7fffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Allocate
-EHExtractor.java> INFO: Memory range: 004012a0-004012b0
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004012c0
-EHExtractor.java> INFO: Memory range: 004012c0-00401325
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x10
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401330
-EHExtractor.java> INFO: Memory range: 00401330-0040133a
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401340
-EHExtractor.java> INFO: Memory range: 00401340-0040134f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401350
-EHExtractor.java> INFO: Memory range: 00401350-0040135f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH 0x404190
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401360
-EHExtractor.java> INFO: Memory range: 00401360-004013b4
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x4030d0
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:004030d0
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x38]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x404848
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404848
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404848
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-EHExtractor.java> INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-EHExtractor.java> INFO: /* TryBlockMapEntry [1]	0-0,3,1 */
-EHExtractor.java> INFO: Try (state=0) {}
-EHExtractor.java> INFO: Catch (...) (state=?)	@0x004013b5 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [0]	2-2,3,1 */
-EHExtractor.java> INFO:   Try (state=2) {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x004013c7 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Applying unwind information.
-EHExtractor.java> FINE: From 0 to -1
-EHExtractor.java> FINE: From 1 to -1
-EHExtractor.java> FINE: From 2 to 1
-EHExtractor.java> FINE: From 3 to 1
-EHExtractor.java> FINE: Current: TryBlockMapEntry [1]	0-0,3,1
-EHExtractor.java> FINE: Nesting in try: false
-EHExtractor.java> FINE: Nesting in catches: true
-EHExtractor.java> FINE: Parent is null.
-EHExtractor.java> FINE: Looking at current's try block. State is 0
-EHExtractor.java> FINE: Handling current's try block.
-EHExtractor.java> FINE: Current try state 0 unwinds to toState -1
-EHExtractor.java> FINE: Parent is null so cannot do anything for it.
-EHExtractor.java> FINE: Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [0]	2-2,3,1
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: false
-EHExtractor.java> FINE:   Parent is a CATCH
-EHExtractor.java> FINE:   Looking at current's try block. State is 2
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 2 unwinds to toState 1
-EHExtractor.java> FINE:   Setting parent state to 1
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 1
-EHExtractor.java> FINE:   - Current try state: 2
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,
-EHExtractor.java> FINE:   - Possible catch states: 3,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 3
-EHExtractor.java> FINE: Handling current's catch blocks.
-EHExtractor.java> FINE: targetToState determined to be -1
-EHExtractor.java> FINE: State already determined for this catch block (it's 1).
-EHExtractor.java> INFO: Try/catch block overview:
-EHExtractor.java> INFO: /* TryBlockMapEntry [1]	0-0,3,1 */
-EHExtractor.java> INFO: Try (state=0) {}
-EHExtractor.java> INFO: Catch (...) (state=1)	@0x004013b5 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [0]	2-2,3,1 */
-EHExtractor.java> INFO:   Try (state=2) {}
-EHExtractor.java> INFO:   Catch (...) (state=3)	@0x004013c7 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004013b5
-EHExtractor.java> INFO: Memory range: 004013b5-004013c6
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004013c7
-EHExtractor.java> INFO: Memory range: 004013c7-004013d3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x7
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004013d4
-EHExtractor.java> INFO: Memory range: 004013d4-004013e9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004013ea
-EHExtractor.java> INFO: Memory range: 004013ea-00401426
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401430
-EHExtractor.java> INFO: Memory range: 00401430-00401484
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x403100
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:00403100
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x38]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x4048d4
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x4048d4
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 004048d4
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-EHExtractor.java> INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-EHExtractor.java> INFO: /* TryBlockMapEntry [2]	0-0,5,1 */
-EHExtractor.java> INFO: Try (state=0) {}
-EHExtractor.java> INFO: Catch (...) (state=?)	@0x00401485 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [1]	2-2,5,2 */
-EHExtractor.java> INFO:   Try (state=2) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=?)	@0x00401497 {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x004014a4 {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	4-4,5,1 */
-EHExtractor.java> INFO:     Try (state=4) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x004014b4 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Applying unwind information.
-EHExtractor.java> FINE: From 0 to -1
-EHExtractor.java> FINE: From 1 to -1
-EHExtractor.java> FINE: From 2 to 1
-EHExtractor.java> FINE: From 3 to 1
-EHExtractor.java> FINE: From 4 to 3
-EHExtractor.java> FINE: From 5 to 3
-EHExtractor.java> FINE: Current: TryBlockMapEntry [2]	0-0,5,1
-EHExtractor.java> FINE: Nesting in try: false
-EHExtractor.java> FINE: Nesting in catches: true
-EHExtractor.java> FINE: Parent is null.
-EHExtractor.java> FINE: Looking at current's try block. State is 0
-EHExtractor.java> FINE: Handling current's try block.
-EHExtractor.java> FINE: Current try state 0 unwinds to toState -1
-EHExtractor.java> FINE: Parent is null so cannot do anything for it.
-EHExtractor.java> FINE: Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [1]	2-2,5,2
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: true
-EHExtractor.java> FINE:   Parent is a CATCH
-EHExtractor.java> FINE:   Looking at current's try block. State is 2
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 2 unwinds to toState 1
-EHExtractor.java> FINE:   Setting parent state to 1
-EHExtractor.java> FINE:   Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [0]	4-4,5,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 4
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 4 unwinds to toState 3
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 3
-EHExtractor.java> FINE:     - Current try state: 4
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,4,
-EHExtractor.java> FINE:     - Possible catch states: 5,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 5
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 1
-EHExtractor.java> FINE:   - Current try state: 2
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,4,5,
-EHExtractor.java> FINE:   - Possible catch states: 3,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 3
-EHExtractor.java> FINE:   - Current try state: 2
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,3,4,5,
-EHExtractor.java> FINE:   - Possible catch states: 
-EHExtractor.java> FINE:   No new state available but we found one state for an earlier catch block at this level; going to use that.
-EHExtractor.java> FINE:   Setting this catch block's state to 3
-EHExtractor.java> FINE: Handling current's catch blocks.
-EHExtractor.java> FINE: targetToState determined to be -1
-EHExtractor.java> FINE: State already determined for this catch block (it's 1).
-EHExtractor.java> INFO: Try/catch block overview:
-EHExtractor.java> INFO: /* TryBlockMapEntry [2]	0-0,5,1 */
-EHExtractor.java> INFO: Try (state=0) {}
-EHExtractor.java> INFO: Catch (...) (state=1)	@0x00401485 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [1]	2-2,5,2 */
-EHExtractor.java> INFO:   Try (state=2) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=3)	@0x00401497 {}
-EHExtractor.java> INFO:   Catch (...) (state=3)	@0x004014a4 {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	4-4,5,1 */
-EHExtractor.java> INFO:     Try (state=4) {}
-EHExtractor.java> INFO:     Catch (...) (state=5)	@0x004014b4 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401485
-EHExtractor.java> INFO: Memory range: 00401485-00401496
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@00401497
-EHExtractor.java> INFO: Memory range: 00401497-004014a3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x7
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004014a4
-EHExtractor.java> INFO: Memory range: 004014a4-004014b3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004014b4
-EHExtractor.java> INFO: Memory range: 004014b4-004014c0
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x9
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004014c1
-EHExtractor.java> INFO: Memory range: 004014c1-004014d6
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x3
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004014d7
-EHExtractor.java> INFO: Memory range: 004014d7-004014f7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004014f8
-EHExtractor.java> INFO: Memory range: 004014f8-00401534
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401540
-EHExtractor.java> INFO: Memory range: 00401540-00401597
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x403130
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:00403130
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x38]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x4049a8
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x4049a8
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 004049a8
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-EHExtractor.java> INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-EHExtractor.java> INFO: /* TryBlockMapEntry [3]	0-0,7,1 */
-EHExtractor.java> INFO: Try (state=0) {}
-EHExtractor.java> INFO: Catch (...) (state=?)	@0x00401598 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [2]	2-2,7,2 */
-EHExtractor.java> INFO:   Try (state=2) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=?)	@0x004015aa {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x004015dd {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [1]	6-6,7,1 */
-EHExtractor.java> INFO:     Try (state=6) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x004015ed {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	4-4,5,1 */
-EHExtractor.java> INFO:     Try (state=4) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x004015ba {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Applying unwind information.
-EHExtractor.java> FINE: From 0 to -1
-EHExtractor.java> FINE: From 1 to -1
-EHExtractor.java> FINE: From 2 to 1
-EHExtractor.java> FINE: From 3 to 1
-EHExtractor.java> FINE: From 4 to 3
-EHExtractor.java> FINE: From 5 to 3
-EHExtractor.java> FINE: From 6 to 3
-EHExtractor.java> FINE: From 7 to 3
-EHExtractor.java> FINE: Current: TryBlockMapEntry [3]	0-0,7,1
-EHExtractor.java> FINE: Nesting in try: false
-EHExtractor.java> FINE: Nesting in catches: true
-EHExtractor.java> FINE: Parent is null.
-EHExtractor.java> FINE: Looking at current's try block. State is 0
-EHExtractor.java> FINE: Handling current's try block.
-EHExtractor.java> FINE: Current try state 0 unwinds to toState -1
-EHExtractor.java> FINE: Parent is null so cannot do anything for it.
-EHExtractor.java> FINE: Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [2]	2-2,7,2
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: true
-EHExtractor.java> FINE:   Parent is a CATCH
-EHExtractor.java> FINE:   Looking at current's try block. State is 2
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 2 unwinds to toState 1
-EHExtractor.java> FINE:   Setting parent state to 1
-EHExtractor.java> FINE:   Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [1]	6-6,7,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 6
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 6 unwinds to toState 3
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 3
-EHExtractor.java> FINE:     - Current try state: 6
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,6,
-EHExtractor.java> FINE:     - Possible catch states: 4,5,7,
-EHExtractor.java> FINE:     Found multiple possible states for catch blocks, trying to limit them.
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 7
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [0]	4-4,5,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 4
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 4 unwinds to toState 3
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 3
-EHExtractor.java> FINE:     - Current try state: 4
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,4,6,7,
-EHExtractor.java> FINE:     - Possible catch states: 5,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 5
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 1
-EHExtractor.java> FINE:   - Current try state: 2
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,4,5,6,7,
-EHExtractor.java> FINE:   - Possible catch states: 3,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 3
-EHExtractor.java> FINE:   - Current try state: 2
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,3,4,5,6,7,
-EHExtractor.java> FINE:   - Possible catch states: 
-EHExtractor.java> FINE:   No new state available but we found one state for an earlier catch block at this level; going to use that.
-EHExtractor.java> FINE:   Setting this catch block's state to 3
-EHExtractor.java> FINE: Handling current's catch blocks.
-EHExtractor.java> FINE: targetToState determined to be -1
-EHExtractor.java> FINE: State already determined for this catch block (it's 1).
-EHExtractor.java> INFO: Try/catch block overview:
-EHExtractor.java> INFO: /* TryBlockMapEntry [3]	0-0,7,1 */
-EHExtractor.java> INFO: Try (state=0) {}
-EHExtractor.java> INFO: Catch (...) (state=1)	@0x00401598 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [2]	2-2,7,2 */
-EHExtractor.java> INFO:   Try (state=2) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=3)	@0x004015aa {}
-EHExtractor.java> INFO:   Catch (...) (state=3)	@0x004015dd {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [1]	6-6,7,1 */
-EHExtractor.java> INFO:     Try (state=6) {}
-EHExtractor.java> INFO:     Catch (...) (state=7)	@0x004015ed {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	4-4,5,1 */
-EHExtractor.java> INFO:     Try (state=4) {}
-EHExtractor.java> INFO:     Catch (...) (state=5)	@0x004015ba {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401598
-EHExtractor.java> INFO: Memory range: 00401598-004015a9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@004015aa
-EHExtractor.java> INFO: Memory range: 004015aa-004015b9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004015ba
-EHExtractor.java> INFO: Memory range: 004015ba-004015c6
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x9
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004015c7
-EHExtractor.java> INFO: Memory range: 004015c7-004015dc
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x3
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004015dd
-EHExtractor.java> INFO: Memory range: 004015dd-004015ec
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004015ed
-EHExtractor.java> INFO: Memory range: 004015ed-004015f9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x9
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004015fa
-EHExtractor.java> INFO: Memory range: 004015fa-0040160f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x3
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401610
-EHExtractor.java> INFO: Memory range: 00401610-00401630
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401631
-EHExtractor.java> INFO: Memory range: 00401631-0040166d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401680
-EHExtractor.java> INFO: Memory range: 00401680-004016e1
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x403160
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:00403160
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x38]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x404ab0
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404ab0
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404ab0
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-EHExtractor.java> INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-EHExtractor.java> INFO: /* TryBlockMapEntry [4]	0-2,9,1 */
-EHExtractor.java> INFO: Try (state=0) {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [0]	1-1,2,1 */
-EHExtractor.java> INFO:   Try (state=1) {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x004016e2 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Catch (...) (state=?)	@0x00401706 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [3]	4-4,9,2 */
-EHExtractor.java> INFO:   Try (state=4) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=?)	@0x00401718 {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x0040174b {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [2]	8-8,9,1 */
-EHExtractor.java> INFO:     Try (state=8) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x0040175b {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [1]	6-6,7,1 */
-EHExtractor.java> INFO:     Try (state=6) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x00401728 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Applying unwind information.
-EHExtractor.java> FINE: From 0 to -1
-EHExtractor.java> FINE: From 1 to 0
-EHExtractor.java> FINE: From 2 to 0
-EHExtractor.java> FINE: From 3 to -1
-EHExtractor.java> FINE: From 4 to 3
-EHExtractor.java> FINE: From 5 to 3
-EHExtractor.java> FINE: From 6 to 5
-EHExtractor.java> FINE: From 7 to 5
-EHExtractor.java> FINE: From 8 to 5
-EHExtractor.java> FINE: From 9 to 5
-EHExtractor.java> FINE: Current: TryBlockMapEntry [4]	0-2,9,1
-EHExtractor.java> FINE: Nesting in try: true
-EHExtractor.java> FINE: Nesting in catches: true
-EHExtractor.java> FINE: Parent is null.
-EHExtractor.java> FINE: Looking at current's try block. State is 0
-EHExtractor.java> FINE: Going into try/catches nested in current's try block.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [0]	1-1,2,1
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: false
-EHExtractor.java> FINE:   Parent is a TRY
-EHExtractor.java> FINE:   Looking at current's try block. State is 1
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 1 unwinds to toState 0
-EHExtractor.java> FINE:   Parent's state matches the expected value.
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 0
-EHExtractor.java> FINE:   - Current try state: 1
-EHExtractor.java> FINE:   - Known (try?) states: 1,
-EHExtractor.java> FINE:   - Possible catch states: 2,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 2
-EHExtractor.java> FINE: Handling current's try block.
-EHExtractor.java> FINE: Current try state 0 unwinds to toState -1
-EHExtractor.java> FINE: Parent is null so cannot do anything for it.
-EHExtractor.java> FINE: Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [3]	4-4,9,2
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: true
-EHExtractor.java> FINE:   Parent is a CATCH
-EHExtractor.java> FINE:   Looking at current's try block. State is 4
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 4 unwinds to toState 3
-EHExtractor.java> FINE:   Setting parent state to 3
-EHExtractor.java> FINE:   Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [2]	8-8,9,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 8
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 8 unwinds to toState 5
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 5
-EHExtractor.java> FINE:     - Current try state: 8
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,3,4,8,
-EHExtractor.java> FINE:     - Possible catch states: 6,7,9,
-EHExtractor.java> FINE:     Found multiple possible states for catch blocks, trying to limit them.
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 9
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [1]	6-6,7,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 6
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 6 unwinds to toState 5
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 5
-EHExtractor.java> FINE:     - Current try state: 6
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,3,4,6,8,9,
-EHExtractor.java> FINE:     - Possible catch states: 7,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 7
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 3
-EHExtractor.java> FINE:   - Current try state: 4
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,3,4,6,7,8,9,
-EHExtractor.java> FINE:   - Possible catch states: 5,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 5
-EHExtractor.java> FINE:   - Current try state: 4
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,3,4,5,6,7,8,9,
-EHExtractor.java> FINE:   - Possible catch states: 
-EHExtractor.java> FINE:   No new state available but we found one state for an earlier catch block at this level; going to use that.
-EHExtractor.java> FINE:   Setting this catch block's state to 5
-EHExtractor.java> FINE: Handling current's catch blocks.
-EHExtractor.java> FINE: targetToState determined to be -1
-EHExtractor.java> FINE: State already determined for this catch block (it's 3).
-EHExtractor.java> INFO: Try/catch block overview:
-EHExtractor.java> INFO: /* TryBlockMapEntry [4]	0-2,9,1 */
-EHExtractor.java> INFO: Try (state=0) {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [0]	1-1,2,1 */
-EHExtractor.java> INFO:   Try (state=1) {}
-EHExtractor.java> INFO:   Catch (...) (state=2)	@0x004016e2 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Catch (...) (state=3)	@0x00401706 {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [3]	4-4,9,2 */
-EHExtractor.java> INFO:   Try (state=4) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=5)	@0x00401718 {}
-EHExtractor.java> INFO:   Catch (...) (state=5)	@0x0040174b {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [2]	8-8,9,1 */
-EHExtractor.java> INFO:     Try (state=8) {}
-EHExtractor.java> INFO:     Catch (...) (state=9)	@0x0040175b {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [1]	6-6,7,1 */
-EHExtractor.java> INFO:     Try (state=6) {}
-EHExtractor.java> INFO:     Catch (...) (state=7)	@0x00401728 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004016e2
-EHExtractor.java> INFO: Memory range: 004016e2-004016f0
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EDX,dword ptr [EBP + -0x30]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004016f1
-EHExtractor.java> INFO: Memory range: 004016f1-00401705
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401706
-EHExtractor.java> INFO: Memory range: 00401706-00401717
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@00401718
-EHExtractor.java> INFO: Memory range: 00401718-00401727
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401728
-EHExtractor.java> INFO: Memory range: 00401728-00401734
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x4
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401735
-EHExtractor.java> INFO: Memory range: 00401735-0040174a
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x5
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@0040174b
-EHExtractor.java> INFO: Memory range: 0040174b-0040175a
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@0040175b
-EHExtractor.java> INFO: Memory range: 0040175b-00401767
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x6
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401768
-EHExtractor.java> INFO: Memory range: 00401768-0040177d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x5
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_0040177e
-EHExtractor.java> INFO: Memory range: 0040177e-0040179e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x3
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_0040179f
-EHExtractor.java> INFO: Memory range: 0040179f-004017db
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004017f0
-EHExtractor.java> INFO: Memory range: 004017f0-00401855
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x403190
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:00403190
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x38]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x404bf0
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404bf0
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404bf0
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-EHExtractor.java> INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-EHExtractor.java> INFO: /* TryBlockMapEntry [5]	0-4,11,1 */
-EHExtractor.java> INFO: Try (state=0) {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [1]	1-3,4,1 */
-EHExtractor.java> INFO:   Try (state=1) {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	2-2,3,1 */
-EHExtractor.java> INFO:     Try (state=2) {}
-EHExtractor.java> INFO:     Catch (std::logic_error) (state=?)	@0x00401856 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO:   Catch (CustomException1) (state=?)	@0x00401877 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Catch (...) (state=?)	@0x0040189b {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [4]	6-6,11,2 */
-EHExtractor.java> INFO:   Try (state=6) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=?)	@0x004018ad {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x004018e0 {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [3]	10-10,11,1 */
-EHExtractor.java> INFO:     Try (state=10) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x004018f0 {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [2]	8-8,9,1 */
-EHExtractor.java> INFO:     Try (state=8) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x004018bd {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Applying unwind information.
-EHExtractor.java> FINE: From 0 to -1
-EHExtractor.java> FINE: From 1 to 0
-EHExtractor.java> FINE: From 2 to 1
-EHExtractor.java> FINE: From 3 to 1
-EHExtractor.java> FINE: From 4 to 0
-EHExtractor.java> FINE: From 5 to -1
-EHExtractor.java> FINE: From 6 to 5
-EHExtractor.java> FINE: From 7 to 5
-EHExtractor.java> FINE: From 8 to 7
-EHExtractor.java> FINE: From 9 to 7
-EHExtractor.java> FINE: From 10 to 7
-EHExtractor.java> FINE: From 11 to 7
-EHExtractor.java> FINE: Current: TryBlockMapEntry [5]	0-4,11,1
-EHExtractor.java> FINE: Nesting in try: true
-EHExtractor.java> FINE: Nesting in catches: true
-EHExtractor.java> FINE: Parent is null.
-EHExtractor.java> FINE: Looking at current's try block. State is 0
-EHExtractor.java> FINE: Going into try/catches nested in current's try block.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [1]	1-3,4,1
-EHExtractor.java> FINE:   Nesting in try: true
-EHExtractor.java> FINE:   Nesting in catches: false
-EHExtractor.java> FINE:   Parent is a TRY
-EHExtractor.java> FINE:   Looking at current's try block. State is 1
-EHExtractor.java> FINE:   Going into try/catches nested in current's try block.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [0]	2-2,3,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is a TRY
-EHExtractor.java> FINE:     Looking at current's try block. State is 2
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 2 unwinds to toState 1
-EHExtractor.java> FINE:     Parent's state matches the expected value.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 1
-EHExtractor.java> FINE:     - Current try state: 2
-EHExtractor.java> FINE:     - Known (try?) states: 1,2,
-EHExtractor.java> FINE:     - Possible catch states: 3,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 3
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 1 unwinds to toState 0
-EHExtractor.java> FINE:   Parent's state matches the expected value.
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 0
-EHExtractor.java> FINE:   - Current try state: 1
-EHExtractor.java> FINE:   - Known (try?) states: 1,2,3,
-EHExtractor.java> FINE:   - Possible catch states: 4,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 4
-EHExtractor.java> FINE: Handling current's try block.
-EHExtractor.java> FINE: Current try state 0 unwinds to toState -1
-EHExtractor.java> FINE: Parent is null so cannot do anything for it.
-EHExtractor.java> FINE: Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [4]	6-6,11,2
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: true
-EHExtractor.java> FINE:   Parent is a CATCH
-EHExtractor.java> FINE:   Looking at current's try block. State is 6
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 6 unwinds to toState 5
-EHExtractor.java> FINE:   Setting parent state to 5
-EHExtractor.java> FINE:   Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [3]	10-10,11,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 10
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 10 unwinds to toState 7
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 7
-EHExtractor.java> FINE:     - Current try state: 10
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,3,4,5,6,10,
-EHExtractor.java> FINE:     - Possible catch states: 8,9,11,
-EHExtractor.java> FINE:     Found multiple possible states for catch blocks, trying to limit them.
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 11
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [2]	8-8,9,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 8
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 8 unwinds to toState 7
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 7
-EHExtractor.java> FINE:     - Current try state: 8
-EHExtractor.java> FINE:     - Known (try?) states: 0,1,2,3,4,5,6,8,10,11,
-EHExtractor.java> FINE:     - Possible catch states: 9,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 9
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 5
-EHExtractor.java> FINE:   - Current try state: 6
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,3,4,5,6,8,9,10,11,
-EHExtractor.java> FINE:   - Possible catch states: 7,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 7
-EHExtractor.java> FINE:   - Current try state: 6
-EHExtractor.java> FINE:   - Known (try?) states: 0,1,2,3,4,5,6,7,8,9,10,11,
-EHExtractor.java> FINE:   - Possible catch states: 
-EHExtractor.java> FINE:   No new state available but we found one state for an earlier catch block at this level; going to use that.
-EHExtractor.java> FINE:   Setting this catch block's state to 7
-EHExtractor.java> FINE: Handling current's catch blocks.
-EHExtractor.java> FINE: targetToState determined to be -1
-EHExtractor.java> FINE: State already determined for this catch block (it's 5).
-EHExtractor.java> INFO: Try/catch block overview:
-EHExtractor.java> INFO: /* TryBlockMapEntry [5]	0-4,11,1 */
-EHExtractor.java> INFO: Try (state=0) {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [1]	1-3,4,1 */
-EHExtractor.java> INFO:   Try (state=1) {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	2-2,3,1 */
-EHExtractor.java> INFO:     Try (state=2) {}
-EHExtractor.java> INFO:     Catch (std::logic_error) (state=3)	@0x00401856 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO:   Catch (CustomException1) (state=4)	@0x00401877 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Catch (...) (state=5)	@0x0040189b {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [4]	6-6,11,2 */
-EHExtractor.java> INFO:   Try (state=6) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=7)	@0x004018ad {}
-EHExtractor.java> INFO:   Catch (...) (state=7)	@0x004018e0 {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [3]	10-10,11,1 */
-EHExtractor.java> INFO:     Try (state=10) {}
-EHExtractor.java> INFO:     Catch (...) (state=11)	@0x004018f0 {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [2]	8-8,9,1 */
-EHExtractor.java> INFO:     Try (state=8) {}
-EHExtractor.java> INFO:     Catch (...) (state=9)	@0x004018bd {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@00401856
-EHExtractor.java> INFO: Memory range: 00401856-00401864
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EDX,dword ptr [EBP + -0x30]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401865
-EHExtractor.java> INFO: Memory range: 00401865-00401876
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@00401877
-EHExtractor.java> INFO: Memory range: 00401877-00401885
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + -0x30]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401886
-EHExtractor.java> INFO: Memory range: 00401886-0040189a
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@0040189b
-EHExtractor.java> INFO: Memory range: 0040189b-004018ac
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@004018ad
-EHExtractor.java> INFO: Memory range: 004018ad-004018bc
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004018bd
-EHExtractor.java> INFO: Memory range: 004018bd-004018c9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x4
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004018ca
-EHExtractor.java> INFO: Memory range: 004018ca-004018df
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x7
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004018e0
-EHExtractor.java> INFO: Memory range: 004018e0-004018ef
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@004018f0
-EHExtractor.java> INFO: Memory range: 004018f0-004018fc
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x6
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004018fd
-EHExtractor.java> INFO: Memory range: 004018fd-00401912
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x7
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401913
-EHExtractor.java> INFO: Memory range: 00401913-00401933
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x5
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401934
-EHExtractor.java> INFO: Memory range: 00401934-00401970
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0xffffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401980
-EHExtractor.java> INFO: Memory range: 00401980-004019f7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x4031cd
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:004031cd
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x3c]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x8]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x404d60
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404d60
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404d60
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> FINE: Let's try to look for nested try/catch blocks using the contents of the TryBlockMapEntry array.
-EHExtractor.java> INFO: Try/catch block overview, after determineLayout but without unwind information applied:
-EHExtractor.java> INFO: /* TryBlockMapEntry [5]	1-5,12,1 */
-EHExtractor.java> INFO: Try (state=1) {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [1]	2-4,5,1 */
-EHExtractor.java> INFO:   Try (state=2) {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	3-3,4,1 */
-EHExtractor.java> INFO:     Try (state=3) {}
-EHExtractor.java> INFO:     Catch (std::logic_error) (state=?)	@0x004019f8 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO:   Catch (CustomException1) (state=?)	@0x00401a19 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Catch (...) (state=?)	@0x00401a3d {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [4]	7-7,12,2 */
-EHExtractor.java> INFO:   Try (state=7) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=?)	@0x00401a4f {}
-EHExtractor.java> INFO:   Catch (...) (state=?)	@0x00401a82 {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [3]	11-11,12,1 */
-EHExtractor.java> INFO:     Try (state=11) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x00401a92 {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [2]	9-9,10,1 */
-EHExtractor.java> INFO:     Try (state=9) {}
-EHExtractor.java> INFO:     Catch (...) (state=?)	@0x00401a5f {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Applying unwind information.
-EHExtractor.java> FINE: From 0 to -1
-EHExtractor.java> FINE: From 1 to 0
-EHExtractor.java> FINE: From 2 to 1
-EHExtractor.java> FINE: From 3 to 2
-EHExtractor.java> FINE: From 4 to 2
-EHExtractor.java> FINE: From 5 to 1
-EHExtractor.java> FINE: From 6 to 0
-EHExtractor.java> FINE: From 7 to 6
-EHExtractor.java> FINE: From 8 to 6
-EHExtractor.java> FINE: From 9 to 8
-EHExtractor.java> FINE: From 10 to 8
-EHExtractor.java> FINE: From 11 to 8
-EHExtractor.java> FINE: From 12 to 8
-EHExtractor.java> FINE: Current: TryBlockMapEntry [5]	1-5,12,1
-EHExtractor.java> FINE: Nesting in try: true
-EHExtractor.java> FINE: Nesting in catches: true
-EHExtractor.java> FINE: Parent is null.
-EHExtractor.java> FINE: Looking at current's try block. State is 1
-EHExtractor.java> FINE: Going into try/catches nested in current's try block.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [1]	2-4,5,1
-EHExtractor.java> FINE:   Nesting in try: true
-EHExtractor.java> FINE:   Nesting in catches: false
-EHExtractor.java> FINE:   Parent is a TRY
-EHExtractor.java> FINE:   Looking at current's try block. State is 2
-EHExtractor.java> FINE:   Going into try/catches nested in current's try block.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [0]	3-3,4,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is a TRY
-EHExtractor.java> FINE:     Looking at current's try block. State is 3
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 3 unwinds to toState 2
-EHExtractor.java> FINE:     Parent's state matches the expected value.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 2
-EHExtractor.java> FINE:     - Current try state: 3
-EHExtractor.java> FINE:     - Known (try?) states: 2,3,
-EHExtractor.java> FINE:     - Possible catch states: 4,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 4
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 2 unwinds to toState 1
-EHExtractor.java> FINE:   Parent's state matches the expected value.
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 1
-EHExtractor.java> FINE:   - Current try state: 2
-EHExtractor.java> FINE:   - Known (try?) states: 2,3,4,
-EHExtractor.java> FINE:   - Possible catch states: 5,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 5
-EHExtractor.java> FINE: Handling current's try block.
-EHExtractor.java> FINE: Current try state 1 unwinds to toState 0
-EHExtractor.java> FINE: Parent is null so cannot do anything for it.
-EHExtractor.java> FINE: Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:   Current: TryBlockMapEntry [4]	7-7,12,2
-EHExtractor.java> FINE:   Nesting in try: false
-EHExtractor.java> FINE:   Nesting in catches: true
-EHExtractor.java> FINE:   Parent is a CATCH
-EHExtractor.java> FINE:   Looking at current's try block. State is 7
-EHExtractor.java> FINE:   Handling current's try block.
-EHExtractor.java> FINE:   Current try state 7 unwinds to toState 6
-EHExtractor.java> FINE:   Setting parent state to 6
-EHExtractor.java> FINE:   Going into try/catches nested in current's catch blocks.
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [3]	11-11,12,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 11
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 11 unwinds to toState 8
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 8
-EHExtractor.java> FINE:     - Current try state: 11
-EHExtractor.java> FINE:     - Known (try?) states: 1,2,3,4,5,6,7,11,
-EHExtractor.java> FINE:     - Possible catch states: 9,10,12,
-EHExtractor.java> FINE:     Found multiple possible states for catch blocks, trying to limit them.
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 12
-EHExtractor.java> FINE:     Current: TryBlockMapEntry [2]	9-9,10,1
-EHExtractor.java> FINE:     Nesting in try: false
-EHExtractor.java> FINE:     Nesting in catches: false
-EHExtractor.java> FINE:     Parent is null.
-EHExtractor.java> FINE:     Looking at current's try block. State is 9
-EHExtractor.java> FINE:     Handling current's try block.
-EHExtractor.java> FINE:     Current try state 9 unwinds to toState 8
-EHExtractor.java> FINE:     Parent is null so cannot do anything for it.
-EHExtractor.java> FINE:     Handling current's catch blocks.
-EHExtractor.java> FINE:     targetToState determined to be 8
-EHExtractor.java> FINE:     - Current try state: 9
-EHExtractor.java> FINE:     - Known (try?) states: 1,2,3,4,5,6,7,9,11,12,
-EHExtractor.java> FINE:     - Possible catch states: 10,
-EHExtractor.java> FINE:     Found one state for the catch block(s)!
-EHExtractor.java> FINE:     Setting this catch block's state to 10
-EHExtractor.java> FINE:   Handling current's catch blocks.
-EHExtractor.java> FINE:   targetToState determined to be 6
-EHExtractor.java> FINE:   - Current try state: 7
-EHExtractor.java> FINE:   - Known (try?) states: 1,2,3,4,5,6,7,9,10,11,12,
-EHExtractor.java> FINE:   - Possible catch states: 8,
-EHExtractor.java> FINE:   Found one state for the catch block(s)!
-EHExtractor.java> FINE:   Setting this catch block's state to 8
-EHExtractor.java> FINE:   - Current try state: 7
-EHExtractor.java> FINE:   - Known (try?) states: 1,2,3,4,5,6,7,8,9,10,11,12,
-EHExtractor.java> FINE:   - Possible catch states: 
-EHExtractor.java> FINE:   No new state available but we found one state for an earlier catch block at this level; going to use that.
-EHExtractor.java> FINE:   Setting this catch block's state to 8
-EHExtractor.java> FINE: Handling current's catch blocks.
-EHExtractor.java> FINE: targetToState determined to be 0
-EHExtractor.java> FINE: State already determined for this catch block (it's 6).
-EHExtractor.java> INFO: Try/catch block overview:
-EHExtractor.java> INFO: /* TryBlockMapEntry [5]	1-5,12,1 */
-EHExtractor.java> INFO: Try (state=1) {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [1]	2-4,5,1 */
-EHExtractor.java> INFO:   Try (state=2) {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [0]	3-3,4,1 */
-EHExtractor.java> INFO:     Try (state=3) {}
-EHExtractor.java> INFO:     Catch (std::logic_error) (state=4)	@0x004019f8 {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO:   Catch (CustomException1) (state=5)	@0x00401a19 {}
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: Catch (...) (state=6)	@0x00401a3d {
-EHExtractor.java> INFO:   /* TryBlockMapEntry [4]	7-7,12,2 */
-EHExtractor.java> INFO:   Try (state=7) {}
-EHExtractor.java> INFO:   Catch (std::out_of_range) (state=8)	@0x00401a4f {}
-EHExtractor.java> INFO:   Catch (...) (state=8)	@0x00401a82 {}
-EHExtractor.java> INFO:   ToBeNestedInCatches {
-EHExtractor.java> INFO:     /* TryBlockMapEntry [3]	11-11,12,1 */
-EHExtractor.java> INFO:     Try (state=11) {}
-EHExtractor.java> INFO:     Catch (...) (state=12)	@0x00401a92 {}
-EHExtractor.java> INFO:     /* TryBlockMapEntry [2]	9-9,10,1 */
-EHExtractor.java> INFO:     Try (state=9) {}
-EHExtractor.java> INFO:     Catch (...) (state=10)	@0x00401a5f {}
-EHExtractor.java> INFO:   }
-EHExtractor.java> INFO: }
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@004019f8
-EHExtractor.java> INFO: Memory range: 004019f8-00401a06
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + -0x30]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401a07
-EHExtractor.java> INFO: Memory range: 00401a07-00401a18
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x2
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@00401a19
-EHExtractor.java> INFO: Memory range: 00401a19-00401a27
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EBP + -0x30]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401a28
-EHExtractor.java> INFO: Memory range: 00401a28-00401a3c
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401a3d
-EHExtractor.java> INFO: Memory range: 00401a3d-00401a4e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch@00401a4f
-EHExtractor.java> INFO: Memory range: 00401a4f-00401a5e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401a5f
-EHExtractor.java> INFO: Memory range: 00401a5f-00401a6b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x4
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401a6c
-EHExtractor.java> INFO: Memory range: 00401a6c-00401a81
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x8
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401a82
-EHExtractor.java> INFO: Memory range: 00401a82-00401a91
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x10],ESP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Catch_All@00401a92
-EHExtractor.java> INFO: Memory range: 00401a92-00401a9e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x30],0x6
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401a9f
-EHExtractor.java> INFO: Memory range: 00401a9f-00401ab4
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x8
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401ab5
-EHExtractor.java> INFO: Memory range: 00401ab5-00401ad5
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x6
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401ad6
-EHExtractor.java> INFO: Memory range: 00401ad6-00401b19
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV dword ptr [EBP + -0x4],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401b20
-EHExtractor.java> INFO: Memory range: 00401b20-00401bc4
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x40320d
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:0040320d
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x28]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EDX + -0x4]
-EHExtractor.java> FINE: 01  XOR ECX,EAX
-EHExtractor.java> FINE: 02  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Additional cookie checking instructions found.
-EHExtractor.java> FINE: 00  MOV EAX,0x404ed8
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404ed8
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404ed8
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> INFO: No TryBlockMapEntries to analyze.
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401bd0
-EHExtractor.java> INFO: Memory range: 00401bd0-00401bea
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401bf0
-EHExtractor.java> INFO: Memory range: 00401bf0-00401c68
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x40324d
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:0040324d
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0xc]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV EAX,0x404f04
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404f04
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404f04
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> WARNING: IGNORING IPToStateMap information for now.
-EHExtractor.java> WARNING: IGNORING ESTypeList information for now.
-EHExtractor.java> INFO: No TryBlockMapEntries to analyze.
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401c70
-EHExtractor.java> INFO: Memory range: 00401c70-00401c82
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401c90
-EHExtractor.java> INFO: Memory range: 00401c90-00401ca2
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401cb0
-EHExtractor.java> INFO: Memory range: 00401cb0-00401cc2
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401cd0
-EHExtractor.java> INFO: Memory range: 00401cd0-00401d90
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x403270
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:00403270
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x18]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV EAX,0x404f30
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404f30
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404f30
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> SEVERE: OH NOES! FuncInfo data type isn't valid at 00404f30 in NestedExceptionVS32_EHsc_GS.exe - .ProgramDB.
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401da0
-EHExtractor.java> INFO: Memory range: 00401da0-00401dd7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x10
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Unchecked_idl0<>
-EHExtractor.java> INFO: Memory range: 00401de0-00401dfb
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + 0x10]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Max_value<>
-EHExtractor.java> INFO: Memory range: 00401e00-00401e2c
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x8
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: allocator<>
-EHExtractor.java> INFO: Memory range: 00401e30-00401e3d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401e40
-EHExtractor.java> INFO: Memory range: 00401e40-00401e69
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x8
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401e70
-EHExtractor.java> INFO: Memory range: 00401e70-00401e8c
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401e90
-EHExtractor.java> INFO: Memory range: 00401e90-00401e9e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Min_value<>
-EHExtractor.java> INFO: Memory range: 00401ea0-00401ecc
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x8
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401ed0
-EHExtractor.java> INFO: Memory range: 00401ed0-00401ed7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Compressed_pair<><>
-EHExtractor.java> INFO: Memory range: 00401ee0-00401eff
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00401f00
-EHExtractor.java> INFO: Memory range: 00401f00-0040205b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x24
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402060
-EHExtractor.java> INFO: Memory range: 00402060-00402064
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  POP EBP
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Deallocate<>
-EHExtractor.java> INFO: Memory range: 00402070-004020c9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH -0x1
-EHExtractor.java> FINE: 01  PUSH 0x403290
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Exception handling start instructions found!
-EHExtractor.java> FINE: Going to look at the supposed EH setup code at location ram:00403290
-EHExtractor.java> FINE: Looking for base security cookie-checking code.
-EHExtractor.java> FINE: 00  NOP
-EHExtractor.java> FINE: 01  NOP
-EHExtractor.java> FINE: 02  MOV EDX,dword ptr [ESP + 0x8]
-EHExtractor.java> FINE: 03  LEA EAX,[EDX + 0xc]
-EHExtractor.java> FINE: 04  MOV ECX,dword ptr [EDX + -0x4]
-EHExtractor.java> FINE: 05  XOR ECX,EAX
-EHExtractor.java> FINE: 06  CALL 0x00402365
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> FINE: Base cookie checking instructions found!
-EHExtractor.java> FINE: Looking for additional security cookie-checking code.
-EHExtractor.java> FINE: 00  MOV EAX,0x404f30
-EHExtractor.java> FINER: Issue with the destination.
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> FINE: Additional cookie checking instructions not found.
-EHExtractor.java> FINE: Looking for matching EH handler registration instructions.
-EHExtractor.java> FINE: 00  MOV EAX,0x404f30
-EHExtractor.java> FINE: 01  JMP 0x00402f84
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: EH handler registration instructions found!
-EHExtractor.java> INFO: Determined ehFuncInfoAddress: 00404f30
-EHExtractor.java> FINE: About to process the EH data structures.
-EHExtractor.java> SEVERE: OH NOES! FuncInfo data type isn't valid at 00404f30 in NestedExceptionVS32_EHsc_GS.exe - .ProgramDB.
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004020d0
-EHExtractor.java> INFO: Memory range: 004020d0-004020f8
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402100
-EHExtractor.java> INFO: Memory range: 00402100-00402173
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x1c
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _String_val<>
-EHExtractor.java> INFO: Memory range: 00402180-004021a9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: allocate
-EHExtractor.java> INFO: Memory range: 004021b0-004021d1
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004021e0
-EHExtractor.java> INFO: Memory range: 004021e0-00402244
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0xc
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402250
-EHExtractor.java> INFO: Memory range: 00402250-0040226d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402270
-EHExtractor.java> INFO: Memory range: 00402270-00402277
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  OR EAX,0xffffffff
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402280
-EHExtractor.java> INFO: Memory range: 00402280-004022ab
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Allocate<8,struct_std::_Default_allocate_traits,0>
-EHExtractor.java> INFO: Memory range: 004022b0-004022e1
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  CMP dword ptr [EBP + 0x8],0x1000
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _Get_size_of_n<1>
-EHExtractor.java> INFO: Memory range: 004022f0-004022fe
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402300
-EHExtractor.java> INFO: Memory range: 00402300-00402364
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0xc
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402365
-EHExtractor.java> INFO: Memory range: 00402365-00402372
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  CMP ECX,dword ptr [0x00406004]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402373
-EHExtractor.java> INFO: Memory range: 00402373-00402797
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  JMP 0x00402385
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004023a3
-EHExtractor.java> INFO: Memory range: 004023a3-004023b0
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH dword ptr [EBP + 0x8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_004023b1
-EHExtractor.java> INFO: Memory range: 004023b1-004023d3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  TEST byte ptr [EBP + 0x8],0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402499
-EHExtractor.java> INFO: Memory range: 00402499-00402611
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH 0x14
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: entry
-EHExtractor.java> INFO: Memory range: 0040261b-00402624
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  CALL 0x00402a3c
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402625
-EHExtractor.java> INFO: Memory range: 00402625-0040264c
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH 0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_0040264d
-EHExtractor.java> INFO: Memory range: 0040264d-00402746
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x324
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402747
-EHExtractor.java> INFO: Memory range: 00402747-0040275e
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  AND dword ptr [ECX + 0x4],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_0040275f
-EHExtractor.java> INFO: Memory range: 0040275f-0040277a
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0xc
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: free
-EHExtractor.java> INFO: Memory range: 00402799-0040279d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP 0x00403028
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: find_pe_section
-EHExtractor.java> INFO: Memory range: 0040279e-004027e1
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  MOV EAX,dword ptr [EBP + 0x8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_acquire_startup_lock
-EHExtractor.java> INFO: Memory range: 004027e2-00402813
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH ESI
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_initialize_crt
-EHExtractor.java> INFO: Memory range: 00402814-0040284c
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  CMP dword ptr [EBP + 0x8],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_initialize_onexit_tables
-EHExtractor.java> INFO: Memory range: 0040284d-004028d3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  CMP byte ptr [0x00406415],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_is_nonwritable_in_current_image
-EHExtractor.java> INFO: Memory range: 004028d4-00402967
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH 0x8
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_release_startup_lock
-EHExtractor.java> INFO: Memory range: 00402968-00402984
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  CALL 0x00402f78
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_uninitialize_crt
-EHExtractor.java> INFO: Memory range: 00402985-004029ac
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  CMP byte ptr [0x00406414],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __onexit
-EHExtractor.java> INFO: Memory range: 004029ad-004029d9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  CMP dword ptr [0x00406418],-0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _atexit
-EHExtractor.java> INFO: Memory range: 004029da-004029ee
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH dword ptr [EBP + 0x8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___get_entropy
-EHExtractor.java> INFO: Memory range: 004029ef-00402a3b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x14
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___security_init_cookie
-EHExtractor.java> INFO: Memory range: 00402a3c-00402a86
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [0x00406004]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402a87
-EHExtractor.java> INFO: Memory range: 00402a87-00402a89
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  XOR EAX,EAX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402a8a
-EHExtractor.java> INFO: Memory range: 00402a8a-00402a8d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  XOR EAX,EAX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402a8e
-EHExtractor.java> INFO: Memory range: 00402a8e-00402a93
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,0x4000
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402a94
-EHExtractor.java> INFO: Memory range: 00402a94-00402a9f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH 0x406430
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402aa0
-EHExtractor.java> INFO: Memory range: 00402aa0-00402aa2
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV AL,0x1
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402aa3
-EHExtractor.java> INFO: Memory range: 00402aa3-00402ac3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH 0x30000
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _guard_check_icall
-EHExtractor.java> INFO: Memory range: 00402ac4-00402ac6
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  RET 0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402ac7
-EHExtractor.java> INFO: Memory range: 00402ac7-00402acc
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,0x406438
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402acd
-EHExtractor.java> INFO: Memory range: 00402acd-00402ad2
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,0x406440
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402ad3
-EHExtractor.java> INFO: Memory range: 00402ad3-00402aef
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  CALL 0x00402ac7
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402af0
-EHExtractor.java> INFO: Memory range: 00402af0-00402afb
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  XOR EAX,EAX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402afc
-EHExtractor.java> INFO: Memory range: 00402afc-00402b01
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,0x406458
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402b02
-EHExtractor.java> INFO: Memory range: 00402b02-00402b07
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV EAX,0x406454
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402b08
-EHExtractor.java> INFO: Memory range: 00402b08-00402c22
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  SUB ESP,0x324
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: thunk_FUN_00402a87
-EHExtractor.java> INFO: Memory range: 00402c23-00402c27
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP 0x00402a87
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402c28
-EHExtractor.java> INFO: Memory range: 00402c28-00402c69
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH 0x0
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402c76
-EHExtractor.java> INFO: Memory range: 00402c76-00402cca
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ESI
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402ccc
-EHExtractor.java> INFO: Memory range: 00402ccc-00402cd3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  AND dword ptr [0x00406448],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402cd4
-EHExtractor.java> INFO: Memory range: 00402cd4-00402cff
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBX
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __SEH_prolog4
-EHExtractor.java> INFO: Memory range: 00402d30-00402d74
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH 0x402d75
-EHExtractor.java> FINE: Issue with register 0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __except_handler4
-EHExtractor.java> INFO: Memory range: 00402d75-00402da3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ESI
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: FUN_00402da4
-EHExtractor.java> INFO: Memory range: 00402da4-00402f77
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  AND dword ptr [0x0040644c],0x0
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: ___scrt_is_ucrt_dll_in_use
-EHExtractor.java> INFO: Memory range: 00402f78-00402f83
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  XOR EAX,EAX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __CxxFrameHandler3
-EHExtractor.java> INFO: Memory range: 00402f84-00402f89
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404050]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _CxxThrowException
-EHExtractor.java> INFO: Memory range: 00402f8a-00402f8f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404058]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __current_exception
-EHExtractor.java> INFO: Memory range: 00402f90-00402f95
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404040]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __current_exception_context
-EHExtractor.java> INFO: Memory range: 00402f96-00402f9b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x0040403c]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: memset
-EHExtractor.java> INFO: Memory range: 00402f9c-00402fa1
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404054]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _except_handler4_common
-EHExtractor.java> INFO: Memory range: 00402fa2-00402fa7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404044]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _callnewh
-EHExtractor.java> INFO: Memory range: 00402fa8-00402fad
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404064]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: malloc
-EHExtractor.java> INFO: Memory range: 00402fae-00402fb3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404068]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _seh_filter_exe
-EHExtractor.java> INFO: Memory range: 00402fb4-00402fb9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040d0]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _set_app_type
-EHExtractor.java> INFO: Memory range: 00402fba-00402fbf
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040cc]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __setusermatherr
-EHExtractor.java> INFO: Memory range: 00402fc0-00402fc5
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404080]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _configure_narrow_argv
-EHExtractor.java> INFO: Memory range: 00402fc6-00402fcb
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040c4]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _initialize_narrow_environment
-EHExtractor.java> INFO: Memory range: 00402fcc-00402fd1
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040c0]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _get_initial_narrow_environment
-EHExtractor.java> INFO: Memory range: 00402fd2-00402fd7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040bc]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _initterm
-EHExtractor.java> INFO: Memory range: 00402fd8-00402fdd
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040b8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _initterm_e
-EHExtractor.java> INFO: Memory range: 00402fde-00402fe3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040b4]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: exit
-EHExtractor.java> INFO: Memory range: 00402fe4-00402fe9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040b0]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _exit
-EHExtractor.java> INFO: Memory range: 00402fea-00402fef
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040c8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _set_fmode
-EHExtractor.java> INFO: Memory range: 00402ff0-00402ff5
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040dc]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __p___argc
-EHExtractor.java> INFO: Memory range: 00402ff6-00402ffb
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040ac]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __p___argv
-EHExtractor.java> INFO: Memory range: 00402ffe-00403003
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404094]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _cexit
-EHExtractor.java> INFO: Memory range: 00403004-00403009
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040a8]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _c_exit
-EHExtractor.java> INFO: Memory range: 0040300a-0040300f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040d4]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _register_thread_local_exe_atexit_callback
-EHExtractor.java> INFO: Memory range: 00403010-00403015
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040a4]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _configthreadlocale
-EHExtractor.java> INFO: Memory range: 00403016-0040301b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404078]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __p__commode
-EHExtractor.java> INFO: Memory range: 00403022-00403027
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x004040e0]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: free
-EHExtractor.java> INFO: Memory range: 00403028-0040302d
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404070]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _initialize_onexit_table
-EHExtractor.java> INFO: Memory range: 0040302e-00403033
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404088]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _register_onexit_function
-EHExtractor.java> INFO: Memory range: 00403034-00403039
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x0040408c]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _crt_atexit
-EHExtractor.java> INFO: Memory range: 0040303a-0040303f
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404090]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: _controlfp_s
-EHExtractor.java> INFO: Memory range: 00403040-00403045
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x00404098]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: terminate
-EHExtractor.java> INFO: Memory range: 00403046-0040304b
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x0040409c]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: __filter_x86_sse2_floating_point_exception_default
-EHExtractor.java> INFO: Memory range: 0040304c-004030c3
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  PUSH EBP
-EHExtractor.java> FINE: 01  MOV EBP,ESP
-EHExtractor.java> FINER: All instructions matched!
-EHExtractor.java> INFO: Normal start instructions found!
-EHExtractor.java> FINE: Looking for exception handling start instructions.
-EHExtractor.java> FINE: 00  PUSH ECX
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Exception handling start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: memcpy
-EHExtractor.java> INFO: Memory range: 004030c4-004030c9
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  JMP dword ptr [0x0040405c]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Unwind@004031c0
-EHExtractor.java> INFO: Memory range: 004031c0-004031c7
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  LEA ECX,[EBP + -0x2c]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Unwind@00403200
-EHExtractor.java> INFO: Memory range: 00403200-00403207
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  LEA ECX,[EBP + -0x28]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> INFO: 
-EHExtractor.java> INFO: Looking at: Unwind@00403240
-EHExtractor.java> INFO: Memory range: 00403240-00403247
-EHExtractor.java> FINE: Let's start with the instructions:
-EHExtractor.java> FINE: Looking for standard function prologue.
-EHExtractor.java> FINE: 00  MOV ECX,dword ptr [EBP + -0x14]
-EHExtractor.java> FINER: Instructions not matched!
-EHExtractor.java> INFO: Normal start instructions not found!
-EHExtractor.java> Finished!
+May 01, 2024 11:28:30 AM EHExtractor
+Output log location is C:\Users\rgs\Documents\ehextractor.log.
+Program file: /D:/UserData/rgs/Dropbox/OU/AF/Test files/NestedExceptionVS32_EHsc_GS.exe
+Program spans addresses 00400000-ffdfffff
+
+Looking at: FUN_00401000
+Memory range: 00401000-00401007
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: exception
+Memory range: 00401010-0040103e
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401040
+Memory range: 00401040-0040107c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401080
+Memory range: 00401080-004010a3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: what
+Memory range: 004010b0-004010da
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004010e0
+Memory range: 004010e0-0040110d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: bad_alloc
+Memory range: 00401110-00401136
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FID_conflict:`scalar_deleting_destructor'
+Memory range: 00401140-0040116d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401170
+Memory range: 00401170-00401182
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: bad_array_new_length
+Memory range: 00401190-004011b3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FID_conflict:`scalar_deleting_destructor'
+Memory range: 004011c0-004011ed
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004011f0
+Memory range: 004011f0-00401202
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401210
+Memory range: 00401210-0040122b
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FID_conflict:evaluation_error
+Memory range: 00401230-00401254
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401260
+Memory range: 00401260-00401284
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401290
+Memory range: 00401290-00401299
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Allocate
+Memory range: 004012a0-004012b0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004012c0
+Memory range: 004012c0-00401325
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401330
+Memory range: 00401330-0040133a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401340
+Memory range: 00401340-0040134f
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401350
+Memory range: 00401350-0040135f
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401360
+Memory range: 00401360-004013b4
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404848
+Try/catch block overview:
+/* TryBlockMapEntry [1]	0-0,3,1 */
+Try (state=0) {}
+Catch (...) (state=1)	@0x004013b5 {
+  /* TryBlockMapEntry [0]	2-2,3,1 */
+  Try (state=2) {}
+  Catch (...) (state=3)	@0x004013c7 {}
+}
+
+Looking at: Catch_All@004013b5
+Memory range: 004013b5-004013c6
+Normal start instructions not found.
+
+Looking at: Catch_All@004013c7
+Memory range: 004013c7-004013d3
+Normal start instructions not found.
+
+Looking at: FUN_004013d4
+Memory range: 004013d4-004013e9
+Normal start instructions not found.
+
+Looking at: FUN_004013ea
+Memory range: 004013ea-00401426
+Normal start instructions not found.
+
+Looking at: FUN_00401430
+Memory range: 00401430-00401484
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 004048d4
+Try/catch block overview:
+/* TryBlockMapEntry [2]	0-0,5,1 */
+Try (state=0) {}
+Catch (...) (state=1)	@0x00401485 {
+  /* TryBlockMapEntry [1]	2-2,5,2 */
+  Try (state=2) {}
+  Catch (std::out_of_range) (state=3)	@0x00401497 {}
+  Catch (...) (state=3)	@0x004014a4 {}
+  ToBeNestedInCatches {
+    /* TryBlockMapEntry [0]	4-4,5,1 */
+    Try (state=4) {}
+    Catch (...) (state=5)	@0x004014b4 {}
+  }
+}
+
+Looking at: Catch_All@00401485
+Memory range: 00401485-00401496
+Normal start instructions not found.
+
+Looking at: Catch@00401497
+Memory range: 00401497-004014a3
+Normal start instructions not found.
+
+Looking at: Catch_All@004014a4
+Memory range: 004014a4-004014b3
+Normal start instructions not found.
+
+Looking at: Catch_All@004014b4
+Memory range: 004014b4-004014c0
+Normal start instructions not found.
+
+Looking at: FUN_004014c1
+Memory range: 004014c1-004014d6
+Normal start instructions not found.
+
+Looking at: FUN_004014d7
+Memory range: 004014d7-004014f7
+Normal start instructions not found.
+
+Looking at: FUN_004014f8
+Memory range: 004014f8-00401534
+Normal start instructions not found.
+
+Looking at: FUN_00401540
+Memory range: 00401540-00401597
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 004049a8
+Try/catch block overview:
+/* TryBlockMapEntry [3]	0-0,7,1 */
+Try (state=0) {}
+Catch (...) (state=1)	@0x00401598 {
+  /* TryBlockMapEntry [2]	2-2,7,2 */
+  Try (state=2) {}
+  Catch (std::out_of_range) (state=3)	@0x004015aa {}
+  Catch (...) (state=3)	@0x004015dd {}
+  ToBeNestedInCatches {
+    /* TryBlockMapEntry [1]	6-6,7,1 */
+    Try (state=6) {}
+    Catch (...) (state=7)	@0x004015ed {}
+    /* TryBlockMapEntry [0]	4-4,5,1 */
+    Try (state=4) {}
+    Catch (...) (state=5)	@0x004015ba {}
+  }
+}
+
+Looking at: Catch_All@00401598
+Memory range: 00401598-004015a9
+Normal start instructions not found.
+
+Looking at: Catch@004015aa
+Memory range: 004015aa-004015b9
+Normal start instructions not found.
+
+Looking at: Catch_All@004015ba
+Memory range: 004015ba-004015c6
+Normal start instructions not found.
+
+Looking at: FUN_004015c7
+Memory range: 004015c7-004015dc
+Normal start instructions not found.
+
+Looking at: Catch_All@004015dd
+Memory range: 004015dd-004015ec
+Normal start instructions not found.
+
+Looking at: Catch_All@004015ed
+Memory range: 004015ed-004015f9
+Normal start instructions not found.
+
+Looking at: FUN_004015fa
+Memory range: 004015fa-0040160f
+Normal start instructions not found.
+
+Looking at: FUN_00401610
+Memory range: 00401610-00401630
+Normal start instructions not found.
+
+Looking at: FUN_00401631
+Memory range: 00401631-0040166d
+Normal start instructions not found.
+
+Looking at: FUN_00401680
+Memory range: 00401680-004016e1
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404ab0
+Try/catch block overview:
+/* TryBlockMapEntry [4]	0-2,9,1 */
+Try (state=0) {
+  /* TryBlockMapEntry [0]	1-1,2,1 */
+  Try (state=1) {}
+  Catch (...) (state=2)	@0x004016e2 {}
+}
+Catch (...) (state=3)	@0x00401706 {
+  /* TryBlockMapEntry [3]	4-4,9,2 */
+  Try (state=4) {}
+  Catch (std::out_of_range) (state=5)	@0x00401718 {}
+  Catch (...) (state=5)	@0x0040174b {}
+  ToBeNestedInCatches {
+    /* TryBlockMapEntry [2]	8-8,9,1 */
+    Try (state=8) {}
+    Catch (...) (state=9)	@0x0040175b {}
+    /* TryBlockMapEntry [1]	6-6,7,1 */
+    Try (state=6) {}
+    Catch (...) (state=7)	@0x00401728 {}
+  }
+}
+
+Looking at: Catch_All@004016e2
+Memory range: 004016e2-004016f0
+Normal start instructions not found.
+
+Looking at: FUN_004016f1
+Memory range: 004016f1-00401705
+Normal start instructions not found.
+
+Looking at: Catch_All@00401706
+Memory range: 00401706-00401717
+Normal start instructions not found.
+
+Looking at: Catch@00401718
+Memory range: 00401718-00401727
+Normal start instructions not found.
+
+Looking at: Catch_All@00401728
+Memory range: 00401728-00401734
+Normal start instructions not found.
+
+Looking at: FUN_00401735
+Memory range: 00401735-0040174a
+Normal start instructions not found.
+
+Looking at: Catch_All@0040174b
+Memory range: 0040174b-0040175a
+Normal start instructions not found.
+
+Looking at: Catch_All@0040175b
+Memory range: 0040175b-00401767
+Normal start instructions not found.
+
+Looking at: FUN_00401768
+Memory range: 00401768-0040177d
+Normal start instructions not found.
+
+Looking at: FUN_0040177e
+Memory range: 0040177e-0040179e
+Normal start instructions not found.
+
+Looking at: FUN_0040179f
+Memory range: 0040179f-004017db
+Normal start instructions not found.
+
+Looking at: FUN_004017f0
+Memory range: 004017f0-00401855
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404bf0
+Try/catch block overview:
+/* TryBlockMapEntry [5]	0-4,11,1 */
+Try (state=0) {
+  /* TryBlockMapEntry [1]	1-3,4,1 */
+  Try (state=1) {
+    /* TryBlockMapEntry [0]	2-2,3,1 */
+    Try (state=2) {}
+    Catch (std::logic_error) (state=3)	@0x00401856 {}
+  }
+  Catch (CustomException1) (state=4)	@0x00401877 {}
+}
+Catch (...) (state=5)	@0x0040189b {
+  /* TryBlockMapEntry [4]	6-6,11,2 */
+  Try (state=6) {}
+  Catch (std::out_of_range) (state=7)	@0x004018ad {}
+  Catch (...) (state=7)	@0x004018e0 {}
+  ToBeNestedInCatches {
+    /* TryBlockMapEntry [3]	10-10,11,1 */
+    Try (state=10) {}
+    Catch (...) (state=11)	@0x004018f0 {}
+    /* TryBlockMapEntry [2]	8-8,9,1 */
+    Try (state=8) {}
+    Catch (...) (state=9)	@0x004018bd {}
+  }
+}
+
+Looking at: Catch@00401856
+Memory range: 00401856-00401864
+Normal start instructions not found.
+
+Looking at: FUN_00401865
+Memory range: 00401865-00401876
+Normal start instructions not found.
+
+Looking at: Catch@00401877
+Memory range: 00401877-00401885
+Normal start instructions not found.
+
+Looking at: FUN_00401886
+Memory range: 00401886-0040189a
+Normal start instructions not found.
+
+Looking at: Catch_All@0040189b
+Memory range: 0040189b-004018ac
+Normal start instructions not found.
+
+Looking at: Catch@004018ad
+Memory range: 004018ad-004018bc
+Normal start instructions not found.
+
+Looking at: Catch_All@004018bd
+Memory range: 004018bd-004018c9
+Normal start instructions not found.
+
+Looking at: FUN_004018ca
+Memory range: 004018ca-004018df
+Normal start instructions not found.
+
+Looking at: Catch_All@004018e0
+Memory range: 004018e0-004018ef
+Normal start instructions not found.
+
+Looking at: Catch_All@004018f0
+Memory range: 004018f0-004018fc
+Normal start instructions not found.
+
+Looking at: FUN_004018fd
+Memory range: 004018fd-00401912
+Normal start instructions not found.
+
+Looking at: FUN_00401913
+Memory range: 00401913-00401933
+Normal start instructions not found.
+
+Looking at: FUN_00401934
+Memory range: 00401934-00401970
+Normal start instructions not found.
+
+Looking at: FUN_00401980
+Memory range: 00401980-004019f7
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404d60
+Try/catch block overview:
+/* TryBlockMapEntry [5]	1-5,12,1 */
+Try (state=1) {
+  /* TryBlockMapEntry [1]	2-4,5,1 */
+  Try (state=2) {
+    /* TryBlockMapEntry [0]	3-3,4,1 */
+    Try (state=3) {}
+    Catch (std::logic_error) (state=4)	@0x004019f8 {}
+  }
+  Catch (CustomException1) (state=5)	@0x00401a19 {}
+}
+Catch (...) (state=6)	@0x00401a3d {
+  /* TryBlockMapEntry [4]	7-7,12,2 */
+  Try (state=7) {}
+  Catch (std::out_of_range) (state=8)	@0x00401a4f {}
+  Catch (...) (state=8)	@0x00401a82 {}
+  ToBeNestedInCatches {
+    /* TryBlockMapEntry [3]	11-11,12,1 */
+    Try (state=11) {}
+    Catch (...) (state=12)	@0x00401a92 {}
+    /* TryBlockMapEntry [2]	9-9,10,1 */
+    Try (state=9) {}
+    Catch (...) (state=10)	@0x00401a5f {}
+  }
+}
+
+Looking at: Catch@004019f8
+Memory range: 004019f8-00401a06
+Normal start instructions not found.
+
+Looking at: FUN_00401a07
+Memory range: 00401a07-00401a18
+Normal start instructions not found.
+
+Looking at: Catch@00401a19
+Memory range: 00401a19-00401a27
+Normal start instructions not found.
+
+Looking at: FUN_00401a28
+Memory range: 00401a28-00401a3c
+Normal start instructions not found.
+
+Looking at: Catch_All@00401a3d
+Memory range: 00401a3d-00401a4e
+Normal start instructions not found.
+
+Looking at: Catch@00401a4f
+Memory range: 00401a4f-00401a5e
+Normal start instructions not found.
+
+Looking at: Catch_All@00401a5f
+Memory range: 00401a5f-00401a6b
+Normal start instructions not found.
+
+Looking at: FUN_00401a6c
+Memory range: 00401a6c-00401a81
+Normal start instructions not found.
+
+Looking at: Catch_All@00401a82
+Memory range: 00401a82-00401a91
+Normal start instructions not found.
+
+Looking at: Catch_All@00401a92
+Memory range: 00401a92-00401a9e
+Normal start instructions not found.
+
+Looking at: FUN_00401a9f
+Memory range: 00401a9f-00401ab4
+Normal start instructions not found.
+
+Looking at: FUN_00401ab5
+Memory range: 00401ab5-00401ad5
+Normal start instructions not found.
+
+Looking at: FUN_00401ad6
+Memory range: 00401ad6-00401b19
+Normal start instructions not found.
+
+Looking at: FUN_00401b20
+Memory range: 00401b20-00401bc4
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404ed8
+No TryBlockMapEntries to analyze.
+
+Looking at: FUN_00401bd0
+Memory range: 00401bd0-00401bea
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401bf0
+Memory range: 00401bf0-00401c68
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404f04
+No TryBlockMapEntries to analyze.
+
+Looking at: FUN_00401c70
+Memory range: 00401c70-00401c82
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401c90
+Memory range: 00401c90-00401ca2
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401cb0
+Memory range: 00401cb0-00401cc2
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401cd0
+Memory range: 00401cd0-00401d90
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404f30
+An exception occurred processing the EH data structures. Unable to continue for this function.
+The exception message is: FuncInfo data type isn't valid at 00404f30 in NestedExceptionVS32_EHsc_GS.exe - .ProgramDB.
+
+Looking at: FUN_00401da0
+Memory range: 00401da0-00401dd7
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Unchecked_idl0<>
+Memory range: 00401de0-00401dfb
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Max_value<>
+Memory range: 00401e00-00401e2c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: allocator<>
+Memory range: 00401e30-00401e3d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401e40
+Memory range: 00401e40-00401e69
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401e70
+Memory range: 00401e70-00401e8c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401e90
+Memory range: 00401e90-00401e9e
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Min_value<>
+Memory range: 00401ea0-00401ecc
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401ed0
+Memory range: 00401ed0-00401ed7
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Compressed_pair<><>
+Memory range: 00401ee0-00401eff
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00401f00
+Memory range: 00401f00-0040205b
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402060
+Memory range: 00402060-00402064
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Deallocate<>
+Memory range: 00402070-004020c9
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404f30
+An exception occurred processing the EH data structures. Unable to continue for this function.
+The exception message is: FuncInfo data type isn't valid at 00404f30 in NestedExceptionVS32_EHsc_GS.exe - .ProgramDB.
+
+Looking at: FUN_004020d0
+Memory range: 004020d0-004020f8
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402100
+Memory range: 00402100-00402173
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _String_val<>
+Memory range: 00402180-004021a9
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: allocate
+Memory range: 004021b0-004021d1
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004021e0
+Memory range: 004021e0-00402244
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402250
+Memory range: 00402250-0040226d
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402270
+Memory range: 00402270-00402277
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402280
+Memory range: 00402280-004022ab
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Allocate<8,struct_std::_Default_allocate_traits,0>
+Memory range: 004022b0-004022e1
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _Get_size_of_n<1>
+Memory range: 004022f0-004022fe
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402300
+Memory range: 00402300-00402364
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402365
+Memory range: 00402365-00402372
+Normal start instructions not found.
+
+Looking at: FUN_00402373
+Memory range: 00402373-00402797
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004023a3
+Memory range: 004023a3-004023b0
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_004023b1
+Memory range: 004023b1-004023d3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402499
+Memory range: 00402499-00402611
+Normal start instructions not found.
+
+Looking at: entry
+Memory range: 0040261b-00402624
+Normal start instructions not found.
+
+Looking at: FUN_00402625
+Memory range: 00402625-0040264c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_0040264d
+Memory range: 0040264d-00402746
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402747
+Memory range: 00402747-0040275e
+Normal start instructions not found.
+
+Looking at: FUN_0040275f
+Memory range: 0040275f-0040277a
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: free
+Memory range: 00402799-0040279d
+Normal start instructions not found.
+
+Looking at: find_pe_section
+Memory range: 0040279e-004027e1
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_acquire_startup_lock
+Memory range: 004027e2-00402813
+Normal start instructions not found.
+
+Looking at: ___scrt_initialize_crt
+Memory range: 00402814-0040284c
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_initialize_onexit_tables
+Memory range: 0040284d-004028d3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_is_nonwritable_in_current_image
+Memory range: 004028d4-00402967
+Normal start instructions not found.
+
+Looking at: ___scrt_release_startup_lock
+Memory range: 00402968-00402984
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_uninitialize_crt
+Memory range: 00402985-004029ac
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: __onexit
+Memory range: 004029ad-004029d9
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: _atexit
+Memory range: 004029da-004029ee
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___get_entropy
+Memory range: 004029ef-00402a3b
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___security_init_cookie
+Memory range: 00402a3c-00402a86
+Normal start instructions not found.
+
+Looking at: FUN_00402a87
+Memory range: 00402a87-00402a89
+Normal start instructions not found.
+
+Looking at: FUN_00402a8a
+Memory range: 00402a8a-00402a8d
+Normal start instructions not found.
+
+Looking at: FUN_00402a8e
+Memory range: 00402a8e-00402a93
+Normal start instructions not found.
+
+Looking at: FUN_00402a94
+Memory range: 00402a94-00402a9f
+Normal start instructions not found.
+
+Looking at: FUN_00402aa0
+Memory range: 00402aa0-00402aa2
+Normal start instructions not found.
+
+Looking at: FUN_00402aa3
+Memory range: 00402aa3-00402ac3
+Normal start instructions not found.
+
+Looking at: _guard_check_icall
+Memory range: 00402ac4-00402ac6
+Normal start instructions not found.
+
+Looking at: FUN_00402ac7
+Memory range: 00402ac7-00402acc
+Normal start instructions not found.
+
+Looking at: FUN_00402acd
+Memory range: 00402acd-00402ad2
+Normal start instructions not found.
+
+Looking at: FUN_00402ad3
+Memory range: 00402ad3-00402aef
+Normal start instructions not found.
+
+Looking at: FUN_00402af0
+Memory range: 00402af0-00402afb
+Normal start instructions not found.
+
+Looking at: FUN_00402afc
+Memory range: 00402afc-00402b01
+Normal start instructions not found.
+
+Looking at: FUN_00402b02
+Memory range: 00402b02-00402b07
+Normal start instructions not found.
+
+Looking at: FUN_00402b08
+Memory range: 00402b08-00402c22
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: thunk_FUN_00402a87
+Memory range: 00402c23-00402c27
+Normal start instructions not found.
+
+Looking at: FUN_00402c28
+Memory range: 00402c28-00402c69
+Normal start instructions not found.
+
+Looking at: FUN_00402c76
+Memory range: 00402c76-00402cca
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402ccc
+Memory range: 00402ccc-00402cd3
+Normal start instructions not found.
+
+Looking at: FUN_00402cd4
+Memory range: 00402cd4-00402cff
+Normal start instructions not found.
+
+Looking at: __SEH_prolog4
+Memory range: 00402d30-00402d74
+Normal start instructions not found.
+
+Looking at: __except_handler4
+Memory range: 00402d75-00402da3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: FUN_00402da4
+Memory range: 00402da4-00402f77
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: ___scrt_is_ucrt_dll_in_use
+Memory range: 00402f78-00402f83
+Normal start instructions not found.
+
+Looking at: __CxxFrameHandler3
+Memory range: 00402f84-00402f89
+Normal start instructions not found.
+
+Looking at: _CxxThrowException
+Memory range: 00402f8a-00402f8f
+Normal start instructions not found.
+
+Looking at: __current_exception
+Memory range: 00402f90-00402f95
+Normal start instructions not found.
+
+Looking at: __current_exception_context
+Memory range: 00402f96-00402f9b
+Normal start instructions not found.
+
+Looking at: memset
+Memory range: 00402f9c-00402fa1
+Normal start instructions not found.
+
+Looking at: _except_handler4_common
+Memory range: 00402fa2-00402fa7
+Normal start instructions not found.
+
+Looking at: _callnewh
+Memory range: 00402fa8-00402fad
+Normal start instructions not found.
+
+Looking at: malloc
+Memory range: 00402fae-00402fb3
+Normal start instructions not found.
+
+Looking at: _seh_filter_exe
+Memory range: 00402fb4-00402fb9
+Normal start instructions not found.
+
+Looking at: _set_app_type
+Memory range: 00402fba-00402fbf
+Normal start instructions not found.
+
+Looking at: __setusermatherr
+Memory range: 00402fc0-00402fc5
+Normal start instructions not found.
+
+Looking at: _configure_narrow_argv
+Memory range: 00402fc6-00402fcb
+Normal start instructions not found.
+
+Looking at: _initialize_narrow_environment
+Memory range: 00402fcc-00402fd1
+Normal start instructions not found.
+
+Looking at: _get_initial_narrow_environment
+Memory range: 00402fd2-00402fd7
+Normal start instructions not found.
+
+Looking at: _initterm
+Memory range: 00402fd8-00402fdd
+Normal start instructions not found.
+
+Looking at: _initterm_e
+Memory range: 00402fde-00402fe3
+Normal start instructions not found.
+
+Looking at: exit
+Memory range: 00402fe4-00402fe9
+Normal start instructions not found.
+
+Looking at: _exit
+Memory range: 00402fea-00402fef
+Normal start instructions not found.
+
+Looking at: _set_fmode
+Memory range: 00402ff0-00402ff5
+Normal start instructions not found.
+
+Looking at: __p___argc
+Memory range: 00402ff6-00402ffb
+Normal start instructions not found.
+
+Looking at: __p___argv
+Memory range: 00402ffe-00403003
+Normal start instructions not found.
+
+Looking at: _cexit
+Memory range: 00403004-00403009
+Normal start instructions not found.
+
+Looking at: _c_exit
+Memory range: 0040300a-0040300f
+Normal start instructions not found.
+
+Looking at: _register_thread_local_exe_atexit_callback
+Memory range: 00403010-00403015
+Normal start instructions not found.
+
+Looking at: _configthreadlocale
+Memory range: 00403016-0040301b
+Normal start instructions not found.
+
+Looking at: __p__commode
+Memory range: 00403022-00403027
+Normal start instructions not found.
+
+Looking at: free
+Memory range: 00403028-0040302d
+Normal start instructions not found.
+
+Looking at: _initialize_onexit_table
+Memory range: 0040302e-00403033
+Normal start instructions not found.
+
+Looking at: _register_onexit_function
+Memory range: 00403034-00403039
+Normal start instructions not found.
+
+Looking at: _crt_atexit
+Memory range: 0040303a-0040303f
+Normal start instructions not found.
+
+Looking at: _controlfp_s
+Memory range: 00403040-00403045
+Normal start instructions not found.
+
+Looking at: terminate
+Memory range: 00403046-0040304b
+Normal start instructions not found.
+
+Looking at: __filter_x86_sse2_floating_point_exception_default
+Memory range: 0040304c-004030c3
+Normal start instructions found.
+Exception handling start instructions not found.
+
+Looking at: memcpy
+Memory range: 004030c4-004030c9
+Normal start instructions not found.
+
+Looking at: Unwind@004031c0
+Memory range: 004031c0-004031c7
+Normal start instructions not found.
+
+Looking at: Unwind@00403200
+Memory range: 00403200-00403207
+Normal start instructions not found.
+
+Looking at: Unwind@00403240
+Memory range: 00403240-00403247
+Normal start instructions not found.
