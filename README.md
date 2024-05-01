@@ -102,3 +102,21 @@ Minimum log level: INFO is the default value and intended for everyday use. Anyt
 
 Prefix log level: Whether or not to prefix the output lines with the log level.
 
+## Code structure and documentation
+
+The main directory layout of this repository is that of a Ghidra Module Project as created by the GhidraDev plugin. The bulk of the code can be found in src/main/java, unit tests in src/test, and the script-specific code in ghidra_scripts. Packages are used to group related classes. All classes have been provided with javadoc.
+
+The following table gives an overview of the different high-level parts (through the packages). Full (javadoc) documentation is included in this repository and can be [seen here](/doc/index.html).
+
+| Package                        | Description                                                                                                                                                                 |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| default                        | Contains the Ghidra script file. This file must be in the default package for Ghidra to be able to use it.                                                                  |
+| ehextractor                    | Highest-level classes for extracting 32-bit EH information from MSVC-compiled programs, finding functions, logging, and checking if a binary can be handled by EHExtractor. |
+| instructionpattrns<sup>4</sup> | Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching such patterns with actual instructions.                       |
+| loggingbridge                  | Contains a custom log handler that directs log output to the Ghidra script console.                                                                                         |
+| msvc.exceptions                | Contains classes related to the 32-bit EH data structures created by MSVC.                                                                                                  |
+| msvc.exceptions.code           | Helper classes for finding function prologues matching how MSVC creates these when EH is in play, and for matching code that registers the MSVC EH entry data structure.    |
+
+<sup>4 Not a typo.</sup>
+
+
