@@ -106,7 +106,7 @@ Prefix log level: Whether or not to prefix the output lines with the log level.
 
 The main directory layout of this repository is that of a Ghidra Module Project as created by the GhidraDev plugin. The bulk of the code can be found in src/main/java, unit tests in src/test, and the script-specific code in ghidra_scripts. Packages are used to group related classes. All classes have been provided with javadoc.
 
-The following table gives an overview of the different high-level parts (through the packages). Full (javadoc) documentation is included in this repository and can be [seen here](/doc/index.html).
+The following table gives an overview of the different high-level parts (through the packages). Full (javadoc) documentation is included in the [doc directory](/doc) in this repository.
 
 | Package                        | Description                                                                                                                                                                 |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
