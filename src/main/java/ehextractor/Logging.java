@@ -21,7 +21,7 @@ import org.python.jline.internal.Log;
  */
 public class Logging {
 
-	String logfilePath = null;
+	String logFilePath = null;
 	Level minLogLevel = Level.ALL;
 	boolean showLogLevel = true;
 	
@@ -36,7 +36,7 @@ public class Logging {
      * @param minLogLevel The minimum log level to record.
      */
 	public Logging(String logfilePath, Level minLogLevel, boolean showLogLevel) {
-		this.logfilePath = logfilePath;
+		this.logFilePath = logfilePath;
 		this.minLogLevel = minLogLevel;
 		this.showLogLevel = showLogLevel;
 		handlers = new ArrayList<Handler>();
@@ -51,7 +51,7 @@ public class Logging {
      * @param minLogLevel The minimum log level to record.
      */
 	public Logging(String logfilePath, Handler otherHandler, Level minLogLevel, boolean showLogLevel) {
-		this.logfilePath = logfilePath;
+		this.logFilePath = logfilePath;
 		this.minLogLevel = minLogLevel;
 		this.showLogLevel = showLogLevel;
 		handlers = new ArrayList<Handler>();
@@ -97,12 +97,12 @@ public class Logging {
     	    // When running the script in Ghidra again without having restarted Ghidra, the
     	    // logger will still be around and have handlers attached (even when having made
     	    // changes in Eclipse); we need to clean up these old handlers.
-    	    // (and also for an analyzer it's a good idea.)
+    	    // (And also for an analyzer it's a good idea.)
         	removeHandlers(logger);
     	    
     	    /* Configure the logger with handlers and formatters. */
         	// Always output to a file.
-    	    fh = new FileHandler(logfilePath, true);
+    	    fh = new FileHandler(logFilePath, true);
     	    handlers.add(fh);
 
     	    for (Handler handler : handlers) {
@@ -123,6 +123,10 @@ public class Logging {
     	    for (Handler handler : handlers) {
         	    handler.setFormatter(normalLogFormatter);
     	    }
+    	    
+    	    // Log the location of the output log file. Just as a reminder when looking at the console output,
+    	    // and the analyzer version shows this, too.
+    	    logger.log(Level.INFO, String.format("Output log location is %s.", logFilePath));
     	}
     	catch (SecurityException | IOException e) {
     		Log.error("An error occurred while setting up the logger: " + e.getMessage());

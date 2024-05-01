@@ -23,10 +23,15 @@ import loggingbridge.GhidraScriptHandler;
  * Output is logged to both a file and to the Ghidra console.
  */
 public class EHExtractorScript extends GhidraScript {
+	
 	// The minimum log level. Level.INFO is the most useful one for everyday use.
 	final Level LOG_LEVEL = Level.INFO;
+	
+	// Path to the output log file.
 	final String LOG_FILE_PATH = Paths.get(System.getProperty("user.home"), "Documents", "ehextractor.log").toString();
-	final boolean SHOW_LOG_LEVEL = false;
+
+	// Whether or not to prefix output lines with log levels.
+	final boolean PREFIX_LOG_LEVEL = false;
 
 	Logger logger = null;
 	FileHandler fh = null;
@@ -37,7 +42,7 @@ public class EHExtractorScript extends GhidraScript {
     	// Note that the logger will by default log to a file but when we're running as a script,
     	// output to the console is very convenient. So, let's add a Ghidra script/console-specific handler.
     	var gsh = new GhidraScriptHandler(this);
-    	Logging logging = new Logging(LOG_FILE_PATH, gsh, LOG_LEVEL, SHOW_LOG_LEVEL);
+    	Logging logging = new Logging(LOG_FILE_PATH, gsh, LOG_LEVEL, PREFIX_LOG_LEVEL);
     	if (logging == null || !logging.isSetupSuccess()) {
     		println("Logger setup not successful. Unable to continue.");
     		return;
