@@ -63,7 +63,7 @@ Running the script requires not only a working installation of Ghidra, but also 
 
 ## Usage
 
-Instructions for using EHExtractor are listed below. Test binaries and corresponding output log files can be found in the ["data/Test and log files"](/data/Test and log files) folder together with a [step-by-step example](data/Test and log files/README.md) of running the analyzer.
+Instructions for using EHExtractor are listed below. Test binaries and corresponding output log files can be found in the ["data/Test_and_log_files"](/data/Test_and_log_files) folder together with a [step-by-step example](/data/Test_and_log_files/README.md) of running the analyzer.
 
 #### Analyzer
 
@@ -74,13 +74,13 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 	- Follow this up with a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers.
 - Select Analysis/Auto Analyze from the menu.
 - Select "EHExtractor" and enabled it if not yet enabled<sup>1</sup>.
-- Adjust the minimum logging level and the location of the output file to your liking. (See the [options](#options) section for an explanation of the possible values.)
+- Adjust the minimum logging level, the location of the output file, and whether or not to prefix the output lines with the log level to your liking. (See the [options](#options) section for an explanation of the possible values.)
 - Click Analyze. The analyzer output will be written to the log file.
 
 <sup>1</sup><span style="font-size:0.75em;"> If the opened binary is not an x86 MSVC-compiled binary, the analyzer will not be listed.</span>
 
 #### Script
-- Adjust the minimum logging level and the location of the output file in the script file in Eclipse to your liking<sup>2</sup>. (See the [options](#options) section for an explanation of the possible values.)
+- Adjust the minimum logging level, the location of the output file, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>2</sup>. (See the [options](#options) section for an explanation of the possible values.)
 - Open the Ghidra Module Project in Eclipse and go to the ghidra_scripts folder.
 - Select EHExtractor.java and then "Run As Ghidra"; this will start up Ghidra and do the necessary setup to connect the project to Ghidra.
 - Select the binary you wish to analyze. Ghidra will now open completely
@@ -101,4 +101,5 @@ Log file path: The path to the log file. If the file already exists, new output 
 
 Minimum log level: INFO is the default value and intended for everyday use. Anything lower than INFO (FINE and FINER) will give increasingly more output details (useful for debugging).
 
+Prefix log level: Whether or not to prefix the output lines with the log level.
 

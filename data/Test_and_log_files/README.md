@@ -1,6 +1,6 @@
 # Step-by-step example run of the EHExtractor analyzer
 
-The following describes an example run of the (installed) EHExtractor analyzer on a never-before-analyzed 32-bit MSVC-compiled binary. (Test binaries with corresponding reference output log files are available from the ["data/Test and log files"](/data/Test and log files) folder.)
+The following describes an example run of the (installed) EHExtractor analyzer on a never-before-analyzed 32-bit MSVC-compiled binary. (Test binaries with corresponding reference output log files are available from the [data/Test_and_log_files](/data/Test_and_log_files) folder.)
 
 1. Start Ghidra.
 2. Import a binary in the project window using all defaults.
@@ -15,8 +15,8 @@ The following describes an example run of the (installed) EHExtractor analyzer o
 11. Choose the desired location for the output log ('Log file path').
 12. Leave 'Minimum log level' set to 'INFO' and 'Prefix log level' unchecked.
 13. Click 'Analyze'. EHExtractor will now start.
-14. EHExtractor will give a few updates in the Project window (such as starting, working, finished). These can also be seen in Ghidra's application log.
-15. When finished, open the output log file to examine to results.
+14. EHExtractor will give a few updates in the Project window (such as starting, working, finished). The output log file path is included in the start and finish messages. These can also be seen in Ghidra's application log.
+15. When finished, open the output log file to examine the results.
 
 Some notes:
 - Repeated runs of EHExtractor with the same output log file will add to that file, not overwrite it.
