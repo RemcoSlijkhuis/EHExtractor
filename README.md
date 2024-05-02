@@ -12,31 +12,38 @@ The main contributor is [Remco Slijkhuis](https://github.com/RemcoSlijkhuis).
 * The overview contains all information that can be determined from the underlying EH data structures, including state values of try and catch blocks, catch block addresses and catch block exception types.
 * The overview can be output to a file (analyzer, script) and to the Ghidra console (script).
 
-The following is an example of the output EHExtractor produces, showing a function's nested try and catch block layout.
+The following is an example of the output EHExtractor produces for a function with nested try and catch blocks.
 
 ```
+Looking at: FUN_00401980
+Memory range: 00401980-004019f7
+Normal start instructions found.
+Exception handling start instructions found.
+EH handler registration instructions found.
+Determined ehFuncInfoAddress: 00404d60
+Try/catch block overview:
 /* TryBlockMapEntry [5]	1-5,12,1 */
 Try (state=1) {
   /* TryBlockMapEntry [1]	2-4,5,1 */
   Try (state=2) {
     /* TryBlockMapEntry [0]	3-3,4,1 */
     Try (state=3) {}
-    Catch (std::logic_error) (state=4)	@0x0040196b {}
+    Catch (std::logic_error) (state=4)	@0x004019f8 {}
   }
-  Catch (CustomException1) (state=5)	@0x0040198c {}
+  Catch (CustomException1) (state=5)	@0x00401a19 {}
 }
-Catch (...) (state=6)	@0x004019b0 {
+Catch (...) (state=6)	@0x00401a3d {
   /* TryBlockMapEntry [4]	7-7,12,2 */
   Try (state=7) {}
-  Catch (std::out_of_range) (state=8)	@0x004019c2 {}
-  Catch (...) (state=8)	@0x004019f5 {}
+  Catch (std::out_of_range) (state=8)	@0x00401a4f {}
+  Catch (...) (state=8)	@0x00401a82 {}
   ToBeNestedInCatches {
     /* TryBlockMapEntry [3]	11-11,12,1 */
     Try (state=11) {}
-    Catch (...) (state=12)	@0x00401a05 {}
+    Catch (...) (state=12)	@0x00401a92 {}
     /* TryBlockMapEntry [2]	9-9,10,1 */
     Try (state=9) {}
-    Catch (...) (state=10)	@0x004019d2 {}
+    Catch (...) (state=10)	@0x00401a5f {}
   }
 }
 ```
