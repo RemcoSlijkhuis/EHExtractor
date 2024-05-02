@@ -79,7 +79,7 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 - Start Ghidra and open the binary you want to analyze.
 - If the binary has not been analyzed before with the standard set of analyzers (or previous results were not saved):
 	- Select Analysis/Auto Analyze from the menu.
-	- Run the standard set of analyzers on it first.
+	- Run the standard set of analyzers on it.
 - Do a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers.
 - Select Analysis/Auto Analyze from the menu.
 - Select "EHExtractor" and enabled it if not yet enabled. (Note: If the opened binary is not an x86 MSVC-compiled binary, the analyzer will not be listed.)
@@ -92,19 +92,19 @@ The Ghidra project window with an 'EHExtractor finished' message.
 
 
 #### Script
-- Adjust  the location of the output file, the minimum logging level, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>2</sup>. (See the [options](#options) section for an explanation of the possible values.)
+- Adjust  the location of the output file, the minimum logging level, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>1</sup>. (See the [options](#options) section for an explanation of the possible values.)
 - Open the Ghidra Module Project in Eclipse and go to the ghidra_scripts folder.
 - Select EHExtractor.java and then "Run As Ghidra"; this will start up Ghidra and do the necessary setup to connect the project to Ghidra.
 - Select the binary you wish to analyze. Ghidra will now open completely
 - If the binary has not been analyzed before (or previous results were not saved):
 	- Select Analysis/Auto Analyze from the menu.
 	- Run the standard set of analyzers on it.
-- Optionally, do a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers<sup>3</sup>.
+- Optionally, do a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers<sup>2</sup>.
 - Go to the Script Manager (Window/Script Manager) and open the folder "C++".
 - Run "EHExtractorScript.java" by double-clicking on it or selecting it and clicking the green play button. The analyzer output will be written to the log file and to the Ghidra console.
 
-<sup>2 The options can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</sup><br>
-<sup>3 Unlike the analyzer version of EHExtractor, the script version will execute the "Shared Return Calls" functionality.</sup>
+<sup>1 The options can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</sup><br>
+<sup>2 Unlike the analyzer version of EHExtractor, the script version will also execute the "Shared Return Calls" functionality.</sup>
 
 ## Options
 
@@ -126,11 +126,11 @@ The following table gives an overview of the different high-level parts (through
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | default                        | Contains the Ghidra script file. This file must be in the default package for Ghidra to be able to use it.                                                                  |
 | ehextractor                    | Highest-level classes for extracting 32-bit EH information from MSVC-compiled programs, finding functions, logging, and checking if a binary can be handled by EHExtractor. |
-| instructionpattrns<sup>4</sup> | Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching such patterns with actual instructions.                       |
+| instructionpattrns<sup>3</sup> | Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching such patterns with actual instructions.                       |
 | loggingbridge                  | Contains a custom log handler that directs log output to the Ghidra script console.                                                                                         |
 | msvc.exceptions                | Contains classes related to the 32-bit EH data structures created by MSVC.                                                                                                  |
 | msvc.exceptions.code           | Helper classes for finding function prologues matching how MSVC creates these when EH is in play, and for matching code that registers the MSVC EH entry data structure.    |
 
-<sup>4 Not a typo.</sup>
+<sup>3 Not a typo.</sup>
 
 
