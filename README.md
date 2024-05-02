@@ -105,7 +105,7 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 
 ## Options
 
-![EHExtractor analzyer options screen in Ghidra.](data/Images/Options.png)<br>
+![EHExtractor analyzer options screen in Ghidra.](data/Images/Options.png)<br>
 The EHExtractor analyzer options screen in Ghidra.
 
 Description of the options:

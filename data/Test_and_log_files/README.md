@@ -21,3 +21,6 @@ The following describes an example run of the (installed) EHExtractor analyzer o
 Some notes:
 - Repeated runs of EHExtractor with the same output log file will add to that file, not overwrite it.
 - EHExtractor can also be started from Analysis/One Shot, but the options cannot be changed there.
+
+![Ghidra project window with EHExtractor finished message.](/data/Images/Project_finished.png)<br>
+The Ghidra project window with an 'EHExtractor finished' message.
