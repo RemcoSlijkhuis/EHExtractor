@@ -80,27 +80,30 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 - If the binary has not been analyzed before with the standard set of analyzers (or previous results were not saved):
 	- Select Analysis/Auto Analyze from the menu.
 	- Run the standard set of analyzers on it first.
-	- Follow this up with a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers.
+- Do a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers.
 - Select Analysis/Auto Analyze from the menu.
-- Select "EHExtractor" and enabled it if not yet enabled<sup>1</sup>.
-- Adjust the minimum logging level, the location of the output file, and whether or not to prefix the output lines with the log level to your liking. (See the [options](#options) section for an explanation of the possible values.)
+- Select "EHExtractor" and enabled it if not yet enabled. (Note: If the opened binary is not an x86 MSVC-compiled binary, the analyzer will not be listed.)
+- Adjust the location of the output file, the minimum logging level, and whether or not to prefix the output lines with the log level to your liking. (See the [options](#options) section for an explanation of the possible values.)
 - Click Analyze. The analyzer output will be written to the log file.
+- While running, EHExtractor will give a few updates in the Project window (such as starting, working, finished). The output log file path is included in the start and finish messages. These can also be seen in Ghidra's application log.
 
-<sup>1 If the opened binary is not an x86 MSVC-compiled binary, the analyzer will not be listed.</sup>
+![Ghidra project window with EHExtractor finished message.](data/Images/Project_finished.png)<br>
+The Ghidra project window with an 'EHExtractor finished' message.
+
 
 #### Script
-- Adjust the minimum logging level, the location of the output file, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>2</sup>. (See the [options](#options) section for an explanation of the possible values.)
+- Adjust  the location of the output file, the minimum logging level, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>2</sup>. (See the [options](#options) section for an explanation of the possible values.)
 - Open the Ghidra Module Project in Eclipse and go to the ghidra_scripts folder.
 - Select EHExtractor.java and then "Run As Ghidra"; this will start up Ghidra and do the necessary setup to connect the project to Ghidra.
 - Select the binary you wish to analyze. Ghidra will now open completely
 - If the binary has not been analyzed before (or previous results were not saved):
 	- Select Analysis/Auto Analyze from the menu.
 	- Run the standard set of analyzers on it.
-	- Optionally (but recommended), follow this up with a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers<sup>3</sup>.
+- Optionally, do a single or one-shot run of the "Shared Return Calls" analyzer. This analyzer is part of the standard set of analyzers but was found to miss some crucial aspects of the binary when run together with the other analyzers<sup>3</sup>.
 - Go to the Script Manager (Window/Script Manager) and open the folder "C++".
 - Run "EHExtractorScript.java" by double-clicking on it or selecting it and clicking the green play button. The analyzer output will be written to the log file and to the Ghidra console.
 
-<sup>2 Once Ghidra has started, the options can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</sup><br>
+<sup>2 The options can be changed in Eclipse without having to restart Ghidra; the changed settings will be used the next time the script is run.</sup><br>
 <sup>3 Unlike the analyzer version of EHExtractor, the script version will execute the "Shared Return Calls" functionality.</sup>
 
 ## Options
