@@ -41,7 +41,9 @@ Catch (...) (state=6)	@0x004019b0 {
 }
 ```
 
-## Installation instructions
+## Installation instructions and requirements
+
+The current version of the packaged analyzer was written and tested using Ghidra version [10.2.2](https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_10.2.2_build) and it is recommended to use this same Ghidra version.
 
 #### Analyzer
 
