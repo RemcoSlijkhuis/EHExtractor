@@ -105,11 +105,13 @@ Instructions for using EHExtractor are listed below. Test binaries and correspon
 
 ## Options
 
-Log file path: The path to the log file. If the file already exists, new output will be appended to it.
+![EHExtractor analzyer options screen in Ghidra.](data/Images/Options.png)<br>
+The EHExtractor analyzer options screen in Ghidra.
 
-Minimum log level: INFO is the default value and intended for everyday use. Anything lower than INFO (FINE and FINER) will give increasingly more output details (useful for debugging).
-
-Prefix log level: Whether or not to prefix the output lines with the log level.
+Description of the options:
+- Log file path: The path to the log file. If the file already exists, new output will be appended to it. Defaults to an ehextractor.log file in the user's Documents directory (on Windows).
+- Minimum log level: INFO is the default value and intended for everyday use. Anything lower than INFO (FINE and FINER) will give increasingly more output details (useful for debugging).
+- Prefix log level: Whether or not to prefix the output lines with the log level. Default: not checked.
 
 ## Code structure and documentation
 
