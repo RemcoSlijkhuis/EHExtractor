@@ -5,10 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-import ghidra.app.cmd.data.exceptionhandling.EHCatchHandlerModel;
-import ghidra.app.cmd.data.exceptionhandling.EHTryBlockModel;
 import ghidra.program.model.address.Address;
-import ghidra.program.model.data.InvalidDataTypeException;
 
 /**
  * Represents a TryBlockmapEntry, as implemented by MSVC.

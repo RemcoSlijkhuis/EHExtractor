@@ -6,7 +6,6 @@ import java.util.List;
 import ghidra.app.cmd.data.TypeDescriptorModel;
 import ghidra.app.cmd.data.exceptionhandling.EHCatchHandlerTypeModifier;
 import ghidra.program.model.address.Address;
-import ghidra.program.model.data.InvalidDataTypeException;
 import ghidra.program.model.scalar.Scalar;
 
 /**

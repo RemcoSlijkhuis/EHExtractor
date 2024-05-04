@@ -118,19 +118,26 @@ Description of the options:
 
 ## Code structure and documentation
 
-The main directory layout of this repository is that of a Ghidra Module Project as created by the GhidraDev plugin. The bulk of the code can be found in src/main/java, unit tests in src/test, and the script-specific code in ghidra_scripts. Packages are used to group related classes. All classes have been provided with javadoc.
+The main directory layout of this repository is that of a Ghidra Module Project as created by the GhidraDev plugin. The contents of the various high-level directories are as follows:
 
-The following table gives an overview of the different high-level parts (through the packages). Full (javadoc) documentation is included in the [doc directory](/doc) in this repository.
+| Directory          | Contents                                                                                                                                  |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| data               | Images used in the READMEs, and test and log file examples.                                                                               |
+| dist               | Packaged version of the analyzer.                                                                                                         |
+| doc                | Package and class documentation in the form of rendered javadoc.                                                                          |
+| ghidra_scripts     | Code specific to the Ghidra script version of EHExtractor: EHExtractorScript.java and the package loggingbridge.                          |
+| src/main/java      | Contains the main code. The code is grouped into the packages ehextractor, instructionpattrns, msvc.exceptions, and msvc.exceptions.code. |
+| src/test/java      | Unit tests for classes in package msvc.exceptions.                                                                                        |
+| src/test/resources | Input and result files used in the unit tests.                                                                                            |
+
+The following table gives an overview of the different high-level parts (through the packages). 
 
 | Package                        | Description                                                                                                                                                                 |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| default                        | Contains the Ghidra script file. This file must be in the default package for Ghidra to be able to use it.                                                                  |
-| ehextractor                    | Highest-level classes for extracting 32-bit EH information from MSVC-compiled programs, finding functions, logging, and checking if a binary can be handled by EHExtractor. |
-| instructionpattrns<sup>3</sup> | Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching such patterns with actual instructions.                       |
+| default                        | Contains the Ghidra script version of EHExtractor. This file must be in the default package for Ghidra to be able to use it.                                                |
+| ehextractor                    | Contains the analyzer version of EHExtractor, as well as high-level classes for finding functions, logging, and checking if a binary can be handled by EHExtractor.         |
+| instructionpattrns             | Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching such patterns with actual instructions.                       |
 | loggingbridge                  | Contains a custom log handler that directs log output to the Ghidra script console.                                                                                         |
 | msvc.exceptions                | Contains classes related to the 32-bit EH data structures created by MSVC.                                                                                                  |
 | msvc.exceptions.code           | Helper classes for finding function prologues matching how MSVC creates these when EH is in play, and for matching code that registers the MSVC EH entry data structure.    |
-
-<sup>3 Not a typo.</sup>
-
 
