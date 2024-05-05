@@ -130,7 +130,7 @@ The main directory layout of this repository is that of a Ghidra Module Project 
 | src/test/java      | Unit tests for classes in package msvc.exceptions.                                                                                        |
 | src/test/resources | Input and result files used in the unit tests.                                                                                            |
 
-The packages and the classes contained therein are described in more detail below.
+An overview of the packages and the classes contained therein is given below. All class files have also been provided with javadoc.
 
 ### Package ehextractor
 
