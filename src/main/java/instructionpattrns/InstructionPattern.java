@@ -9,7 +9,7 @@ import ghidra.program.model.mem.MemoryAccessException;
 import ghidra.program.model.scalar.Scalar;
 
 /**
- * Abstract base class for instruction patterns, with functionality for matching with an actual instruction.
+ * Abstract base class for instruction patterns, with scaffolding for matching with an actual instruction.
  */
 public abstract class InstructionPattern {
 	/**

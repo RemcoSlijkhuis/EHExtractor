@@ -35,7 +35,7 @@ import ghidra.util.task.TaskMonitor;
 
 /**
  * An analyzer that extracts x86 MSVC exception handling information from programs and writes it to a log file.
- * The log file path and the minimum log level can be set through the Analyzer options.
+ * The log file path, minimum log level and whether or not the include log levels in the output can be set through the Analyzer options.
  */
 public class EHExtractorAnalyzer extends AbstractAnalyzer {
 

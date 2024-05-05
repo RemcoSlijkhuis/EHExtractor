@@ -5,7 +5,7 @@ import java.util.HashMap;
 import ghidra.program.model.data.InvalidDataTypeException;
 
 /**
- * Provides the same functionality as EHUnwindModel, i.e. managing a map of unwind states.
+ * Provides the same functionality as Ghidra's EHUnwindModel, i.e. managing a map of unwind states stored by MSVC in its UnwindMap data structure.
  */
 public class UnwindMap {
 

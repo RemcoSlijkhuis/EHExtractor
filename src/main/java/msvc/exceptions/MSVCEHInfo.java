@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Represents the exception handling information for Microsoft Visual C++-compiled binaries
+ * Top-level representation of the exception handling information for individual functions in Microsoft Visual C++-compiled binaries
  * that can be derived from the various EH-related data structures used.
  */
 public class MSVCEHInfo {

@@ -130,14 +130,85 @@ The main directory layout of this repository is that of a Ghidra Module Project 
 | src/test/java      | Unit tests for classes in package msvc.exceptions.                                                                                        |
 | src/test/resources | Input and result files used in the unit tests.                                                                                            |
 
-The following table gives an overview of the different high-level parts (through the packages). 
+The packages and the classes contained therein are described in more detail below.
 
-| Package                        | Description                                                                                                                                                                 |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| default                        | Contains the Ghidra script version of EHExtractor. This file must be in the default package for Ghidra to be able to use it.                                                |
-| ehextractor                    | Contains the analyzer version of EHExtractor, as well as high-level classes for finding functions, logging, and checking if a binary can be handled by EHExtractor.         |
-| instructionpattrns             | Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching such patterns with actual instructions.                       |
-| loggingbridge                  | Contains a custom log handler that directs log output to the Ghidra script console.                                                                                         |
-| msvc.exceptions                | Contains classes related to the 32-bit EH data structures created by MSVC.                                                                                                  |
-| msvc.exceptions.code           | Helper classes for finding function prologues matching how MSVC creates these when EH is in play, and for matching code that registers the MSVC EH entry data structure.    |
+### Package ehextractor
 
+Contains the analyzer version of EHExtractor, as well as high-level classes for finding functions, starting the analysis, logging, and checking if a binary can be handled by EHExtractor.
+
+Classes:
+- **EHExtractorAnalyzer**: The analyzer version of EHExtractor. Uses `ProgramValidator` for initial validation checks, sets up logging using `Logging`, initializes and starts `EHExtractor` (the highest-level class responsible for extracting MSVC exception handling information).
+
+- **EHExtractor**: Highest-level class responsible for extracting MSVC exception handling information from a program. Called from both the analyzer and the script.
+Uses `FunctionUtils` to find the functions to analyze, starts the analysis, and uses `EHHandler` and `Prologue` from the msvc.exceptions.code package to retrieve certain specific addresses as part of the analysis, and `MSVCEHInfo` in package msvc.exceptions to parse the MSVC EH data structures.
+
+- **FunctionUtils**: Utility class for finding functions within a given program using the Ghidra API.
+- **Logging**: Responsible for setting up and managing logging for EHExtractor (both analyzer and script versions). Registers a Logger singleton for easy access to logging functionality in any part of EHExtractor.
+- **ProgramValidator**: Provides methods to validate if a program can be analyzed by EHExtractor.
+
+- **SharedReturnCalls**: Provides an alternative way to 'run' the "Shared Return Calls" analyzer, which is crucial for resolving calls to thunked functions, such as CxxFrameHandler3. Currently only called by `EHExtractorScript`.
+
+
+### Package msvc.exceptions.code
+
+Helper classes for finding function prologues matching how MSVC creates these when exception handling (EH) is in play, and for matching code that registers the MSVC EH entry data structure (with optional security cookie-checking code before that).
+
+Classes:
+- **EHHandler**: Class for looking for exception handling setup code and extracting FuncInfo addresses.
+- **Prologue**: Represents the start (prologue) of a function; analyzes the prologue of functions to identify and extract addresses related to exception handling setup as done by MSVC.
+
+Both `EHHandler` and `Prologue` use classes from the instructionpattrns package to look for specific instructions.
+
+
+### Package instructionpattrns
+
+Contains classes for instruction patterns as implemented by EHExtractor, providing functionality for matching instruction patterns with actual instructions.
+
+(Note that the package name 'instructionpattrns' is not a typo. After introduction of the term 'instruction patterns' for this functionality in EHExtractor it was found that Ghidra had something called 'instruction patterns' as well. Calling the EHExtractor package 'instructionpatterns' caused many problems and the package name was set to 'instructionpattrns' for the time being.)
+ 
+Classes:
+- **InstructionPattern** (abstract): Abstract base class for instruction patterns, with scaffolding for matching with an actual instruction.
+
+- **AddressInstructionPattern** (concrete): For matching instructions that involve addresses, using either direct or indirect addressing modes.
+- **NopInstructionPattern** (concrete): For matching NOP instructions.
+- **RegisterInstructionPattern** (concrete): For matching instructions that involve registers.
+- **ScalarInstructionPattern** (concrete): For matching instructions that involve scalar non-address values.
+
+- **InstructionPatterns**: Facilitates matching a list of instruction patterns with a sequence of instructions.
+- **MatchResult**: Represents the result of matching a sequence of instructions against a sequence of instruction patterns.
+
+
+### Package msvc.exceptions
+
+Contains classes related to the 32-bit exception handling data structures created by MSVC.
+
+Core classes:
+- **MSVCEHInfo**: Top-level representation of the exception handling information for individual functions in Microsoft Visual C++-compiled binaries that can be derived from the various EH-related data structures used.
+- **TryBlockMapEntry**: Represents an entry in the MSVC TryBlockMap data structure, linking try and catch blocks.
+- **TryBlock**: Represents a try block as implemented by MSVC.
+- **CatchHandler**: Represents a catch block as implemented by MSVC.
+- **UnwindMap**: Manages a map of unwind states, as stored by MSVC in its UnwindMap data structure.
+
+`TryBlock` and `CatchHandler` both implement the `ITryCatch` interface and identify themselves as try or catch blocks through the `BlockType` enum.
+
+This package also contains factory classes for creating `MSVCEHInfo`, `TryBlockMapEntry`, `CatchHandler` and `UnwindMap` instances, and the supporting classes `Range` and `TryLowComparator`.
+
+Unit tests:
+- Unit tests for the classes `MSVCEHInfo`, `TryBlockMapEntry`, `TryBlock`, `CatchHandler`, `Range` can be found in the directory src/test/java.
+- `NestedStructureParser` is a support class used in the unit test class for `MSVCEHInfo`; it also has its own unit test.
+
+
+### Default package
+
+Contains the Ghidra script version of EHExtractor. This file must be in the default package for Ghidra to be able to use it.
+
+Class:
+- **EHExtractorScript**:  The script version of EHExtractor. Uses `ProgramValidator` for initial validation checks, sets up logging using `Logging`, initializes and starts `EHExtractor` (the highest-level class responsible for extracting MSVC exception handling information).
+
+
+### Package loggingbridge (script-specific)
+
+Contains a custom log handler that directs log output to the Ghidra script console.
+
+Class:
+- **GhidraScriptHandler**: Custom log handler that directs log output to the Ghidra script console.

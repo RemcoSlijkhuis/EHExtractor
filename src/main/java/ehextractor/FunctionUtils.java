@@ -14,7 +14,7 @@ import ghidra.program.model.symbol.SymbolTable;
 import ghidra.program.model.symbol.SymbolType;
 
 /**
- * Utility class for finding functions within a given program.
+ * Utility class for finding functions within a given program using the Ghidra API.
  */
 public class FunctionUtils {
 
