@@ -48,6 +48,21 @@ Catch (...) (state=6)	@0x00401a3d {
 }
 ```
 
+The output contains an overview of all information about the various try and catch blocks in a function that can be determined from its EH data structures. Descriptions of these data structures can be found in source code files included in Visual Studio installations, in particular in the files ehdata.h and ehdata_values.h (both located in \<Visual Studio install path\>\\VC\\Tools\\MSVC\\\<version\>\\include\\).
+
+ The output includes:
+- The TryBlockMapEntries.
+- The try and catch blocks in each TryBlockmapEntry.
+- Nesting of try/catch blocks in other try and catch blocks.
+- The state value of each try and catch block.
+- The exception type handled by each catch block.
+- The memory location of each catch block.
+
+Curly braces (\{\}) are used to indicate the scope of a try or catch block with respect to the TryBlockMapEntries nested within. To help keep the view from getting cluttered and hard to read through excessive use of curly braces, the scope of a TryBlockMapEntry is indicated by the indentation of the try and catch blocks specified therein.
+
+The TryBlockMapEntry lines contain some extra information that makes it easy to find the corresponding entry in the TryBlockMap array. From left to right: the index of this entry in the array (in square brackets); minimum and maximum state values encountered in the try block (tryLow-tryHigh), the maximum state value encountered in the catch block(s) (catchHigh), and the number of catch blocks (nCatches).
+
+
 ## Installation instructions and requirements
 
 The current version of the packaged analyzer was written and tested using Ghidra version [10.2.2](https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_10.2.2_build) and it is recommended to use this same Ghidra version.
@@ -95,7 +110,7 @@ The Ghidra project window with an 'EHExtractor finished' message.
 - Adjust  the location of the output file, the minimum logging level, and  whether or not to prefix the output lines with the log level in the script file in Eclipse to your liking<sup>1</sup>. (See the [options](#options) section for an explanation of the possible values.)
 - Open the Ghidra Module Project in Eclipse and go to the ghidra_scripts folder.
 - Select EHExtractor.java and then "Run As Ghidra"; this will start up Ghidra and do the necessary setup to connect the project to Ghidra.
-- Select the binary you wish to analyze. Ghidra will now open completely
+- Select the binary you wish to analyze. Ghidra will now open completely.
 - If the binary has not been analyzed before (or previous results were not saved):
 	- Select Analysis/Auto Analyze from the menu.
 	- Run the standard set of analyzers on it.
